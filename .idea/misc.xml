@@ -3,7 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_apartment.xml" value="0.303" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_apartment_fill.xml" value="0.303" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_campaign.xml" value="0.303" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_campaign_fill.xml" value="0.303" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_notifications.xml" value="0.303" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_notifications_fill.xml" value="0.303" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/nav_icon_color_selected.xml" value="0.303" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/roundedblue.xml" value="0.1775" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/se_ic_event.xml" value="0.303" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/se_ic_horario.xml" value="0.303" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/se_ic_map.xml" value="0.303" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/se_ic_ubic.xml" value="0.303" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/se_mapa_icon.xml" value="0.2985" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/activity_main.xml" value="0.24954710144927536" />
       </map>
     </option>
