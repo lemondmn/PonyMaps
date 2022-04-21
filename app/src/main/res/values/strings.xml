@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">PonyMaps</string>
+
+    <string name="Menu1">Recordatorios</string>
+    <string name="Menu2">Eventos</string>
+    <string name="Menu3">Mapa</string>
+    <string name="Menu4">Ubicaciones</string>
+    <string name="Menu5">Horario</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

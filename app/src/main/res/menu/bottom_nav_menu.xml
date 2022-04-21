@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_record"
+        android:icon="@drawable/se_ic_notif"
+        android:title="@string/Menu1" />
+
+    <item
+        android:id="@+id/nav_event"
+        android:icon="@drawable/se_ic_event"
+        android:title="@string/Menu2" />
+
+    <item
+        android:id="@+id/nav_map"
+        android:icon="@drawable/se_ic_map"
+        android:title="@string/Menu3" />
+
+    <item
+        android:id="@+id/nav_ubic"
+        android:icon="@drawable/se_ic_ubic"
+        android:title="@string/Menu4" />
+
+    <item
+        android:id="@+id/nav_hora"
+        android:icon="@drawable/se_ic_horario"
+        android:title="@string/Menu5" />
+
+</menu>
