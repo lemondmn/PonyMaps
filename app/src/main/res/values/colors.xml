@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="Mint">#9fd8cb</color>
+    <color name="OxfordBlue">#0a2239</color>
+    <color name="RubyRed">#a31621</color>
+    <color name="PinkLavender">#d8a7ca</color>
+    <color name="MangoTango">#ff8c42</color>
+    <color name="OGBlue">#227c9d</color>
 </resources>
