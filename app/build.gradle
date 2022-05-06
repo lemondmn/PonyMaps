@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+
 }
 
 android {
@@ -32,9 +35,14 @@ android {
     buildFeatures {
         viewBinding true
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
+
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

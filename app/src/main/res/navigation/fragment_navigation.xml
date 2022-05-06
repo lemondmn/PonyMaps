@@ -15,11 +15,13 @@
         android:name="mx.edu.ubicatec.ponymaps.ui.eventos.EventosFragment"
         android:label="@string/Menu2"
         tools:layout="@layout/fragment_eventos" />
+
     <fragment
         android:id="@+id/na_fragment_map"
         android:name="mx.edu.ubicatec.ponymaps.ui.mapa.MapaFragment"
         android:label="@string/Menu3"
         tools:layout="@layout/fragment_map" />
+
     <fragment
         android:id="@+id/na_fragment_ubicaciones"
         android:name="mx.edu.ubicatec.ponymaps.ui.ubicaciones.UbicacionesFragment"
