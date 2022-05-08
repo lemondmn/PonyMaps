@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jorge/Desktop/Tec/6to Sem/Ing Software/PonyMaps/app/src/main/res/drawable/ic_calendar_today_fill.xml" value="0.1" />
+        <entry key="..\:/Users/jorge/Desktop/Tec/6to Sem/Ing Software/PonyMaps/app/src/main/res/layout/fragment_map.xml" value="0.2694746376811594" />
+        <entry key="..\:/Users/jorge/Desktop/Tec/6to Sem/Ing Software/PonyMaps/app/src/main/res/layout/fragment_maps.xml" value="0.2749094202898551" />
+        <entry key="..\:/Users/jorge/Desktop/Tec/6to Sem/Ing Software/PonyMaps/app/src/main/res/layout/fragment_maps2.xml" value="0.2749094202898551" />
+        <entry key="..\:/Users/jorge/Desktop/Tec/6to Sem/Ing Software/PonyMaps/app/src/main/res/menu/bottom_nav_menu.xml" value="0.346875" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_apartment.xml" value="0.303" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_apartment_fill.xml" value="0.303" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_campaign.xml" value="0.303" />
@@ -16,10 +21,16 @@
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/se_ic_map.xml" value="0.303" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/se_ic_ubic.xml" value="0.303" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/se_mapa_icon.xml" value="0.2985" />
-        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/activity_main.xml" value="0.24954710144927536" />
-        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_map.xml" value="0.22871376811594202" />
-        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_maps.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/menu/bottom_nav_menu.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/activity_main.xml" value="0.3582427536231884" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_eventos.xml" value="0.23923444976076555" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_horario.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_horarios.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_map.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_recordatorio.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_recordatorios.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_ubicaciones.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/menu/bottom_nav_menu.xml" value="0.38645833333333335" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/menu/bottom_nav_menu2.xml" value="0.38697916666666665" />
       </map>
     </option>
   </component>
