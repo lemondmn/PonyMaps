@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.horarios.HorariosFragment"
-    android:background="#E76B74">
+    android:background="@color/OxfordBlue">
 
     <!-- TODO: Update blank fragment layout -->
 

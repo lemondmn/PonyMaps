@@ -8,4 +8,4 @@
     android:layout_height="match_parent"
     map:cameraTargetLat="19.722037"
     map:cameraTargetLng="-101.184835"
-    tools:context=".MapsFragment" />
+    tools:context=".ui.mapa.MapaFragment" />
