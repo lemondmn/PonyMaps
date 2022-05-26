@@ -533,10 +533,11 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         // 2. If if a permission rationale dialog should be shown
         if (ActivityCompat.shouldShowRequestPermissionRationale(
-                activity?.parent!!,
+                //activity?.parent!!,
+                requireActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) || ActivityCompat.shouldShowRequestPermissionRationale(
-                activity?.parent!!,
+                requireActivity(),
                 Manifest.permission.ACCESS_COARSE_LOCATION
             )
         ) {
@@ -548,7 +549,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         // 3. Otherwise, request permission
         ActivityCompat.requestPermissions(
-            activity?.parent!!,
+            requireActivity(),
             arrayOf(
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION
