@@ -6,7 +6,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 
-abstract class MyUtils {
+abstract class volleyUtils {
     fun consumePost(c: Context, url: String, params : MutableMap<String,String>) {
         val stringRequest = object : StringRequest(
             Request.Method.POST, url,

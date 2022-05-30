@@ -1,5 +1,7 @@
 package mx.edu.ubicatec.ponymaps.ui.mapa
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,6 +34,8 @@ class RutaFragment : DialogFragment() {
             Toast.makeText(context, "OK PRESIONADO", Toast.LENGTH_LONG).show()
             dismiss()
         }
+
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         return rootView
     }
