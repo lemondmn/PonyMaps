@@ -7,26 +7,28 @@
     tools:context=".ui.eventos.EventosFragment"
     android:background="@color/OxfordBlue">
 
-    <!-- TODO: Update eventos fragment layout -->
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_event_fill"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_eventos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_titleEventos" />
 
     <TextView
-        android:id="@+id/textViewEve"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView_titleEventos"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text=""
+        android:background="@drawable/shape_sapphireblueroundedcorners"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:layout_margin="5dp"
+        android:text="Eventos"
+        android:textAlignment="center"
+        android:textColor="@color/PinkLace"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
