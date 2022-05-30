@@ -4,9 +4,11 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
+import android.content.res.Resources.NotFoundException
 import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,17 +17,13 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener
 import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.maps.android.data.geojson.GeoJsonLayer
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentMapBinding
@@ -90,6 +88,14 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         googleMap.setLatLngBoundsForCameraTarget(ITM)
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(ITM_CAMERA))
 
+        // Custom map style
+
+        try {
+            googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(thiscontext, R.raw.mapstyle))
+        } catch (e: NotFoundException) {
+            Log.e(TAG, "Can't find style. Error: ", e)
+        }
+
         /* val layer = KmlLayer(googleMap, R.raw.ponymaps, context);
          layer.addLayerToMap();*/
 
@@ -117,7 +123,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         //Location
         googleMap.setOnMyLocationButtonClickListener(this)
         googleMap.setOnMyLocationClickListener(this)
-        enableMyLocation()
+        //enableMyLocation()
 
     }
 
