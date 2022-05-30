@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import mx.edu.ubicatec.ponymaps.databinding.FragmentUbicacionesBinding
+import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionAdapter
+import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionProvider
 
 class UbicacionesFragment : Fragment() {
 
@@ -27,11 +31,15 @@ class UbicacionesFragment : Fragment() {
         _binding = FragmentUbicacionesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textViewUbic
-        ubicacionesViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        initRecyclerView()
+
         return root
+    }
+
+    fun initRecyclerView(){
+        val recyclerView = binding.recyclerUbicaciones
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = UbicacionAdapter(UbicacionProvider.ubicacionesList)
     }
 
     override fun onDestroyView() {

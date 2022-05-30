@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ubicaciones">
+        <item>Edificio A</item>
+        <item>Edificio B</item>
+        <item>Estacionamiento Norte</item>
+        <item>Edificio F</item>
+    </string-array>
+</resources>

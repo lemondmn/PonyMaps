@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
+import android.content.res.Resources.NotFoundException
 import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.maps.android.data.Geometry
 import com.google.maps.android.data.geojson.*
+
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentMapBinding
 import mx.edu.ubicatec.ponymaps.models.PermissionUtils
@@ -102,7 +104,13 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         googleMap.setLatLngBoundsForCameraTarget(ITM)
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(ITM_CAMERA))
 
-        /** SETS LAYER  */
+        // Custom map style
+
+        try {
+            googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(thiscontext, R.raw.mapstyle))
+        } catch (e: NotFoundException) {
+            Log.e(TAG, "Can't find style. Error: ", e)
+        }
 
         /* val layer = KmlLayer(googleMap, R.raw.ponymaps, context);
          layer.addLayerToMap();*/
@@ -130,7 +138,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         googleMap.setOnMyLocationButtonClickListener(this)
         googleMap.setOnMyLocationClickListener(this)
-        enableMyLocation()
+        //enableMyLocation()
 
         val a = setRoute()
         layer.addFeature(a)
