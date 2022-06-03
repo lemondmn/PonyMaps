@@ -12,6 +12,7 @@
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_apartment_fill.xml" value="0.303" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_campaign.xml" value="0.303" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_campaign_fill.xml" value="0.303" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_horizontal_rule.xml" value="0.3205" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_notifications.xml" value="0.303" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/ic_notifications_fill.xml" value="0.303" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/drawable/nav_icon_color_selected.xml" value="0.303" />
@@ -35,10 +36,10 @@
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_eventos.xml" value="0.23923444976076555" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_horario.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_horarios.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_map.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_map.xml" value="0.3253588516746411" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_recordatorio.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_recordatorios.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_ruta.xml" value="0.5132890365448505" />
+        <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_ruta.xml" value="0.2950108459869848" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/fragment_ubicaciones.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/item_evento.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/lemon/PonyMaps/app/src/main/res/layout/item_ubicacion.xml" value="0.67" />

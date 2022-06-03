@@ -154,10 +154,10 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.btnRuta.setOnClickListener {
+        /*binding.btnRuta.setOnClickListener {
             var ruta = RutaFragment()
             ruta.show(childFragmentManager, "Ruta")
-        }
+        }*/
 
         return root
     }
