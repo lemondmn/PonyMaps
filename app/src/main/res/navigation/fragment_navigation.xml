@@ -21,12 +21,6 @@
         android:name="mx.edu.ubicatec.ponymaps.ui.mapa.MapaFragment"
         android:label="@string/Menu3"
         tools:layout="@layout/fragment_map" >
-        <argument
-            android:name="ori"
-            app:argType="string" />
-        <argument
-            android:name="dest"
-            app:argType="string" />
     </fragment>
 
     <fragment
@@ -39,13 +33,4 @@
         android:name="mx.edu.ubicatec.ponymaps.ui.horarios.HorariosFragment"
         android:label="@string/Menu5"
         tools:layout="@layout/fragment_horarios" />
-    <dialog
-        android:id="@+id/rutaFragment"
-        android:name="mx.edu.ubicatec.ponymaps.ui.mapa.RutaFragment"
-        android:label="fragment_ruta"
-        tools:layout="@layout/fragment_ruta" >
-        <action
-            android:id="@+id/sendArgsToMap"
-            app:destination="@id/na_fragment_map" />
-    </dialog>
 </navigation>

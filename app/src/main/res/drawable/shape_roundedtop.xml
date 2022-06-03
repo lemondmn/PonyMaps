@@ -3,7 +3,11 @@
     android:shape="rectangle">
 
     <solid
-        android:color="@color/OxfordBlue"/>
+        android:color="@color/Wine"/>
+
+    <corners
+        android:topRightRadius="15dp"
+        android:topLeftRadius="15dp" />
 
     <padding
         android:top="10dp"

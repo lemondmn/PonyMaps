@@ -4,12 +4,9 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import mx.edu.ubicatec.ponymaps.databinding.ActivityMainBinding
-import mx.edu.ubicatec.ponymaps.ui.mapa.RutaFragment
 
 class MainActivity : AppCompatActivity() {
 

@@ -12,15 +12,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener
@@ -28,8 +26,9 @@ import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import com.google.maps.android.data.Geometry
+import com.google.maps.android.data.LineString
 import com.google.maps.android.data.geojson.*
+import kotlinx.android.synthetic.main.fragment_map.view.*
 
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentMapBinding
@@ -45,22 +44,18 @@ import java.nio.charset.Charset
 class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
     OnMyLocationClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
 
-    val args: MapaFragmentArgs by navArgs()
-    var direccionesO = ""
-    var direccionesD = ""
-
     private var _binding: FragmentMapBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
-    private val model: MapaSharedViewModel by activityViewModels()
+    var origen = ""
+    var destino = ""
 
     // Flag indicating whether a requested permission has been denied after returning in * [.onRequestPermissionsResult].
     private var permissionDenied = false
 
     private lateinit var map: GoogleMap
+    private lateinit var layermap: GeoJsonLayer
+    private var ruta: GeoJsonFeature? = null
     private lateinit var thiscontext: Context
 
     private var edges = mutableListOf<Edges>()
@@ -81,7 +76,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         // Request code for location permission request.
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
-
     }
 
     /**
@@ -124,6 +118,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         val layer = GeoJsonLayer(googleMap, R.raw.jsonmaps, context)
         layer.addLayerToMap()
+        layermap = layer
 
         setMarkerNodes(layer)
         setListeners(layer)
@@ -133,13 +128,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         pointPolygonStyle.strokeColor = Color.argb(128,0,160,227)
 
 
-        val iTM = LatLng(19.722037, -101.184835)
-        googleMap.addMarker(
-            MarkerOptions()
-                .alpha(0.5F)
-                .position(iTM)
-                .title("Marker in Sydney")
-        )
+
 
         /** SETS GPS */
 
@@ -147,8 +136,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         googleMap.setOnMyLocationClickListener(this)
         enableMyLocation()
 
-        val a = setRoute("", "")
-        layer.addFeature(a)
     }
 
     /**
@@ -163,16 +150,35 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         savedInstanceState: Bundle?
 
     ): View {
-        val mapaViewModel = ViewModelProvider(this).get(MapaViewModel::class.java)
-        thiscontext  = container!!.getContext()
+        //val mapaViewModel = ViewModelProvider(this).get(MapaViewModel::class.java)
+        thiscontext  = container!!.context
 
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.btnRuta.setOnClickListener {
-            var ruta = RutaFragment()
+        val spinnerOrigen: Spinner = binding.spOrigen
+        val spinnerDestino: Spinner = binding.spDestino
 
-            ruta.show(childFragmentManager, "Ruta")
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.ubicaciones,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerOrigen.adapter = adapter
+            spinnerDestino.adapter = adapter
+        }
+
+        binding.buttonRuta.setOnClickListener {
+
+            origen = spinnerOrigen.selectedItem.toString()
+            destino = spinnerDestino.selectedItem.toString()
+
+            //Toast.makeText(requireContext(), "$origen lol $destino", Toast.LENGTH_LONG)
+            println("$origen lol $destino")
+
+            addRoute(origen, destino)
+
         }
 
         return root
@@ -183,24 +189,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        //direccionesO = arguments?.getString("ori").toString()
-        //direccionesD = arguments?.getString("dest").toString()
-
-        //val direccionesO = arguments?.get("ori")
-        //val direccionesD = arguments?.get("dest")
-
-        try {
-            direccionesO = args.ori
-            direccionesD = args.dest
-
-            Toast.makeText(requireContext(), "$direccionesO lol $direccionesD", Toast.LENGTH_LONG)
-        }catch (e: Exception){
-            println("puta bida")
-            e.printStackTrace()
-        }
-
-        //Toast.makeText(requireContext(), "$direccionesO lol $direccionesD", Toast.LENGTH_LONG)
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
 
@@ -235,8 +223,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         } catch (e: JSONException) {
             //exception
-            //e.printStackTrace()
-            println("FUCKDUCK")
+            e.printStackTrace()
         }
 
     }
@@ -281,19 +268,8 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
                     // Assign the point style to the feature
                     feature.pointStyle = pointStyle
                 }
-
-
-
             }
-
-
         }
-
-        /*for (feature in nodes) {
-
-            layer.removeFeature(feature)
-
-        }*/
     }
     private fun setListeners(layer: GeoJsonLayer) {
 
@@ -349,8 +325,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
             d.put(feature.getProperty("name") , 9999)
             pi.put(feature.getProperty("name"), "-")
 
-
-
         }
         d.put(source , 0)
         pi.put(source, "-")
@@ -365,18 +339,8 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
             val name = u.getProperty("name")
 
-            println("Burhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-            println(name)
-
             for (edge in edges) {
                 if(edge.origen  == name){
-
-                    val a = d[edge.destino]
-                    val b = d[name]
-
-                    println("HEEEEEEEEEEEEEEEEEEEEEEEEEEREEEEEEEEEEEEEEEEEEE")
-                    println(a)
-                    println(b)
 
                     if( d[edge.destino]!! > ( d[name]!! + edge.dist)) {
 
@@ -388,9 +352,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
                 }
             }
         }
-        println("hOOLY FUCK")
-        println("d: $d")
-        println("pi: $pi")
 
         var dest = destiny
         var tmp = dest
@@ -403,9 +364,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
             tmp = pi[tmp]!!
 
         }
-
-        println("ROOOOOOOOOOOOOOOOTE")
-        println(route)
 
         return route
 
@@ -437,10 +395,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         val lineStringArray: MutableList<LatLng> = ArrayList()
 
-
-        println("shitttttttttttttttttttttt")
-        println(nodes.size)
-
         for (i in route){
 
             for (feature in nodes){
@@ -450,17 +404,10 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
                     var co = feature.geometry.geometryObject
                     val coo: LatLng = co as LatLng
 
-                    println("coooooooooooooooooooooooooooooor")
-                    println(co)
-                    println(coo)
-
                     lineStringArray.add(coo)
-
 
                 }
             }
-
-
         }
         for (feature in nodes){
 
@@ -469,12 +416,10 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
                 var co = feature.geometry.geometryObject
                 val coo: LatLng = co as LatLng
 
-                println("coooooooooooooooooooooooooooooor")
                 println(co)
                 println(coo)
 
                 lineStringArray.add(coo)
-
 
             }
         }
@@ -488,56 +433,19 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         // Set the style of the feature
         lineStringFeature.lineStringStyle = lineStringStyle
-        println("ahhhhhhhhhhhhhhhhhhhhhhh")
+
 
         return lineStringFeature
     }
 
+    private fun addRoute(source: String, destiny: String){
 
+        if (ruta != null) layermap.removeFeature(ruta)
 
-        /*fun dijkstra(source: Int, edges: Array<IntArray>, nodes: Int) {
-            // Initialize single source
-            val d = IntArray(nodes) { Integer.MAX_VALUE }
-            val pi = IntArray(nodes) { -1 }
-            d[source] = 0
-
-            val S: MutableList<Int> = ArrayList()
-            val Q: MutableList<Int> = (0 until nodes).toMutableList()
-
-            // Iterations
-            while (Q.isNotEmpty()) {
-                val u: Int = extractMin(Q, d)
-                S.add(u)
-
-                edges[u].forEachIndexed { v, vd ->
-                    if (vd != -1 && d[v] > d[u] + vd) {
-                        d[v] = d[u] + vd
-                        pi[v] = u
-                    }
-                }
-            }
-
-            println("d: ${d.contentToString()}")
-            println("pi: ${pi.contentToString()}")
-        }
-
-        fun extractMin(Q: MutableList<Int>, d: IntArray): Int {
-            var minNode = Q[0]
-            var minDistance: Int = d[0]
-
-            Q.forEach {
-                if (d[it] < minDistance) {
-                    minNode = it
-                    minDistance = d[it]
-                }
-            }
-
-            Q.remove(minNode)
-            return minNode
-        }*/
-
-
-
+        val a = setRoute(source, destiny)
+        ruta = a
+        layermap.addFeature(a)
+    }
 
     /**
      *
@@ -658,7 +566,4 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
     private fun showMissingPermissionError() {
         newInstance(true).show(childFragmentManager, "dialog")
     }
-
-
-
 }
