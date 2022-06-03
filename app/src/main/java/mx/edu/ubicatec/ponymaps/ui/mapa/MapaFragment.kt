@@ -26,6 +26,7 @@ import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.google.maps.android.data.LineString
 import com.google.maps.android.data.geojson.*
 import kotlinx.android.synthetic.main.fragment_map.view.*
 
@@ -53,6 +54,8 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
     private var permissionDenied = false
 
     private lateinit var map: GoogleMap
+    private lateinit var layermap: GeoJsonLayer
+    private var ruta: GeoJsonFeature? = null
     private lateinit var thiscontext: Context
 
     private var edges = mutableListOf<Edges>()
@@ -115,6 +118,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         val layer = GeoJsonLayer(googleMap, R.raw.jsonmaps, context)
         layer.addLayerToMap()
+        layermap = layer
 
         setMarkerNodes(layer)
         setListeners(layer)
@@ -124,13 +128,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         pointPolygonStyle.strokeColor = Color.argb(128,0,160,227)
 
 
-        val iTM = LatLng(19.722037, -101.184835)
-        googleMap.addMarker(
-            MarkerOptions()
-                .alpha(0.5F)
-                .position(iTM)
-                .title("Marker in Sydney")
-        )
+
 
         /** SETS GPS */
 
@@ -138,8 +136,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         googleMap.setOnMyLocationClickListener(this)
         enableMyLocation()
 
-        val a = setRoute(origen, destino)
-        layer.addFeature(a)
     }
 
     /**
@@ -180,6 +176,8 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
             //Toast.makeText(requireContext(), "$origen lol $destino", Toast.LENGTH_LONG)
             println("$origen lol $destino")
+
+            addRoute(origen, destino)
 
         }
 
@@ -225,8 +223,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         } catch (e: JSONException) {
             //exception
-            //e.printStackTrace()
-            println("FUCKDUCK")
+            e.printStackTrace()
         }
 
     }
@@ -342,18 +339,8 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
             val name = u.getProperty("name")
 
-            println("Burhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-            println(name)
-
             for (edge in edges) {
                 if(edge.origen  == name){
-
-                    val a = d[edge.destino]
-                    val b = d[name]
-
-                    println("HEEEEEEEEEEEEEEEEEEEEEEEEEEREEEEEEEEEEEEEEEEEEE")
-                    println(a)
-                    println(b)
 
                     if( d[edge.destino]!! > ( d[name]!! + edge.dist)) {
 
@@ -365,9 +352,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
                 }
             }
         }
-        println("hOOLY FUCK")
-        println("d: $d")
-        println("pi: $pi")
 
         var dest = destiny
         var tmp = dest
@@ -380,9 +364,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
             tmp = pi[tmp]!!
 
         }
-
-        println("ROOOOOOOOOOOOOOOOTE")
-        println(route)
 
         return route
 
@@ -414,10 +395,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         val lineStringArray: MutableList<LatLng> = ArrayList()
 
-
-        println("shitttttttttttttttttttttt")
-        println(nodes.size)
-
         for (i in route){
 
             for (feature in nodes){
@@ -427,12 +404,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
                     var co = feature.geometry.geometryObject
                     val coo: LatLng = co as LatLng
 
-                    println("coooooooooooooooooooooooooooooor")
-                    println(co)
-                    println(coo)
-
                     lineStringArray.add(coo)
-
 
                 }
             }
@@ -462,7 +434,17 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         // Set the style of the feature
         lineStringFeature.lineStringStyle = lineStringStyle
 
+
         return lineStringFeature
+    }
+
+    private fun addRoute(source: String, destiny: String){
+
+        if (ruta != null) layermap.removeFeature(ruta)
+
+        val a = setRoute(source, destiny)
+        ruta = a
+        layermap.addFeature(a)
     }
 
     /**
