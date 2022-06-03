@@ -34,12 +34,6 @@ class RutaFragment : DialogFragment() {
         
         binding = FragmentRutaBinding.inflate(inflater, container, false)
 
-        //val rootView: View = inflater.inflate(R.layout.fragment_ruta, container, false)
-
-        binding.btnCerrar.setOnClickListener {
-            dismiss()
-        }
-
         val spinnerOrigen: Spinner = binding.spOrigen
         val spinnerDestino: Spinner = binding.spDestino
 
@@ -59,18 +53,6 @@ class RutaFragment : DialogFragment() {
             val origen = spinnerOrigen.selectedItem.toString()
             val destino = spinnerDestino.selectedItem.toString()
 
-            try {
-                val destination = RutaFragmentDirections.sendArgsToMap(origen, destino)
-                NavHostFragment.findNavController(this).navigate(destination)
-            } catch (e: Exception){
-                println("Me lleva la chingada")
-                e.printStackTrace()
-            }
-            //NavHostFragment.findNavController(this).navigate(destination)
-
-            //Toast.makeText(context, origen+destino, Toast.LENGTH_LONG).show()
-
-            dismiss()
         }
 
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

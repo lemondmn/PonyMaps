@@ -12,6 +12,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -25,6 +27,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.maps.android.data.geojson.*
+import kotlinx.android.synthetic.main.fragment_map.view.*
 
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentMapBinding
@@ -42,6 +45,9 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
+
+    var origen = ""
+    var destino = ""
 
     // Flag indicating whether a requested permission has been denied after returning in * [.onRequestPermissionsResult].
     private var permissionDenied = false
@@ -132,7 +138,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         googleMap.setOnMyLocationClickListener(this)
         enableMyLocation()
 
-        val a = setRoute("", "")
+        val a = setRoute(origen, destino)
         layer.addFeature(a)
     }
 
@@ -148,16 +154,34 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         savedInstanceState: Bundle?
 
     ): View {
-        val mapaViewModel = ViewModelProvider(this).get(MapaViewModel::class.java)
-        thiscontext  = container!!.getContext()
+        //val mapaViewModel = ViewModelProvider(this).get(MapaViewModel::class.java)
+        thiscontext  = container!!.context
 
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        /*binding.btnRuta.setOnClickListener {
-            var ruta = RutaFragment()
-            ruta.show(childFragmentManager, "Ruta")
-        }*/
+        val spinnerOrigen: Spinner = binding.spOrigen
+        val spinnerDestino: Spinner = binding.spDestino
+
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.ubicaciones,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerOrigen.adapter = adapter
+            spinnerDestino.adapter = adapter
+        }
+
+        binding.buttonRuta.setOnClickListener {
+
+            origen = spinnerOrigen.selectedItem.toString()
+            destino = spinnerDestino.selectedItem.toString()
+
+            //Toast.makeText(requireContext(), "$origen lol $destino", Toast.LENGTH_LONG)
+            println("$origen lol $destino")
+
+        }
 
         return root
     }

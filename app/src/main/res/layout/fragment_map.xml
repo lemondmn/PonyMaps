@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/OxfordBlue"
+    app:layoutDescription="@xml/fragment_map_scene"
     tools:context=".ui.mapa.MapaFragment">
 
     <fragment
@@ -19,25 +20,24 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".ui.mapa.MapaFragment" />
 
+    <ImageView
+        android:id="@+id/barra"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_horizontal_rule"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/definirRuta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/definirRuta"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/Wine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/ruta_horizontalRule"
-            android:layout_width="0dp"
-            android:layout_height="4dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="0dp"
-            android:background="@drawable/shape_sapphireblueroundedcorners"
-            android:src="@drawable/ic_horizontal_rule"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView_titleRuta"
@@ -51,7 +51,7 @@
             android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ruta_horizontalRule" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView"
@@ -130,4 +130,4 @@
         app:srcCompat="@drawable/se_ic_navigation"
         app:tint="@color/button_color_selected" /> -->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
