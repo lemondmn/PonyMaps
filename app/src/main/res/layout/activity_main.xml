@@ -9,12 +9,9 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/shape_oxblueroundedcorners"
+        android:background="@drawable/shape_oxbluerectangle"
         app:itemIconTint="@color/nav_icon_color_selected"
         app:itemTextColor="@color/nav_icon_color_selected"
         app:labelVisibilityMode="labeled"
@@ -27,27 +24,14 @@
         android:id="@+id/nav_host_fragment_activity_main"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.188"
         app:navGraph="@navigation/fragment_navigation" />
-
-    <ImageButton
-        android:id="@+id/btnRuta"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/shape_ogbluecircle"
-        app:tint="@color/button_color_selected"
-        app:layout_constraintBottom_toTopOf="@+id/nav_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/se_ic_navigation" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

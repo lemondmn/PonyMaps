@@ -16,7 +16,11 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener
@@ -38,15 +42,20 @@ import org.json.JSONObject
 import java.io.IOException
 import java.nio.charset.Charset
 
-
 class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
     OnMyLocationClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
+
+    val args: MapaFragmentArgs by navArgs()
+    var direccionesO = ""
+    var direccionesD = ""
 
     private var _binding: FragmentMapBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private val model: MapaSharedViewModel by activityViewModels()
 
     // Flag indicating whether a requested permission has been denied after returning in * [.onRequestPermissionsResult].
     private var permissionDenied = false
@@ -74,8 +83,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
 
     }
-
-
 
     /**
      *
@@ -138,14 +145,11 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         googleMap.setOnMyLocationButtonClickListener(this)
         googleMap.setOnMyLocationClickListener(this)
-        //enableMyLocation()
+        enableMyLocation()
 
-        val a = setRoute()
+        val a = setRoute("", "")
         layer.addFeature(a)
-
-
     }
-
 
     /**
      *
@@ -165,6 +169,12 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        binding.btnRuta.setOnClickListener {
+            var ruta = RutaFragment()
+
+            ruta.show(childFragmentManager, "Ruta")
+        }
+
         return root
     }
     /*: View? {
@@ -173,7 +183,27 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //direccionesO = arguments?.getString("ori").toString()
+        //direccionesD = arguments?.getString("dest").toString()
+
+        //val direccionesO = arguments?.get("ori")
+        //val direccionesD = arguments?.get("dest")
+
+        try {
+            direccionesO = args.ori
+            direccionesD = args.dest
+
+            Toast.makeText(requireContext(), "$direccionesO lol $direccionesD", Toast.LENGTH_LONG)
+        }catch (e: Exception){
+            println("puta bida")
+            e.printStackTrace()
+        }
+
+        //Toast.makeText(requireContext(), "$direccionesO lol $direccionesD", Toast.LENGTH_LONG)
+
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+
         mapFragment?.getMapAsync(callback)
 
         try {
@@ -201,18 +231,13 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
                 // add the details in the list
                 edges.add(edg)
-
             }
-
-
 
         } catch (e: JSONException) {
             //exception
             //e.printStackTrace()
             println("FUCKDUCK")
         }
-
-
 
     }
     /**
@@ -406,9 +431,9 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
     }
 
-    private fun setRoute(): GeoJsonFeature {
+    private fun setRoute(source: String, destiny: String): GeoJsonFeature {
 
-        val route = dijkstra("D", "S3")
+        val route = dijkstra(source, destiny)
 
         val lineStringArray: MutableList<LatLng> = ArrayList()
 
@@ -439,7 +464,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         }
         for (feature in nodes){
 
-            if("D" == feature.getProperty("name") ){
+            if(source == feature.getProperty("name") ){
 
                 var co = feature.geometry.geometryObject
                 val coo: LatLng = co as LatLng

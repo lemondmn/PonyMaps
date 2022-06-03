@@ -41,12 +41,6 @@ class MainActivity : AppCompatActivity() {
         *
         */
 
-        binding.btnRuta.setOnClickListener {
-            var ruta = RutaFragment()
-
-            ruta.show(supportFragmentManager, "Ruta")
-        }
-
     }
 
 }
