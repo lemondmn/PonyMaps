@@ -24,8 +24,8 @@
         android:id="@+id/barra"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/shape_roundedtop"
         android:src="@drawable/ic_horizontal_rule"
-        android:background="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/definirRuta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
