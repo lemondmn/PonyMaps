@@ -25,7 +25,7 @@
         android:layout_height="50dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/shape_ogbluecircle"
+        android:background="@drawable/shape_dscircle"
         app:layout_constraintBottom_toBottomOf="@+id/map"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/se_ic_navigation"

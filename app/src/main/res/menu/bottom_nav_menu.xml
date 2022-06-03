@@ -2,16 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/na_fragment_recordatorios"
-        android:icon="@drawable/se_ic_notif"
-        android:title="@string/Menu1" />
-
-    <item
-        android:id="@+id/na_fragment_eventos"
-        android:icon="@drawable/se_ic_event"
-        android:title="@string/Menu2" />
-
-    <item
         android:id="@+id/na_fragment_map"
         android:icon="@drawable/se_ic_map"
         android:title="@string/Menu3" />
@@ -22,8 +12,18 @@
         android:title="@string/Menu4" />
 
     <item
+        android:id="@+id/na_fragment_eventos"
+        android:icon="@drawable/se_ic_event"
+        android:title="@string/Menu2" />
+
+    <item
         android:id="@+id/na_fragment_horarios"
         android:icon="@drawable/se_ic_horario"
         android:title="@string/Menu5" />
+
+    <item
+        android:id="@+id/na_fragment_recordatorios"
+        android:icon="@drawable/se_ic_notif"
+        android:title="@string/Menu1" />
 
 </menu>

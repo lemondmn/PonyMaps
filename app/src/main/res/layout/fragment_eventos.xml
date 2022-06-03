@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.eventos.EventosFragment"
-    android:background="@color/OxfordBlue">
+    android:background="@color/Wine">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_eventos"
@@ -20,12 +20,12 @@
         android:id="@+id/textView_titleEventos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_sapphireblueroundedcorners"
+        android:background="@drawable/shape_dsrectangle"
         android:fontFamily="sans-serif-condensed-medium"
-        android:layout_margin="5dp"
+        android:layout_margin="0dp"
         android:text="Eventos"
         android:textAlignment="center"
-        android:textColor="@color/PinkLace"
+        android:textColor="@color/white"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

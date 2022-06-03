@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Android Defaults -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -7,6 +8,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
+
+    <!-- Original Custom -->
 
     <color name="Mint">#9fd8cb</color>
     <color name="OxfordBlue">#0a2239</color>
@@ -18,9 +26,22 @@
     <color name="PinkLace">#F2D7EE</color>
     <color name="LilacLuster">#AF9AB2</color>
 
-    <color name="light_blue_600">#FF039BE5</color>
-    <color name="light_blue_900">#FF01579B</color>
-    <color name="light_blue_A200">#FF40C4FF</color>
-    <color name="light_blue_A400">#FF00B0FF</color>
-    <color name="black_overlay">#66000000</color>
+    <!-- Institutional Colors -->
+
+    <!-- Primary -->
+    <color name="DarkSienna">#3F131A</color>
+    <color name="Wine">#5D1C27</color>
+    <color name="AntiqueRuby">#842837</color>
+    <color name="BrightMaroon">#AB3447</color>
+
+    <!-- Secondary -->
+    <color name="HoneyYellow">#FFB300</color>
+    <color name="Amber">#FFC233</color>
+    <color name="Jasmine">#FFDC8B</color>
+
+    <!-- PrimaryComplementary -->
+    <color name="BlueGreen">#1C5D52</color>
+    <color name="CeladonGreen">#288475</color>
+    <color name="Keppel">#34AB98</color>
+
 </resources>
