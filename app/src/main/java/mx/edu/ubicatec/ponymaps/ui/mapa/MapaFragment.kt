@@ -47,9 +47,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
 
-    var origen = ""
-    var destino = ""
-
     // Flag indicating whether a requested permission has been denied after returning in * [.onRequestPermissionsResult].
     private var permissionDenied = false
 
@@ -147,6 +144,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        //Spinner
         val spinnerOrigen: Spinner = binding.spOrigen
         val spinnerDestino: Spinner = binding.spDestino
 
@@ -160,13 +158,11 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
             spinnerDestino.adapter = adapter
         }
 
+        //On click Action
         binding.buttonRuta.setOnClickListener {
 
-            origen = spinnerOrigen.selectedItem.toString()
-            destino = spinnerDestino.selectedItem.toString()
-
-            //Toast.makeText(requireContext(), "$origen lol $destino", Toast.LENGTH_LONG)
-            println("$origen lol $destino")
+            val origen = spinnerOrigen.selectedItem.toString()
+            val destino = spinnerDestino.selectedItem.toString()
 
             addRoute(origen, destino)
 
@@ -174,10 +170,8 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         return root
     }
-    /*: View? {
-        return inflater.inflate(R.layout.fragment_maps, container, false)
-    }*/
 
+    /** onViewCreated */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -191,10 +185,8 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
             val obj = JSONObject(getJSONFromAssets()!!)
 
-
             // fetch JSONArray named edges by using getJSONArray
             val usersArray = obj.getJSONArray("edges")
-
 
             for (i in 0 until usersArray.length()) {
                 // Create a JSONObject for fetching single User's Data
@@ -226,8 +218,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
     private fun setMarkerNodes(layer: GeoJsonLayer) {
 
-        //val nodes = mutableListOf<GeoJsonFeature>()
-
         // Iterate over all the features stored in the layer
         for (feature in layer.features) {
 
@@ -237,6 +227,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
                 nodes.add(feature)
 
                 if(feature.getProperty("node") == "place" ){
+
                     val name = feature.getProperty("name")
 
                     // Create a new point style
@@ -249,7 +240,9 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
                     // Assign the point style to the feature
                     feature.pointStyle = pointStyle
 
-                }else if (feature.getProperty("node") == "path"){
+                }
+                else if (feature.getProperty("node") == "path"){
+
                     // Create a new point style
                     val pointStyle = GeoJsonPointStyle()
 
@@ -258,6 +251,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
                     // Assign the point style to the feature
                     feature.pointStyle = pointStyle
+
                 }
             }
         }
@@ -288,12 +282,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         }
         return json
     }
-    /*val pointStyle = layer.defaultPointStyle
-    pointStyle.alpha = 0.5f
-    pointStyle.isDraggable = true
-    pointStyle.icon = null
-    pointStyle.title = "Hello, World!"
-    pointStyle.snippet = "I am a draggable marker"*/
 
     /**
      *
@@ -304,9 +292,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
     private fun dijkstra(source: String, destiny: String): MutableList<String> {
 
         // Initialize single source
-        /*val d = IntArray(nodes) { Integer.MAX_VALUE }
-        val pi = IntArray(nodes) { -1 }
-        d[source] = 0*/
 
         var d : HashMap<String, Int> = HashMap<String, Int> ()
         var pi : HashMap<String, String> = HashMap<String, String> ()
@@ -317,6 +302,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
             pi.put(feature.getProperty("name"), "-")
 
         }
+
         d.put(source , 0)
         pi.put(source, "-")
 
@@ -339,7 +325,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
                         pi[edge.destino] = name
 
                     }
-
                 }
             }
         }
@@ -361,10 +346,8 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
     }
     private fun extractMin( Q: MutableList<GeoJsonFeature>, d : HashMap<String, Int>): GeoJsonFeature {
 
-
         var minNode = Q[0]
         var minDistance: Int? = d[ Q[0].getProperty("name") ]
-
 
         for (feature in Q) {
 
@@ -425,7 +408,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         // Set the style of the feature
         lineStringFeature.lineStringStyle = lineStringStyle
 
-
         return lineStringFeature
     }
 
@@ -436,6 +418,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         val a = setRoute(source, destiny)
         ruta = a
         layermap.addFeature(a)
+
     }
 
     /**
@@ -555,6 +538,8 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
      * Displays a dialog with error message explaining that the location permission is missing.
      */
     private fun showMissingPermissionError() {
+
         newInstance(true).show(childFragmentManager, "dialog")
+
     }
 }

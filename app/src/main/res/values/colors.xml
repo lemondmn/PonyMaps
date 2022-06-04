@@ -29,6 +29,9 @@
     <!-- Institutional Colors -->
 
     <!-- Values -->
+
+    <color name="statusBarColor">@color/RaisinBlack</color>
+
     <color name="backgroundShade1">@color/EerieBlack</color>
     <color name="backgroundShade2">@color/RaisinBlack</color>
     <color name="transparent">#00000000</color>
@@ -38,6 +41,7 @@
     <color name="primaryShade2">@color/AntiqueRuby</color>
     <color name="primaryShade3">@color/BrightMaroon</color>
     <color name="primaryShade4">@color/Popstar</color>
+
     <color name="primaryText">@color/LightCyan</color>
     <color name="generalText">@color/white</color>
 

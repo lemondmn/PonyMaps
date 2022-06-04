@@ -1,8 +1,10 @@
 package mx.edu.ubicatec.ponymaps
 
 import android.os.Bundle
+import android.view.Window
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -16,27 +18,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //Status Bar Color
+        val win: Window = this@MainActivity.window
+        win.statusBarColor = ContextCompat.getColor(this@MainActivity, R.color.statusBarColor)
+
+        //Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /*
-        *
-        * NavView
-        *
-        */
-
+        //NavView
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
 
         navView.setupWithNavController(navController)
-
-        /*
-        *
-        * Ruta
-        *
-        */
 
     }
 
