@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/OxfordBlue"
+    android:background="@color/backgroundShade2"
     app:layoutDescription="@xml/fragment_map_scene"
     tools:context=".ui.mapa.MapaFragment">
 
@@ -24,17 +24,22 @@
         android:id="@+id/barra"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_roundedtop"
-        android:src="@drawable/ic_horizontal_rule"
+        android:background="@drawable/shape_roundedtoprectangle"
+        android:backgroundTint="@color/primaryShade1"
+        android:backgroundTintMode="src_over"
+        android:src="@drawable/se_ic_directions"
         app:layout_constraintBottom_toTopOf="@+id/definirRuta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@color/button_color_selected" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/definirRuta"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/Wine"
+        android:background="@drawable/shape_rectangle"
+        android:backgroundTint="@color/primaryShade1"
+        android:backgroundTintMode="src_over"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -47,7 +52,7 @@
             android:layout_marginVertical="15dp"
             android:fontFamily="sans-serif-black"
             android:text="Definir Ruta"
-            android:textColor="@color/PinkLace"
+            android:textColor="@color/secondaryShade3"
             android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,9 +65,9 @@
             android:layout_marginHorizontal="15dp"
             android:layout_marginVertical="15dp"
             android:layout_marginTop="15dp"
-            android:background="@color/BlueSapphire"
             android:text="Origen"
-            android:textColor="@color/white"
+            android:textColor="@color/generalText"
+            android:textSize="24sp"
             app:layout_constraintTop_toBottomOf="@+id/textView_titleRuta"
             tools:layout_editor_absoluteX="35dp" />
 
@@ -72,9 +77,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:layout_marginVertical="15dp"
-            android:background="@color/PinkLavender"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/white"
+            android:backgroundTint="@color/primaryShade4"
+            android:backgroundTintMode="add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -86,7 +90,8 @@
             android:layout_marginHorizontal="15dp"
             android:layout_marginVertical="15dp"
             android:text="Destino"
-            android:textColor="@color/white"
+            android:textColor="@color/generalText"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sp_origen" />
@@ -97,9 +102,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:layout_marginVertical="15dp"
-            android:background="@color/PinkLace"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/white"
+            android:backgroundTint="@color/primaryShade4"
+            android:backgroundTintMode="add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_dest" />
@@ -109,25 +113,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="15dp"
-            android:backgroundTint="@color/PinkLavender"
+            android:backgroundTint="@color/primaryShade3"
+            android:textColor="@color/generalText"
             android:text="Ok"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sp_destino" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--
-    <ImageButton
-        android:id="@+id/btnRuta"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/shape_dscircle"
-        app:layout_constraintBottom_toBottomOf="@+id/map"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/se_ic_navigation"
-        app:tint="@color/button_color_selected" /> -->
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

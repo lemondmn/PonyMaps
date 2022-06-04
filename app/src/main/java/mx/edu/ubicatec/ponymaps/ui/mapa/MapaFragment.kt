@@ -98,23 +98,18 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         googleMap.uiSettings.isTiltGesturesEnabled = false
 
-        /** SETS BOUNDS */
-
-        googleMap.setMinZoomPreference(DEFAULT_MIN_ZOOM)
-        googleMap.setMaxZoomPreference(DEFAULT_MAX_ZOOM)
-        googleMap.setLatLngBoundsForCameraTarget(ITM)
-        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(ITM_CAMERA))
-
-        // Custom map style
-
+        /** Custom map style */
         try {
             googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(thiscontext, R.raw.mapstyle))
         } catch (e: NotFoundException) {
             Log.e(TAG, "Can't find style. Error: ", e)
         }
 
-        /* val layer = KmlLayer(googleMap, R.raw.ponymaps, context);
-         layer.addLayerToMap();*/
+        /** SETS BOUNDS */
+        googleMap.setMinZoomPreference(DEFAULT_MIN_ZOOM)
+        googleMap.setMaxZoomPreference(DEFAULT_MAX_ZOOM)
+        googleMap.setLatLngBoundsForCameraTarget(ITM)
+        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(ITM_CAMERA))
 
         val layer = GeoJsonLayer(googleMap, R.raw.jsonmaps, context)
         layer.addLayerToMap()
@@ -127,11 +122,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         pointPolygonStyle.fillColor = Color.argb(128,0,160,227)
         pointPolygonStyle.strokeColor = Color.argb(128,0,160,227)
 
-
-
-
         /** SETS GPS */
-
         googleMap.setOnMyLocationButtonClickListener(this)
         googleMap.setOnMyLocationClickListener(this)
         enableMyLocation()
@@ -144,13 +135,13 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
      *
      */
 
+    /** onCreateView */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
 
     ): View {
-        //val mapaViewModel = ViewModelProvider(this).get(MapaViewModel::class.java)
         thiscontext  = container!!.context
 
         _binding = FragmentMapBinding.inflate(inflater, container, false)
@@ -162,9 +153,9 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         ArrayAdapter.createFromResource(
             requireContext(),
             R.array.ubicaciones,
-            android.R.layout.simple_spinner_item
+            R.layout.custom_spinner_item
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown)
             spinnerOrigen.adapter = adapter
             spinnerDestino.adapter = adapter
         }

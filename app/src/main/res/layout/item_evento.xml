@@ -6,7 +6,9 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="5dp"
     android:layout_marginTop="5dp"
-    android:background="@drawable/shape_jasminerounded">
+    android:background="@drawable/shape_roundedcornersrectangle"
+    android:backgroundTint="@color/primaryShade1"
+    android:backgroundTintMode="src_over">
 
     <ImageView
         android:id="@+id/imageView_eventos"
@@ -14,8 +16,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/EventoName"
@@ -26,6 +27,7 @@
         android:fontFamily="sans-serif-black"
         android:text="Name"
         android:textSize="34sp"
+        android:textColor="@color/secondaryShade3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_eventos" />
@@ -39,6 +41,7 @@
         android:fontFamily="sans-serif-light"
         android:text="Informacion"
         android:textSize="20sp"
+        android:textColor="@color/generalText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EventoName" />
@@ -52,6 +55,7 @@
         android:fontFamily="sans-serif-light"
         android:text="Ubicacion"
         android:textSize="20sp"
+        android:textColor="@color/generalText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EventoDescripcion" />
@@ -65,6 +69,7 @@
         android:fontFamily="sans-serif-light"
         android:text="Fecha"
         android:textSize="20sp"
+        android:textColor="@color/generalText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EventoUbicacion" />
@@ -78,6 +83,7 @@
         android:fontFamily="sans-serif-light"
         android:text="Hora"
         android:textSize="20sp"
+        android:textColor="@color/generalText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EventoFecha" />

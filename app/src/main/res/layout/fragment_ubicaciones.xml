@@ -4,8 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/OxfordBlue"
+    android:background="@color/backgroundShade2"
     tools:context=".ui.ubicaciones.UbicacionesFragment">
+
+    <TextView
+        android:id="@+id/textView_titleUbicaciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_rectangle"
+        android:backgroundTint="@color/backgroundShade2"
+        android:backgroundTintMode="src_over"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:layout_margin="5dp"
+        android:text="Ubicaciones"
+        android:textAlignment="center"
+        android:textColor="@color/primaryShade4"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_ubicaciones"
@@ -15,20 +32,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_titleUbicaciones" />
-
-    <TextView
-        android:id="@+id/textView_titleUbicaciones"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_sapphireblueroundedcorners"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:layout_margin="5dp"
-        android:text="Ubicaciones"
-        android:textAlignment="center"
-        android:textColor="@color/PinkLace"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

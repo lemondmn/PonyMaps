@@ -10,6 +10,7 @@
         android:name="mx.edu.ubicatec.ponymaps.ui.recordatorios.RecordatoriosFragment"
         android:label="@string/Menu1"
         tools:layout="@layout/fragment_recordatorios" />
+
     <fragment
         android:id="@+id/na_fragment_eventos"
         android:name="mx.edu.ubicatec.ponymaps.ui.eventos.EventosFragment"
@@ -20,14 +21,14 @@
         android:id="@+id/na_fragment_map"
         android:name="mx.edu.ubicatec.ponymaps.ui.mapa.MapaFragment"
         android:label="@string/Menu3"
-        tools:layout="@layout/fragment_map" >
-    </fragment>
+        tools:layout="@layout/fragment_map" />
 
     <fragment
         android:id="@+id/na_fragment_ubicaciones"
         android:name="mx.edu.ubicatec.ponymaps.ui.ubicaciones.UbicacionesFragment"
         android:label="@string/Menu4"
         tools:layout="@layout/fragment_ubicaciones" />
+
     <fragment
         android:id="@+id/na_fragment_horarios"
         android:name="mx.edu.ubicatec.ponymaps.ui.horarios.HorariosFragment"

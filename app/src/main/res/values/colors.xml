@@ -28,20 +28,40 @@
 
     <!-- Institutional Colors -->
 
+    <!-- Values -->
+    <color name="backgroundShade1">@color/EerieBlack</color>
+    <color name="backgroundShade2">@color/RaisinBlack</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="primaryShade0">@color/DarkSienna</color>
+    <color name="primaryShade1">@color/Wine</color>
+    <color name="primaryShade2">@color/AntiqueRuby</color>
+    <color name="primaryShade3">@color/BrightMaroon</color>
+    <color name="primaryShade4">@color/Popstar</color>
+    <color name="primaryText">@color/LightCyan</color>
+    <color name="generalText">@color/white</color>
+
+    <color name="secondaryShade1">@color/HoneyYellow</color>
+    <color name="secondaryShade2">@color/Amber</color>
+    <color name="secondaryShade3">@color/Jasmine</color>
+    <color name="secondaryText">@color/white</color>
+    <!-- /Values -->
+
+    <!-- Neutral -->
+    <color name="RaisinBlack">#202124</color>
+    <color name="EerieBlack">#131313</color>
+
     <!-- Primary -->
     <color name="DarkSienna">#3F131A</color>
     <color name="Wine">#5D1C27</color>
     <color name="AntiqueRuby">#842837</color>
     <color name="BrightMaroon">#AB3447</color>
+    <color name="Popstar">#C84A5E</color>
+    <color name="LightCyan">#caeaec</color>
 
     <!-- Secondary -->
     <color name="HoneyYellow">#FFB300</color>
     <color name="Amber">#FFC233</color>
     <color name="Jasmine">#FFDC8B</color>
-
-    <!-- PrimaryComplementary -->
-    <color name="BlueGreen">#1C5D52</color>
-    <color name="CeladonGreen">#288475</color>
-    <color name="Keppel">#34AB98</color>
 
 </resources>
