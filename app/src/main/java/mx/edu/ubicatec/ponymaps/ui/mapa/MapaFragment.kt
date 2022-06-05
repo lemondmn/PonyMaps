@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -28,6 +29,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.maps.android.data.LineString
 import com.google.maps.android.data.geojson.*
+import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.android.synthetic.main.fragment_map.view.*
 
 import mx.edu.ubicatec.ponymaps.R
@@ -102,6 +104,10 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
             Log.e(TAG, "Can't find style. Error: ", e)
         }
 
+        /** Remove Default Buttons */
+
+
+
         /** SETS BOUNDS */
         googleMap.setMinZoomPreference(DEFAULT_MIN_ZOOM)
         googleMap.setMaxZoomPreference(DEFAULT_MAX_ZOOM)
@@ -158,7 +164,9 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
             spinnerDestino.adapter = adapter
         }
 
-        //On click Action
+        //On click Actions
+
+        //Set Route
         binding.buttonRuta.setOnClickListener {
 
             val origen = spinnerOrigen.selectedItem.toString()
@@ -166,6 +174,13 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
             addRoute(origen, destino)
 
+            binding.motionBase.transitionToStart()
+        }
+
+        //Clear route
+        binding.btnLimpiar.setOnClickListener {
+            clearRoute()
+            binding.motionBase.transitionToStart()
         }
 
         return root
@@ -197,8 +212,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
                 val dist = edge.getInt("dist")
 
                 // Now add all the variables to the data model class and the data model class to the array list.
-                val edg =
-                    Edges(origen, destino, dist)
+                val edg = Edges(origen, destino, dist)
 
                 // add the details in the list
                 edges.add(edg)
@@ -210,6 +224,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         }
 
     }
+
     /**
      *
      * LAYER & NODES
@@ -259,6 +274,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
     private fun setListeners(layer: GeoJsonLayer) {
 
         layer.setOnFeatureClickListener { feature ->
+
             Log.i("GeoJsonClick", "Feature clicked: ${feature.getProperty("name")}")
 
         }
@@ -390,9 +406,6 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
                 var co = feature.geometry.geometryObject
                 val coo: LatLng = co as LatLng
 
-                println(co)
-                println(coo)
-
                 lineStringArray.add(coo)
 
             }
@@ -403,7 +416,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         // Set the color of the linestring to red
         val lineStringStyle = GeoJsonLineStringStyle()
-        lineStringStyle.color = Color.RED
+        lineStringStyle.color = R.color.primaryShade1
 
         // Set the style of the feature
         lineStringFeature.lineStringStyle = lineStringStyle
@@ -418,6 +431,12 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         val a = setRoute(source, destiny)
         ruta = a
         layermap.addFeature(a)
+
+    }
+
+    private fun clearRoute(){
+
+        if (ruta != null) layermap.removeFeature(ruta)
 
     }
 
@@ -476,16 +495,14 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
 
     override fun onMyLocationButtonClick(): Boolean {
-        Toast.makeText(thiscontext, "MyLocation button clicked", Toast.LENGTH_SHORT)
-            .show()
+        //Toast.makeText(thiscontext, "MyLocation button clicked", Toast.LENGTH_SHORT) .show()
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
         return false
     }
 
     override fun onMyLocationClick(location: Location) {
-        Toast.makeText(thiscontext, "Current location:\n$location", Toast.LENGTH_LONG)
-            .show()
+        Toast.makeText(thiscontext, "Current location:\n$location", Toast.LENGTH_LONG).show()
     }
 
     // [START maps_check_location_permission_result]
@@ -523,8 +540,8 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
             // [END_EXCLUDE]
         }
     }
-
     // [END maps_check_location_permission_result]
+
     override fun onResume() {
         super.onResume()
         if (permissionDenied) {

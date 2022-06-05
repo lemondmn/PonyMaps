@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/motion_base"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,24 +21,25 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".ui.mapa.MapaFragment" />
 
-    <ImageView
-        android:id="@+id/barra"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_roundedtoprectangle"
+    <ImageButton
+        android:id="@+id/btnAbrirRuta"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_roundedcornersrectangle"
         android:backgroundTint="@color/primaryShade1"
         android:backgroundTintMode="src_over"
         android:src="@drawable/se_ic_directions"
         app:layout_constraintBottom_toTopOf="@+id/definirRuta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:tint="@color/button_color_selected" />
+        app:tint="@color/button_color_selected"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/definirRuta"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_rectangle"
+        android:background="@drawable/shape_roundedtoprectangle"
         android:backgroundTint="@color/primaryShade1"
         android:backgroundTintMode="src_over"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -120,6 +122,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sp_destino" />
+
+        <Button
+            android:id="@+id/btnLimpiar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/primaryShade4"
+            android:drawableLeft="@drawable/se_ic_delete"
+            android:drawableTint="@color/button_color_selected"
+            android:text="Limpiar"
+            android:textColor="@color/button_color_selected"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_ruta" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

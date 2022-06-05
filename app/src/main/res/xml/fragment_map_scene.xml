@@ -13,7 +13,7 @@
                motion:framePosition="100"
                android:alpha="1" />
        </KeyFrameSet>
-        <OnClick motion:targetId="@+id/barra" />
+        <OnClick motion:targetId="@+id/btnAbrirRuta" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -23,7 +23,8 @@
             android:id="@+id/definirRuta"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintBottom_toBottomOf="parent" />
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="invisible" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
