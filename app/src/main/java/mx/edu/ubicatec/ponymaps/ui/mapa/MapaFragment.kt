@@ -106,7 +106,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         /** Remove Default Buttons */
 
-
+        googleMap.uiSettings.isMapToolbarEnabled = false
 
         /** SETS BOUNDS */
         googleMap.setMinZoomPreference(DEFAULT_MIN_ZOOM)
@@ -223,6 +223,11 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
             e.printStackTrace()
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        layermap.removeLayerFromMap()
     }
 
     /**
