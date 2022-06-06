@@ -15,7 +15,7 @@
         android:backgroundTint="@color/backgroundShade2"
         android:backgroundTintMode="src_over"
         android:fontFamily="sans-serif-condensed-medium"
-        android:layout_margin="5dp"
+        android:layout_margin="0dp"
         android:text="Ubicaciones"
         android:textAlignment="center"
         android:textColor="@color/primaryShade4"

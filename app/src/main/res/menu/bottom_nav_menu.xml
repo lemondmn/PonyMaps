@@ -16,12 +16,11 @@
         android:icon="@drawable/se_ic_event"
         android:title="@string/Menu2" />
 
-    <!-- Deprecated
     <item
         android:id="@+id/na_fragment_horarios"
         android:icon="@drawable/se_ic_horario"
         android:title="@string/Menu5" />
-
+    <!-- Deprecated
     <item
         android:id="@+id/na_fragment_recordatorios"
         android:icon="@drawable/se_ic_notif"

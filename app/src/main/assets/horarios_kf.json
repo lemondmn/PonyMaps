@@ -1,0 +1,4370 @@
+[
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Seguridad en redes",
+      "nombreDocente":"Antolino hernandez Anastacio",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Sistemas de gestion de seguridad informatica",
+      "nombreDocente":"Ferreira Medina Heberto",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Formulacion y evaluacion de proyectos",
+      "nombreDocente":"Guizar Gomez Carlos Alberto",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Seguridad de Sistema Operativos",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Computo en la nube",
+      "nombreDocente":"Lava Barcenas Ruben",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Sistemas Operativos II",
+      "nombreDocente":"Hernandez Esquivel Heiran",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Redes de Computadoras",
+      "nombreDocente":"Mora Garcia Jorge",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Molina Moreno Ismael",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Seguridad en redes",
+      "nombreDocente":"Antolino hernandez Anastacio",
+      "horaEntrada":"08:00",
+      "horaSalida":"10:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Formulacion y evaluacion de proyectos",
+      "nombreDocente":"Guizar Gomez Carlos Alberto",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Seguridad de Sistema Operativos",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"12:00",
+      "horaSalida":"14:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Sistemas Operativos II",
+      "nombreDocente":"Hernandez Esquivel Heiran",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Redes de Computadoras",
+      "nombreDocente":"Mora Garcia Jorge",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Molina Moreno Ismael",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Sistemas de gestion de seguridad informatica",
+      "nombreDocente":"Ferreira Medina Heberto",
+      "horaEntrada":"08:00",
+      "horaSalida":"10:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Metodos Numericos",
+      "nombreDocente":"Coria Cisneros Lino",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Computo en la nube",
+      "nombreDocente":"Lava Barcenas Ruben",
+      "horaEntrada":"12:00",
+      "horaSalida":"14:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Sistemas Operativos II",
+      "nombreDocente":"Hernandez Esquivel Heiran",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Seguridad en redes",
+      "nombreDocente":"Antolino hernandez Anastacio",
+      "horaEntrada":"08:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Seguridad de Sistema Operativos",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"12:00",
+      "horaSalida":"14:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Sistemas Operativos II",
+      "nombreDocente":"Hernandez Esquivel Heiran",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Redes de Computadoras",
+      "nombreDocente":"Mora Garcia Jorge",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Molina Moreno Ismael",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Sistemas de gestion de seguridad informatica",
+      "nombreDocente":"Ferreira Medina Heberto",
+      "horaEntrada":"08:00",
+      "horaSalida":"10:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Computo en la nube",
+      "nombreDocente":"Lava Barcenas Ruben",
+      "horaEntrada":"12:00",
+      "horaSalida":"14:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Sistemas Operativos II",
+      "nombreDocente":"Hernandez Esquivel Heiran",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F1",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Molina Moreno Ismael",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Metodos Numericos",
+      "nombreDocente":"Espinosa Romero Salomon",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Arjang Mona",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Inteligencia Artificial",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Principios Electronicos y Aplicaciones digitales",
+      "nombreDocente":"Molina Moreno Ismael",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Investigacion de Operaciones",
+      "nombreDocente":"Idelfonso Huerta kevin Cristopher",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Cultura Empresarial",
+      "nombreDocente":"Lopez Torres Joel",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Estructura de datos",
+      "nombreDocente":"Morales Lopez Felipe",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Carre\u00f1o Bola\u00f1os Rafael",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Ortega Vargas Heber",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Fisica general",
+      "nombreDocente":"Flores Tinoco Alma Lilia Deni",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Metodos Numericos",
+      "nombreDocente":"Espinosa Romero Salomon",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Fundamentos de bases de datos",
+      "nombreDocente":"Ramos Diaz J. Guadalupe",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Arjang Mona",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Inteligencia Artificial",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Simulacion",
+      "nombreDocente":"Idelfonso Huerta kevin Cristopher",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Principios Electronicos y Aplicaciones digitales",
+      "nombreDocente":"Molina Moreno Ismael",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Investigacion de Operaciones",
+      "nombreDocente":"Idelfonso Huerta kevin Cristopher",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Cultura Empresarial",
+      "nombreDocente":"Lopez Torres Joel",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Carre\u00f1o Bola\u00f1os Rafael",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Ortega Vargas Heber",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Fisica general",
+      "nombreDocente":"Flores Tinoco Alma Lilia Deni",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Metodos Numericos",
+      "nombreDocente":"Espinosa Romero Salomon",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Arjang Mona",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Topicos Avanzados de Programacion",
+      "nombreDocente":"Nu\u00f1ez Gonazales Alma Lilia",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Simulacion",
+      "nombreDocente":"Idelfonso Huerta kevin Cristopher",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Investigacion de Operaciones",
+      "nombreDocente":"Idelfonso Huerta kevin Cristopher",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Cultura Empresarial",
+      "nombreDocente":"Lopez Torres Joel",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Estructura de datos",
+      "nombreDocente":"Morales Lopez Felipe",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Carre\u00f1o Bola\u00f1os Rafael",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Ortega Vargas Heber",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Arjang Mona",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Inteligencia Artificial",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Simulacion",
+      "nombreDocente":"Idelfonso Huerta kevin Cristopher",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Principios Electronicos y Aplicaciones digitales",
+      "nombreDocente":"Molina Moreno Ismael",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Carre\u00f1o Bola\u00f1os Rafael",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Ortega Vargas Heber",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Fisica general",
+      "nombreDocente":"Flores Tinoco Alma Lilia Deni",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Metodos Numericos",
+      "nombreDocente":"Espinosa Romero Salomon",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Fundamentos de bases de datos",
+      "nombreDocente":"Ramos Diaz J. Guadalupe",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Arjang Mona",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Topicos Avanzados de Programacion",
+      "nombreDocente":"Nu\u00f1ez Gonazales Alma Lilia",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Investigacion de Operaciones",
+      "nombreDocente":"Idelfonso Huerta kevin Cristopher",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F2",
+      "nombreMateria":"Cultura Empresarial",
+      "nombreDocente":"Lopez Torres Joel",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Programacion Aplicada",
+      "nombreDocente":"Monroy Morales Jose Luis ",
+      "horaEntrada":"08:00",
+      "horaSalida":"10:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Negocios Electronicos II",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Taller de Investigacion II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Computo en la nube",
+      "nombreDocente":"Lava Barcenas Ruben",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Seguridad de Sistema Operativos",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Desarrollo Sutentable",
+      "nombreDocente":"Romero Garcia Evodio",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Cadena de suministros",
+      "nombreDocente":"Gaitan Cortez yari Carmen",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Administracion de la Calidad",
+      "nombreDocente":"Flores Demian Morena Angelica",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Ingenieria del Conocimiento",
+      "nombreDocente":"Velazquez Ayala Fabiola Araceli",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Administracion y Seguridad en Redes",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Auditoria en tecnologias de la informacion",
+      "nombreDocente":"Ayala Robles Kenia Aline",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Negocios Electronicos II",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Taller de Investigacion II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Computo en la nube",
+      "nombreDocente":"Lava Barcenas Ruben",
+      "horaEntrada":"12:00",
+      "horaSalida":"14:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Desarrollo Sutentable",
+      "nombreDocente":"Romero Garcia Evodio",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Cadena de suministros",
+      "nombreDocente":"Gaitan Cortez yari Carmen",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Administracion de la Calidad",
+      "nombreDocente":"Flores Demian Morena Angelica",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Ingenieria del Conocimiento",
+      "nombreDocente":"Velazquez Ayala Fabiola Araceli",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Administracion y Seguridad en Redes",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Auditoria en tecnologias de la informacion",
+      "nombreDocente":"Ayala Robles Kenia Aline",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Negocios Electronicos II",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Taller de Investigacion II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Seguridad de Sistema Operativos",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"12:00",
+      "horaSalida":"14:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Desarrollo Sutentable",
+      "nombreDocente":"Romero Garcia Evodio",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Cadena de suministros",
+      "nombreDocente":"Gaitan Cortez yari Carmen",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Administracion de la Calidad",
+      "nombreDocente":"Flores Demian Morena Angelica",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Ingenieria del Conocimiento",
+      "nombreDocente":"Velazquez Ayala Fabiola Araceli",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Auditoria en tecnologias de la informacion",
+      "nombreDocente":"Ayala Robles Kenia Aline",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Negocios Electronicos II",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Taller de Investigacion II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Computo en la nube",
+      "nombreDocente":"Lava Barcenas Ruben",
+      "horaEntrada":"12:00",
+      "horaSalida":"14:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Desarrollo Sutentable",
+      "nombreDocente":"Romero Garcia Evodio",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Cadena de suministros",
+      "nombreDocente":"Gaitan Cortez yari Carmen",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Administracion de la Calidad",
+      "nombreDocente":"Flores Demian Morena Angelica",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Ingenieria del Conocimiento",
+      "nombreDocente":"Velazquez Ayala Fabiola Araceli",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Administracion y Seguridad en Redes",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Auditoria en tecnologias de la informacion",
+      "nombreDocente":"Ayala Robles Kenia Aline",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Seguridad de Sistema Operativos",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"12:00",
+      "horaSalida":"14:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Desarrollo Sutentable",
+      "nombreDocente":"Romero Garcia Evodio",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Cadena de suministros",
+      "nombreDocente":"Gaitan Cortez yari Carmen",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F3",
+      "nombreMateria":"Administracion de la Calidad",
+      "nombreDocente":"Flores Demian Morena Angelica",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Verificacion y Validacion de Software",
+      "nombreDocente":"Sanchez Hernandez Mirian Zulma",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Tecnologias Inalambricas",
+      "nombreDocente":"Olivares Rojas Juan Carlos",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Telecomunicaciones",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Taller de metodologia agil de software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Introduccion a la seguridad informatica",
+      "nombreDocente":"Hernandez Esquivel Heiran",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Lenguajes y Automatas II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Quimica",
+      "nombreDocente":"Velazquez Placencia Melina",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Arquitectura Computacional",
+      "nombreDocente":"Robledo Ayala Alejandro Israel",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Covarrubias Aparicio Jorge Enrique",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Taller de Investigacion I",
+      "nombreDocente":"Callegos Peres Joxim",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Analisis de sistemas elecronicos",
+      "nombreDocente":"Coria Cisneros Lino",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Verificacion y Validacion de Software",
+      "nombreDocente":"Sanchez Hernandez Mirian Zulma",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Termodinamica para ingenieria en materiales",
+      "nombreDocente":"Olivares Rojas Juan Carlos",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Taller de metodologia agil de software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Introduccion a la seguridad informatica",
+      "nombreDocente":"Hernandez Esquivel Heiran",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Lenguajes y Automatas II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Quimica",
+      "nombreDocente":"Velazquez Placencia Melina",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Covarrubias Aparicio Jorge Enrique",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Taller de Investigacion I",
+      "nombreDocente":"Callegos Peres Joxim",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Verificacion y Validacion de Software",
+      "nombreDocente":"Sanchez Hernandez Mirian Zulma",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Tecnologias Inalambricas",
+      "nombreDocente":"Olivares Rojas Juan Carlos",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Telecomunicaciones",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Taller de metodologia agil de software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Introduccion a la seguridad informatica",
+      "nombreDocente":"Hernandez Esquivel Heiran",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Lenguajes y Automatas II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Quimica",
+      "nombreDocente":"Velazquez Placencia Melina",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Covarrubias Aparicio Jorge Enrique",
+      "horaEntrada":"16:00",
+      "horaSalida":"18:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Taller de Investigacion I",
+      "nombreDocente":"Callegos Peres Joxim",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Analisis de sistemas elecronicos",
+      "nombreDocente":"Coria Cisneros Lino",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Verificacion y Validacion de Software",
+      "nombreDocente":"Sanchez Hernandez Mirian Zulma",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Telecomunicaciones",
+      "nombreDocente":"Olivares Rojas Juan Carlos",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Taller de metodologia agil de software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Introduccion a la seguridad informatica",
+      "nombreDocente":"Hernandez Esquivel Heiran",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Lenguajes y Automatas II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Quimica",
+      "nombreDocente":"Velazquez Placencia Melina",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Arquitectura Computacional",
+      "nombreDocente":"Robledo Ayala Alejandro Israel",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Covarrubias Aparicio Jorge Enrique",
+      "horaEntrada":"16:00",
+      "horaSalida":"18:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Taller de Investigacion I",
+      "nombreDocente":"Callegos Peres Joxim",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Analisis de sistemas elecronicos",
+      "nombreDocente":"Coria Cisneros Lino",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Verificacion y Validacion de Software",
+      "nombreDocente":"Sanchez Hernandez Mirian Zulma",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Introduccion a la seguridad informatica",
+      "nombreDocente":"Hernandez Esquivel Heiran",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Lenguajes y Automatas II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Quimica",
+      "nombreDocente":"Velazquez Placencia Melina",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Arquitectura Computacional",
+      "nombreDocente":"Robledo Ayala Alejandro Israel",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Covarrubias Aparicio Jorge Enrique",
+      "horaEntrada":"16:00",
+      "horaSalida":"18:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F4",
+      "nombreMateria":"Taller de Investigacion I",
+      "nombreDocente":"Callegos Peres Joxim",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Taller de Sistemas operativos",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Florian Arenas Claudio Ernesto",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Redes de Computadoras",
+      "nombreDocente":"Ayala Robles Kenia Aline",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Tutoria",
+      "nombreDocente":"Pintor Estrada Abel Alberto",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Introduccion a la seguridad informatica",
+      "nombreDocente":"Antolino hernandez Anastacio",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Taller de Sistemas operativos",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"07:00",
+      "horaSalida":"09:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Florian Arenas Claudio Ernesto",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Energias Renovables",
+      "nombreDocente":"Madrigal Martinez Manuel",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Introduccion a la seguridad informatica",
+      "nombreDocente":"Antolino hernandez Anastacio",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Sistemas Operativos I",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Fundamentos de Ingenieria de Software",
+      "nombreDocente":"Sanchez Vega Jorge",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Fundamentos de telecomunicaciones",
+      "nombreDocente":"Pacheco Pintel Efren De Jesus",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Sistemas Programables",
+      "nombreDocente":"Moreno Sotelo Gregorio",
+      "horaEntrada":"19:00",
+      "horaSalida":"20:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Robotica movil",
+      "nombreDocente":"Melchor Uceda Iran Arane",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Florian Arenas Claudio Ernesto",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Inteligencia Artificial",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Energias Renovables",
+      "nombreDocente":"Madrigal Martinez Manuel",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Introduccion a la seguridad informatica",
+      "nombreDocente":"Antolino hernandez Anastacio",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Sistemas Operativos I",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Fundamentos de Ingenieria de Software",
+      "nombreDocente":"Sanchez Vega Jorge",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Fundamentos de telecomunicaciones",
+      "nombreDocente":"Pacheco Pintel Efren De Jesus",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Taller de Sistemas operativos",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Florian Arenas Claudio Ernesto",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Redes de Computadoras",
+      "nombreDocente":"Ayala Robles Kenia Aline",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Administracion de Bases de Datos",
+      "nombreDocente":"Diaz Rodriguez Marisol",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Introduccion a la seguridad informatica",
+      "nombreDocente":"Antolino hernandez Anastacio",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Sistemas Operativos I",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Fundamentos de Ingenieria de Software",
+      "nombreDocente":"Sanchez Vega Jorge",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Maquinas caminantes",
+      "nombreDocente":"Juarez Campos Ignacio",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Sistemas Programables",
+      "nombreDocente":"Moreno Sotelo Gregorio",
+      "horaEntrada":"19:00",
+      "horaSalida":"20:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Florian Arenas Claudio Ernesto",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Introduccion a la seguridad informatica",
+      "nombreDocente":"Antolino hernandez Anastacio",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Sistemas Operativos I",
+      "nombreDocente":"Ruiz Lagunas Juan Jesus",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Fundamentos de Ingenieria de Software",
+      "nombreDocente":"Sanchez Vega Jorge",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Fundamentos de telecomunicaciones",
+      "nombreDocente":"Pacheco Pintel Efren De Jesus",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Taller de Bases de Datos",
+      "nombreDocente":"Sanchez Vega Jorge",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F5",
+      "nombreMateria":"Graficacion",
+      "nombreDocente":"Vega Flores Maria Yaneth",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Pino Villela Humberto Saul",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Calculo Integral",
+      "nombreDocente":"Abuirto Bedolla Alejandro",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Algebra Lineal",
+      "nombreDocente":"Morales Hernandez Alfredo",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Contabilidad Financiera",
+      "nombreDocente":"Torres Vidales Reyna Aida",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Laboratorio de Internet de las cosas",
+      "nombreDocente":"Melchor Uceda Iran Arane",
+      "horaEntrada":"13:00",
+      "horaSalida":"15:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Vazquez Santoyo Luis Daniel",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Jimenez Murillo Jose Alfredo",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Taller de Administracion",
+      "nombreDocente":"Guzman Hernandez Jose Cutlahuac",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Pino Villela Humberto Saul",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Calculo Integral",
+      "nombreDocente":"Abuirto Bedolla Alejandro",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Algebra Lineal",
+      "nombreDocente":"Morales Hernandez Alfredo",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Contabilidad Financiera",
+      "nombreDocente":"Torres Vidales Reyna Aida",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Fundamentos de Programacion",
+      "nombreDocente":"Jimenez Murillo Jose Alfredo",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Vazquez Santoyo Luis Daniel",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Jimenez Murillo Jose Alfredo",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Taller de Administracion",
+      "nombreDocente":"Guzman Hernandez Jose Cutlahuac",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Pino Villela Humberto Saul",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Calculo Integral",
+      "nombreDocente":"Abuirto Bedolla Alejandro",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Algebra Lineal",
+      "nombreDocente":"Morales Hernandez Alfredo",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Vazquez Santoyo Luis Daniel",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Jimenez Murillo Jose Alfredo",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Taller de Administracion",
+      "nombreDocente":"Guzman Hernandez Jose Cutlahuac",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Pino Villela Humberto Saul",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Calculo Integral",
+      "nombreDocente":"Abuirto Bedolla Alejandro",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Algebra Lineal",
+      "nombreDocente":"Morales Hernandez Alfredo",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Contabilidad Financiera",
+      "nombreDocente":"Torres Vidales Reyna Aida",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Vazquez Santoyo Luis Daniel",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Jimenez Murillo Jose Alfredo",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Taller de Administracion",
+      "nombreDocente":"Guzman Hernandez Jose Cutlahuac",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Pino Villela Humberto Saul",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Calculo Integral",
+      "nombreDocente":"Abuirto Bedolla Alejandro",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Algebra Lineal",
+      "nombreDocente":"Morales Hernandez Alfredo",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Contabilidad Financiera",
+      "nombreDocente":"Torres Vidales Reyna Aida",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Fundamentos de Programacion",
+      "nombreDocente":"Jimenez Murillo Jose Alfredo",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Vazquez Santoyo Luis Daniel",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Jimenez Murillo Jose Alfredo",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"F6",
+      "nombreMateria":"Taller de Administracion",
+      "nombreDocente":"Guzman Hernandez Jose Cutlahuac",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"An Gran Vol Dat",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Arquitectura de Software",
+      "nombreDocente":"Vega Flores Maria Yaneth",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Taller de metodologia agil de software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Merc De Energia Optativa",
+      "nombreDocente":"Tovar Ramirez Cecile Alejandra",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"An Gran Vol Dat",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Arquitectura de Software",
+      "nombreDocente":"Vega Flores Maria Yaneth",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Taller de metodologia agil de software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Merc De Energia Optativa",
+      "nombreDocente":"Tovar Ramirez Cecile Alejandra",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"An Gran Vol Dat",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Arquitectura de Software",
+      "nombreDocente":"Vega Flores Maria Yaneth",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Taller de metodologia agil de software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Merc De Energia Optativa",
+      "nombreDocente":"Tovar Ramirez Cecile Alejandra",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"An Gran Vol Dat",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Arquitectura de Software",
+      "nombreDocente":"Vega Flores Maria Yaneth",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Taller de metodologia agil de software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Merc De Energia Optativa",
+      "nombreDocente":"Tovar Ramirez Cecile Alejandra",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"An Gran Vol Dat",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Arquitectura de Software",
+      "nombreDocente":"Vega Flores Maria Yaneth",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Taller de metodologia agil de software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K1",
+      "nombreMateria":"Merc De Energia Optativa",
+      "nombreDocente":"Tovar Ramirez Cecile Alejandra",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Robotica movil",
+      "nombreDocente":"Melchor Uceda Iran Arane",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Taller de Sistemas operativos",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Hernandez Medina Gerardo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Topicos Avanzados de Programacion",
+      "nombreDocente":"Nu\u00f1ez Gonazales Alma Lilia",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Fundamentos de Ingenieria de Software",
+      "nombreDocente":"Sanchez Vega Jorge",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Sistemas Programables",
+      "nombreDocente":"Moreno Sotelo Gregorio",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Sistemas Operativos I",
+      "nombreDocente":"Callegos Peres Joxim",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"maquinas electricas ",
+      "nombreDocente":"Hernandez Cadarave Osvaldo Aaron",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Graficacion",
+      "nombreDocente":"Hernandez Esquivel Jose Omar",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Principios Electronicos y Aplicaciones digitales",
+      "nombreDocente":"Alfaro Garcia Tarciso",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Fundamentos de bases de datos",
+      "nombreDocente":"Florian Arenas Claudio Ernesto",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Taller de Sistemas operativos",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Quimica Organica",
+      "nombreDocente":"Garcia Hernandez Saul",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Topicos Avanzados de Programacion",
+      "nombreDocente":"Nu\u00f1ez Gonazales Alma Lilia",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Simulacion",
+      "nombreDocente":"Contreras Navarrete Jose De Jesus",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Fundamentos de Ingenieria de Software",
+      "nombreDocente":"Sanchez Vega Jorge",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Fundamentos de telecomunicaciones",
+      "nombreDocente":"Pacheco Pintel Efren De Jesus",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Sistemas Operativos I",
+      "nombreDocente":"Callegos Peres Joxim",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"maquinas electricas ",
+      "nombreDocente":"Hernandez Cadarave Osvaldo Aaron",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Principios Electronicos y Aplicaciones digitales",
+      "nombreDocente":"Alfaro Garcia Tarciso",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Fundamentos de bases de datos",
+      "nombreDocente":"Florian Arenas Claudio Ernesto",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Taller de Sistemas operativos",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Hernandez Medina Gerardo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Programacion Logica Y Funcional",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Bioing Cont Atmos Y Camb Clima",
+      "nombreDocente":"Rangel Gonce Arturo",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Sistemas Operativos I",
+      "nombreDocente":"Callegos Peres Joxim",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"maquinas electricas ",
+      "nombreDocente":"Hernandez Cadarave Osvaldo Aaron",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Principios Electronicos y Aplicaciones digitales",
+      "nombreDocente":"Alfaro Garcia Tarciso",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Fundamentos de bases de datos",
+      "nombreDocente":"Florian Arenas Claudio Ernesto",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Taller de Sistemas operativos",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Hernandez Medina Gerardo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Programacion Logica Y Funcional",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Simulacion",
+      "nombreDocente":"Contreras Navarrete Jose De Jesus",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Redes de Computadoras",
+      "nombreDocente":"Mora Garcia Jorge",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Fundamentos de Ingenieria de Software",
+      "nombreDocente":"Sanchez Vega Jorge",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Fundamentos de telecomunicaciones",
+      "nombreDocente":"Pacheco Pintel Efren De Jesus",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Sistemas Operativos I",
+      "nombreDocente":"Callegos Peres Joxim",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Inteligencia Artificial Y Automatizacion",
+      "nombreDocente":"Diaz Huerta Jorge Luis",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Programacion Web",
+      "nombreDocente":"Olivares Rojas Juan Carlos",
+      "horaEntrada":"07:00",
+      "horaSalida":"09:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Hernandez Medina Gerardo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Simulacion",
+      "nombreDocente":"Contreras Navarrete Jose De Jesus",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Redes de Computadoras",
+      "nombreDocente":"Mora Garcia Jorge",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Fundamentos de Ingenieria de Software",
+      "nombreDocente":"Sanchez Vega Jorge",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K2",
+      "nombreMateria":"Fundamentos de telecomunicaciones",
+      "nombreDocente":"Pacheco Pintel Efren De Jesus",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Programacion Web",
+      "nombreDocente":"Luz Vargas Gabriela",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Redes de Computadoras",
+      "nombreDocente":"Ayala Robles Kenia Aline",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Metodos Numericos",
+      "nombreDocente":"Morales Hernandez Alfredo",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Aburto Bedolla Salvador",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Programacion Logica Y Funcional",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Fundamentos de bases de datos",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Fundamentos de Ingenieria de Software",
+      "nombreDocente":"Sanchez Vega Jorge",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Vega Flores Maria Yaneth",
+      "horaEntrada":"14:00",
+      "horaSalida":"16:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Sistemas Operativos I",
+      "nombreDocente":"Callegos Peres Joxim",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Topicos Avanzados de Programacion",
+      "nombreDocente":"Amaro Flores Alejandro",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Principios Electronicos y Aplicaciones digitales",
+      "nombreDocente":"Alfaro Garcia Tarciso",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Metodos Numericos",
+      "nombreDocente":"Morales Hernandez Alfredo",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Aburto Bedolla Salvador",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Programacion Logica Y Funcional",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Contabilidad Financiera",
+      "nombreDocente":"Farias Ochoa Ma. Elizabeth",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Tecnicas de Analisis",
+      "nombreDocente":"Vidales Cardenas Bejamin",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Fundamentos de telecomunicaciones",
+      "nombreDocente":"Pacheco Pintel Efren De Jesus",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Qumica Organica II",
+      "nombreDocente":"Coronado Reyes Jesus Alberto",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Sistemas Programables",
+      "nombreDocente":"Moreno Sotelo Gregorio",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Sistemas Operativos I",
+      "nombreDocente":"Callegos Peres Joxim",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Aburto Bedolla Salvador",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Simulacion",
+      "nombreDocente":"Calderon Duran Jose Luis",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Fundamentos de bases de datos",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Fundamentos de Ingenieria de Software",
+      "nombreDocente":"Sanchez Vega Jorge",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Fundamentos de telecomunicaciones",
+      "nombreDocente":"Pacheco Pintel Efren De Jesus",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Sistemas Operativos I",
+      "nombreDocente":"Callegos Peres Joxim",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Principios Electronicos y Aplicaciones digitales",
+      "nombreDocente":"Alfaro Garcia Tarciso",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Metodos Numericos",
+      "nombreDocente":"Morales Hernandez Alfredo",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Aburto Bedolla Salvador",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Simulacion",
+      "nombreDocente":"Calderon Duran Jose Luis",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Electricidad, Magnetismo y Optica",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Fundamentos de Ingenieria de Software",
+      "nombreDocente":"Sanchez Vega Jorge",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Fundamentos de telecomunicaciones",
+      "nombreDocente":"Pacheco Pintel Efren De Jesus",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Sistemas Programables",
+      "nombreDocente":"Moreno Sotelo Gregorio",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Sistemas Operativos I",
+      "nombreDocente":"Callegos Peres Joxim",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Topicos Avanzados de Programacion",
+      "nombreDocente":"Amaro Flores Alejandro",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Principios Electronicos y Aplicaciones digitales",
+      "nombreDocente":"Alfaro Garcia Tarciso",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Metodos Numericos",
+      "nombreDocente":"Morales Hernandez Alfredo",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Ecuaciones Diferenciales",
+      "nombreDocente":"Aburto Bedolla Salvador",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Simulacion",
+      "nombreDocente":"Calderon Duran Jose Luis",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Contabilidad Financiera",
+      "nombreDocente":"Farias Ochoa Ma. Elizabeth",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Electricidad, Magnetismo y Optica",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K3",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Vega Flores Maria Yaneth",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Comportamiento Mec De Material",
+      "nombreDocente":"Garnica Gonzales Pedro",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Taller de Investigacion II",
+      "nombreDocente":"Blancas Martinez Monica Adriana",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Fundamentos de bases de datos",
+      "nombreDocente":"Ramos Diaz J. Guadalupe",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Arquitectura de Software",
+      "nombreDocente":"Vega Flores Maria Yaneth",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Carmen Bustos German Andres",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Lenguajes y Automatas II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Higiene Y Seguridad Industrial",
+      "nombreDocente":"Villase\u00f1or Jacuide Teresa",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Comportamiento Mec De Material",
+      "nombreDocente":"Garnica Gonzales Pedro",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Leguajes de Interfaz ",
+      "nombreDocente":"Castro Pintel Luis Alfredo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Taller de Investigacion II",
+      "nombreDocente":"Blancas Martinez Monica Adriana",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Fundamentos de bases de datos",
+      "nombreDocente":"Ramos Diaz J. Guadalupe",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Arquitectura de Software",
+      "nombreDocente":"Vega Flores Maria Yaneth",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Carmen Bustos German Andres",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Carmen Bustos German Andres",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Lenguajes y Automatas II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Arquitectura Computacional",
+      "nombreDocente":"Robledo Ayala Alejandro Israel",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Higiene Y Seguridad Industrial",
+      "nombreDocente":"Villase\u00f1or Jacuide Teresa",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Comportamiento Mec De Material",
+      "nombreDocente":"Garnica Gonzales Pedro",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Administracion y Seguridad en Redes",
+      "nombreDocente":"Mora Garcia Jorge",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Leguajes de Interfaz ",
+      "nombreDocente":"Castro Pintel Luis Alfredo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Fundamentos de bases de datos",
+      "nombreDocente":"Ramos Diaz J. Guadalupe",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Arquitectura de Software",
+      "nombreDocente":"Vega Flores Maria Yaneth",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Carmen Bustos German Andres",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Carmen Bustos German Andres",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Lenguajes y Automatas II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Higiene Y Seguridad Industrial",
+      "nombreDocente":"Villase\u00f1or Jacuide Teresa",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Comportamiento Mec De Material",
+      "nombreDocente":"Garnica Gonzales Pedro",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Administracion y Seguridad en Redes",
+      "nombreDocente":"Mora Garcia Jorge",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Arquitectura de Software",
+      "nombreDocente":"Vega Flores Maria Yaneth",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Carmen Bustos German Andres",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Carmen Bustos German Andres",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Lenguajes y Automatas II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Arquitectura Computacional",
+      "nombreDocente":"Robledo Ayala Alejandro Israel",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Administracion y Seguridad en Redes",
+      "nombreDocente":"Mora Garcia Jorge",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Administracion y Seguridad en Redes",
+      "nombreDocente":"Castro Pintel Luis Alfredo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Taller de Investigacion II",
+      "nombreDocente":"Blancas Martinez Monica Adriana",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Carmen Bustos German Andres",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Gestion de proyectos de Software",
+      "nombreDocente":"Carmen Bustos German Andres",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Lenguajes y Automatas II",
+      "nombreDocente":"Rojas Prspero Ireri Tsipekua",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K4",
+      "nombreMateria":"Arquitectura Computacional",
+      "nombreDocente":"Robledo Ayala Alejandro Israel",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Inteligencia Artificial",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Internet de las Cosas",
+      "nombreDocente":"Rodriguez Tapia Marco Alonso",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Materiales Polimerico",
+      "nombreDocente":"Villalobos Brito Julio Cesar",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Sanchez Hernandez Mirian Zulma",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Programacion Web Avanzada",
+      "nombreDocente":"Gomez Suarez Cuauhtemoc",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Taller de Investigacion I",
+      "nombreDocente":"Barcenas Acosta Daniel",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Graficacion",
+      "nombreDocente":"Mena Ornelas Cesar",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Lenguajes y Automatas II",
+      "nombreDocente":"Mena Ornelas Cesar",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Inteligencia Artificial",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Internet de las Cosas",
+      "nombreDocente":"Rodriguez Tapia Marco Alonso",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Metodos Numericos",
+      "nombreDocente":"Garcia Hernandez Saul",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Materiales Polimerico",
+      "nombreDocente":"Villalobos Brito Julio Cesar",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Sanchez Hernandez Mirian Zulma",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Programacion Web Avanzada",
+      "nombreDocente":"Gomez Suarez Cuauhtemoc",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Taller de Investigacion I",
+      "nombreDocente":"Barcenas Acosta Daniel",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Lenguajes y Automatas II",
+      "nombreDocente":"Mena Ornelas Cesar",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Inteligencia Artificial",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Internet de las Cosas",
+      "nombreDocente":"Rodriguez Tapia Marco Alonso",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Metodos Numericos",
+      "nombreDocente":"Garcia Hernandez Saul",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Sanchez Hernandez Mirian Zulma",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Programacion Web Avanzada",
+      "nombreDocente":"Gomez Suarez Cuauhtemoc",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Taller de Investigacion I",
+      "nombreDocente":"Barcenas Acosta Daniel",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Inteligencia Artificial",
+      "nombreDocente":"Alcaraz Chavez Jesus Eduardo",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Internet de las Cosas",
+      "nombreDocente":"Rodriguez Tapia Marco Alonso",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Metodos Numericos",
+      "nombreDocente":"Garcia Hernandez Saul",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Materiales Polimerico",
+      "nombreDocente":"Villalobos Brito Julio Cesar",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Sanchez Hernandez Mirian Zulma",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Programacion Web Avanzada",
+      "nombreDocente":"Gomez Suarez Cuauhtemoc",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Taller de Investigacion I",
+      "nombreDocente":"Barcenas Acosta Daniel",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Internet de las Cosas",
+      "nombreDocente":"Rodriguez Tapia Marco Alonso",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Metodos Numericos",
+      "nombreDocente":"Garcia Hernandez Saul",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Materiales Polimerico",
+      "nombreDocente":"Villalobos Brito Julio Cesar",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Sanchez Hernandez Mirian Zulma",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Programacion Web Avanzada",
+      "nombreDocente":"Gomez Suarez Cuauhtemoc",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K5",
+      "nombreMateria":"Taller de Investigacion I",
+      "nombreDocente":"Barcenas Acosta Daniel",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Taller de Sistemas operativos",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Programacion Web",
+      "nombreDocente":"Luz Vargas Gabriela",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Cultura Empresarial",
+      "nombreDocente":"Salinas Gonzalez Miguel Angel",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Torres Vidales Reyna Aida",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Estructura de datos",
+      "nombreDocente":"Hernandez Ramos Gerardo",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Hernandez Esquivel Jose Omar",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Investigacion de Operaciones",
+      "nombreDocente":"Curiel Godoy Jorge",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Fisica general",
+      "nombreDocente":"Flores Tinoco Alma Lilia Deni",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Cultura Empresarial",
+      "nombreDocente":"Salinas Gonzalez Miguel Angel",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Torres Vidales Reyna Aida",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Estructura de datos",
+      "nombreDocente":"Hernandez Ramos Gerardo",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Hernandez Esquivel Jose Omar",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Investigacion de Operaciones",
+      "nombreDocente":"Curiel Godoy Jorge",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Fisica general",
+      "nombreDocente":"Flores Tinoco Alma Lilia Deni",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Taller de Sistemas operativos",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"07:00",
+      "horaSalida":"09:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Administracion de Bases de Datos",
+      "nombreDocente":"Paz Hurtado Lourdes verenice",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Cultura Empresarial",
+      "nombreDocente":"Salinas Gonzalez Miguel Angel",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Torres Vidales Reyna Aida",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Estructura de datos",
+      "nombreDocente":"Hernandez Ramos Gerardo",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Hernandez Esquivel Jose Omar",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Investigacion de Operaciones",
+      "nombreDocente":"Curiel Godoy Jorge",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Fisica general",
+      "nombreDocente":"Flores Tinoco Alma Lilia Deni",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Vision Robotica",
+      "nombreDocente":"Melchor Uceda Iran Arane",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Administracion de Bases de Datos",
+      "nombreDocente":"Paz Hurtado Lourdes verenice",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Cultura Empresarial",
+      "nombreDocente":"Salinas Gonzalez Miguel Angel",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Torres Vidales Reyna Aida",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Estructura de datos",
+      "nombreDocente":"Hernandez Ramos Gerardo",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Hernandez Esquivel Jose Omar",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Investigacion de Operaciones",
+      "nombreDocente":"Curiel Godoy Jorge",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Taller de Sistemas operativos",
+      "nombreDocente":"Villagomez Cardenas Salvador Jonathan",
+      "horaEntrada":"07:00",
+      "horaSalida":"08:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Ingenieria de Software",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Lenguajes y Automatas I",
+      "nombreDocente":"Gonzales Gomez Brenda",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Torres Vidales Reyna Aida",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Estructura de datos",
+      "nombreDocente":"Hernandez Ramos Gerardo",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K6",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Hernandez Esquivel Jose Omar",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Sistemas de gestion de seguridad informatica",
+      "nombreDocente":"Ferreira Medina Heberto",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Seguridad en redes",
+      "nombreDocente":"Antolino hernandez Anastacio",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Cultura Empresarial",
+      "nombreDocente":"Barraza Paredes Jose Ricardo",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Fisica general",
+      "nombreDocente":"Flores Tinoco Alma Lilia Deni",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Lopez Lopez Juan Carlos",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Investigacion de Operaciones",
+      "nombreDocente":"Curiel Godoy Jorge",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Estructura de datos",
+      "nombreDocente":"Morales Lopez Felipe",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Sistemas de gestion de seguridad informatica",
+      "nombreDocente":"Ferreira Medina Heberto",
+      "horaEntrada":"08:00",
+      "horaSalida":"10:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Taller de Investigacion II",
+      "nombreDocente":"Blancas Martinez Monica Adriana",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Cultura Empresarial",
+      "nombreDocente":"Barraza Paredes Jose Ricardo",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Termodinamica para ingenieria en materiales",
+      "nombreDocente":"Oliver Reynoso Antonio",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Fisica general",
+      "nombreDocente":"Flores Tinoco Alma Lilia Deni",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Lopez Lopez Juan Carlos",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Investigacion de Operaciones",
+      "nombreDocente":"Curiel Godoy Jorge",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Estructura de datos",
+      "nombreDocente":"Morales Lopez Felipe",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Tutoria",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"21:00",
+      "horaSalida":"22:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Seguridad en redes",
+      "nombreDocente":"Antolino hernandez Anastacio",
+      "horaEntrada":"08:00",
+      "horaSalida":"10:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Taller de Investigacion II",
+      "nombreDocente":"Blancas Martinez Monica Adriana",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Desarrollo Sutentable",
+      "nombreDocente":"Amezquita novelo Roberto Ariel",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Analisis Instrumental",
+      "nombreDocente":"Bedolla Cazarez Fernando",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Cultura Empresarial",
+      "nombreDocente":"Barraza Paredes Jose Ricardo",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Termodinamica para ingenieria en materiales",
+      "nombreDocente":"Oliver Reynoso Antonio",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Fisica general",
+      "nombreDocente":"Flores Tinoco Alma Lilia Deni",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Lopez Lopez Juan Carlos",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Investigacion de Operaciones",
+      "nombreDocente":"Curiel Godoy Jorge",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Estructura de datos",
+      "nombreDocente":"Morales Lopez Felipe",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Sistemas de gestion de seguridad informatica",
+      "nombreDocente":"Ferreira Medina Heberto",
+      "horaEntrada":"08:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Taller de Investigacion II",
+      "nombreDocente":"Blancas Martinez Monica Adriana",
+      "horaEntrada":"10:00",
+      "horaSalida":"12:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Tutoria",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Cultura Empresarial",
+      "nombreDocente":"Barraza Paredes Jose Ricardo",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Fisica general",
+      "nombreDocente":"Flores Tinoco Alma Lilia Deni",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Lopez Lopez Juan Carlos",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Investigacion de Operaciones",
+      "nombreDocente":"Curiel Godoy Jorge",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Sistemas de gestion de seguridad informatica",
+      "nombreDocente":"Ferreira Medina Heberto",
+      "horaEntrada":"08:00",
+      "horaSalida":"10:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Taller de Investigacion II",
+      "nombreDocente":"Blancas Martinez Monica Adriana",
+      "horaEntrada":"10:00",
+      "horaSalida":"12:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Tutoria",
+      "nombreDocente":"Contreras Jimenez Rocio",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Cultura Empresarial",
+      "nombreDocente":"Barraza Paredes Jose Ricardo",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Termodinamica para ingenieria en materiales",
+      "nombreDocente":"Oliver Reynoso Antonio",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K7",
+      "nombreMateria":"Calculo Vectorial",
+      "nombreDocente":"Lopez Lopez Juan Carlos",
+      "horaEntrada":"16:00",
+      "horaSalida":"17:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calculo Integral",
+      "nombreDocente":"Ortega Monroy Fabian",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Algebra Lineal",
+      "nombreDocente":"Maga\u00f1a Mendoza Gabriel",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Quimica Organica",
+      "nombreDocente":"Garcia Hernandez Saul",
+      "horaEntrada":"10:00",
+      "horaSalida":"12:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Algebra Lineal",
+      "nombreDocente":"Avila Carreon Fernando",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Gonzales Pedraza Oskar Javier",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Vega Cano Ruben",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Jimenez Murillo Jose Alfredo",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Microcontroladores",
+      "nombreDocente":"Huerta Cortes Andres Ivan",
+      "horaEntrada":"17:00",
+      "horaSalida":"18:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Taller de Administracion",
+      "nombreDocente":"De La Torre Lopez Beatriz",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Lunes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calculo Integral",
+      "nombreDocente":"Ortega Monroy Fabian",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Programacion Logica Y Funcional",
+      "nombreDocente":"Ramos Diaz J. Guadalupe",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Contabilidad Financiera",
+      "nombreDocente":"Mu\u00f1oz Villegas Guillermo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calidad de la energia",
+      "nombreDocente":"Guitierrez Sanchez Osvaldo",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Algebra Lineal",
+      "nombreDocente":"Avila Carreon Fernando",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Fundamentos de Programacion",
+      "nombreDocente":"Alvaro Zamora Laura Nelly",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Vega Cano Ruben",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Jimenez Murillo Jose Alfredo",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Lab IA Y Autom",
+      "nombreDocente":"Diaz Huerta Jorge Luis",
+      "horaEntrada":"16:00",
+      "horaSalida":"18:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Taller de Administracion",
+      "nombreDocente":"De La Torre Lopez Beatriz",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Martes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calculo Integral",
+      "nombreDocente":"Ortega Monroy Fabian",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Contabilidad Financiera",
+      "nombreDocente":"Mu\u00f1oz Villegas Guillermo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calidad de la energia",
+      "nombreDocente":"Guitierrez Sanchez Osvaldo",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Algebra Lineal",
+      "nombreDocente":"Avila Carreon Fernando",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Gonzales Pedraza Oskar Javier",
+      "horaEntrada":"13:00",
+      "horaSalida":"14:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Vega Cano Ruben",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Jimenez Murillo Jose Alfredo",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Lab IA Y Autom",
+      "nombreDocente":"Diaz Huerta Jorge Luis",
+      "horaEntrada":"16:00",
+      "horaSalida":"18:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Taller de Administracion",
+      "nombreDocente":"De La Torre Lopez Beatriz",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Miercoles"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calculo Integral",
+      "nombreDocente":"Ortega Monroy Fabian",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Programacion Logica Y Funcional",
+      "nombreDocente":"Ramos Diaz J. Guadalupe",
+      "horaEntrada":"09:00",
+      "horaSalida":"10:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Contabilidad Financiera",
+      "nombreDocente":"Mu\u00f1oz Villegas Guillermo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calidad de la energia",
+      "nombreDocente":"Guitierrez Sanchez Osvaldo",
+      "horaEntrada":"11:00",
+      "horaSalida":"12:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Algebra Lineal",
+      "nombreDocente":"Avila Carreon Fernando",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Vega Cano Ruben",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Jimenez Murillo Jose Alfredo",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Taller de Administracion",
+      "nombreDocente":"De La Torre Lopez Beatriz",
+      "horaEntrada":"18:00",
+      "horaSalida":"19:00",
+      "dia":"Jueves"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calculo Integral",
+      "nombreDocente":"Ortega Monroy Fabian",
+      "horaEntrada":"08:00",
+      "horaSalida":"09:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Contabilidad Financiera",
+      "nombreDocente":"Mu\u00f1oz Villegas Guillermo",
+      "horaEntrada":"10:00",
+      "horaSalida":"11:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Algebra Lineal",
+      "nombreDocente":"Avila Carreon Fernando",
+      "horaEntrada":"12:00",
+      "horaSalida":"13:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Calculo diferencial",
+      "nombreDocente":"Vega Cano Ruben",
+      "horaEntrada":"14:00",
+      "horaSalida":"15:00",
+      "dia":"Viernes"
+   },
+   {
+      "nombreSalon":"K8",
+      "nombreMateria":"Matematicas Discretas",
+      "nombreDocente":"Jimenez Murillo Jose Alfredo",
+      "horaEntrada":"15:00",
+      "horaSalida":"16:00",
+      "dia":"Viernes"
+   }
+]

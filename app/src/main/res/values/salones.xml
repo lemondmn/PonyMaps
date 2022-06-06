@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="salonesF">
+        <item>F1</item>
+        <item>F2</item>
+        <item>F3</item>
+        <item>F4</item>
+        <item>F5</item>
+        <item>F6</item>
+    </string-array>
+    <string-array name="salonesK">
+        <item>K1</item>
+        <item>K2</item>
+        <item>K3</item>
+        <item>K4</item>
+        <item>K5</item>
+        <item>K6</item>
+        <item>K7</item>
+        <item>K8</item>
+    </string-array>
+</resources>

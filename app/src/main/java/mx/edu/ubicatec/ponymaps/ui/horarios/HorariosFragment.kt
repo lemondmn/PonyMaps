@@ -1,18 +1,20 @@
 package mx.edu.ubicatec.ponymaps.ui.horarios
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.android.volley.RequestQueue
-import kotlinx.android.synthetic.main.fragment_horarios.view.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentHorariosBinding
-import mx.edu.ubicatec.ponymaps.utils.volleyUtils
-import org.json.JSONObject
+import mx.edu.ubicatec.ponymaps.models.horarios.HorarioAdapter
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import mx.edu.ubicatec.ponymaps.models.horarios.Horario
+import java.io.IOException
 
 class HorariosFragment : Fragment() {
 
@@ -27,50 +29,111 @@ class HorariosFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val horariosViewModel = ViewModelProvider(this).get(HorariosViewModel::class.java)
+        //val horariosViewModel = ViewModelProvider(this).get(HorariosViewModel::class.java)
 
         _binding = FragmentHorariosBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val btninsertar : Button = root.btninsertar
-        val btnconsulta : Button = root.btnconsulta
-        val horaEI : TextView = root.horaEI
-        val horaSI : TextView = root.horaSI
-        val horaEC : TextView = root.horaEC
-        val horaSC : TextView = root.horaSC
-        val idhorario : TextView = root.idhorario
-        val requestqueue : RequestQueue
+        /** Spinners setup */
 
-        btnconsulta.setOnClickListener {
-            try {
-                val id = "${idhorario.text.toString()}"
-                val url = "https://ponymaps.000webhostapp.com/pony/consulta.php?idHorario=${id}" //URL QUE SE ENVIA PARA HACER LA CONSULTA
-                object : volleyUtils(){
-                    override fun formatResponse(response: String) {
-                        response.get(0)
-                        var json : JSONObject
-                        json = JSONObject(response)
-                        var he : String
-                        var hs : String
-                        he = json.getString("horaEntrada") // EN VARIABLE he SE GUARDA LO DATOS DE HORA ENTRADA
-                        hs = json.getString("horaSalida") // EN VARIABLE hs SE GUARDA LO DATOS DE HORA SALIDA
-                        horaEI.text = he //SE MUESTRAN EN PANTALLA
-                        horaSI.text = hs
-                        println(json)
+        setSpinners()
+
+        /** Button on click */
+
+        binding.buttonBuscarHorario.setOnClickListener {
+            val salon = binding.spinnerSalon.selectedItem.toString()
+            val dia = binding.spinnerDia.selectedItem.toString()
+
+            setRecyclerView(salon, dia)
+        }
+
+        /** SETS GPS */
+
+        return root
+    }
+
+    fun setSpinners(){
+
+        val edifs = arrayOf("F", "K")
+        var salones = arrayListOf<String>("")
+        val dias = arrayOf("Lunes", "Martes", "Miércoles", "Jueves", "Viernes")
+
+        val spinnerEdificio: Spinner = binding.spinnerEdificio
+        var spinnerSalon: Spinner = binding.spinnerSalon
+        val spinnerDia: Spinner = binding.spinnerDia
+
+        val ada1 = ArrayAdapter(requireContext(), R.layout.custom_spinner_item, edifs)
+        val ada3 = ArrayAdapter(requireContext(), R.layout.custom_spinner_item, dias)
+
+        ada1.setDropDownViewResource(R.layout.custom_spinner_dropdown)
+        ada3.setDropDownViewResource(R.layout.custom_spinner_dropdown)
+
+        spinnerEdificio.adapter = ada1
+        spinnerDia.adapter = ada3
+
+        spinnerEdificio.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                when (binding.spinnerEdificio.selectedItem.toString()){
+                    "F" -> {
+                        salones = arrayListOf<String>("F1", "F2", "F3", "F4", "F5", "F6")
                     }
-                }.consumeGet(requireContext(), url)
+                    "K" -> {
+                        salones =
+                            arrayListOf<String>("K1", "K2", "K3", "K4", "K5", "K6", "K7", "K8")
+                    }
+                }
+                var ada2 = ArrayAdapter(requireContext(), R.layout.custom_spinner_item, salones)
+                ada2.setDropDownViewResource(R.layout.custom_spinner_dropdown)
+                spinnerSalon.adapter = ada2
             }
-            catch (e: Exception){
-                e.printStackTrace()
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                //spinnerEdificio.setSelection(0)
             }
         }
 
-        /*
-        val textView: TextView = binding.textViewHor
-        horariosViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        } */
-        return root
+    }
+
+    fun setRecyclerView(salon: String, dia: String){
+
+        val x = readJSON()
+        val y = arrayListOf<Horario>()
+
+        for (horario in x){
+            if(horario.nombreSalon == salon && horario.dia == dia){
+                y.add(horario)
+            }
+        }
+
+        val recyclerView = binding.recyclerHorarios
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = HorarioAdapter(y)
+    }
+
+    fun readJSON(): List<Horario> {
+        val jsonFileString = getJSON(requireContext(), "horarios_kf.json")
+        //Log.i("data", jsonFileString!!)
+        val gson = Gson()
+        val listHorario = object : TypeToken<List<Horario>>(){}.type
+        var horarios: List<Horario> = gson.fromJson(jsonFileString, listHorario)
+        //horarios.forEachIndexed { index, horario -> Log.i("data", "> Item $index:\n$horario") }
+        return horarios
+    }
+
+    fun getJSON(context: Context, fileName: String,): String?{
+        val jsonString: String
+        try {
+            jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
+        } catch (ioException: IOException) {
+            ioException.printStackTrace()
+            return null
+        }
+        return jsonString
     }
 
     override fun onDestroyView() {

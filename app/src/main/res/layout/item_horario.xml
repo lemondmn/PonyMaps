@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/shape_roundedcornersrectangle"
+    android:backgroundTint="@color/primaryShade1"
+    android:backgroundTintMode="src_over">
+
+    <TextView
+        android:id="@+id/materiaName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="sans-serif-black"
+        android:text="Materia"
+        android:textColor="@color/secondaryShade3"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/docente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="sans-serif-light"
+        android:text="Docente"
+        android:textSize="20sp"
+        android:textColor="@color/generalText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materiaName" />
+
+    <TextView
+        android:id="@+id/hEntrada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="sans-serif-light"
+        android:text="Hora Entrada"
+        android:textSize="20sp"
+        android:textColor="@color/generalText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/docente" />
+
+    <TextView
+        android:id="@+id/hSalida"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="sans-serif-light"
+        android:text="Hora Salida"
+        android:textSize="20sp"
+        android:textColor="@color/generalText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hEntrada" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hSalida" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

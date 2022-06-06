@@ -9,17 +9,45 @@
     app:layoutDescription="@xml/fragment_map_scene"
     tools:context=".ui.mapa.MapaFragment">
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <TextView
+        android:id="@+id/textView_titleMapa"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:cameraTargetLat="19.722037"
-        app:cameraTargetLng="-101.184835"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_rectangle"
+        android:backgroundTint="@color/backgroundShade2"
+        android:backgroundTintMode="src_over"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:layout_margin="0dp"
+        android:text="Mapa"
+        android:textAlignment="center"
+        android:textColor="@color/primaryShade4"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".ui.mapa.MapaFragment" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/mapContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_titleMapa">
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cameraTargetLat="19.722037"
+            app:cameraTargetLng="-101.184835"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".ui.mapa.MapaFragment" />
+
+    </FrameLayout>
 
     <ImageButton
         android:id="@+id/btnAbrirRuta"
