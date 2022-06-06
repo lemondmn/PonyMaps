@@ -9,13 +9,12 @@ class HorarioViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
     val materia = view.findViewById<TextView>(R.id.materiaName)
     val docente = view.findViewById<TextView>(R.id.docente)
-    val horaEntrada = view.findViewById<TextView>(R.id.hEntrada)
-    val horaSalida = view.findViewById<TextView>(R.id.hSalida)
+    val horaEntradaSalida = view.findViewById<TextView>(R.id.hEntradaSalida)
 
     fun setData(horarioModel: Horario){
+        val horas = horarioModel.horaEntrada + " - " + horarioModel.horaSalida
         materia.text = horarioModel.nombreMateria
         docente.text = horarioModel.nombreDocente
-        horaEntrada.text = horarioModel.horaEntrada
-        horaSalida.text = horarioModel.horaSalida
+        horaEntradaSalida.text = horas
     }
 }

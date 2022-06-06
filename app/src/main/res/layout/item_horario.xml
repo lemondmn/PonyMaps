@@ -37,37 +37,23 @@
         app:layout_constraintTop_toBottomOf="@+id/materiaName" />
 
     <TextView
-        android:id="@+id/hEntrada"
+        android:id="@+id/hEntradaSalida"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="sans-serif-light"
-        android:text="Hora Entrada"
+        android:text="Hora Entrada - Hora Salida"
         android:textSize="20sp"
         android:textColor="@color/generalText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/docente" />
 
-    <TextView
-        android:id="@+id/hSalida"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="sans-serif-light"
-        android:text="Hora Salida"
-        android:textSize="20sp"
-        android:textColor="@color/generalText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hEntrada" />
-
     <Space
         android:layout_width="0dp"
         android:layout_height="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hSalida" />
+        app:layout_constraintTop_toBottomOf="@+id/hEntradaSalida" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
