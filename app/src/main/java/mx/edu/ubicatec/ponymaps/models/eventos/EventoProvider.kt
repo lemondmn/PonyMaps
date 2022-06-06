@@ -5,25 +5,18 @@ class EventoProvider {
         val eventoList = listOf<Evento>(
             Evento(
                 "Null",
-                "Evento 1",
-                "lorem ipsum",
-                "F5",
-                "14 de Marzo",
-                "10:00 - 11:00"
+                "30° Festival Cultural Didáctico",
+                "El Departamento de Actividades Extraescolares y su Oficina de Promoción Cultural, invitan a toda la comunidad tecnológica a ser parte del 30° Festival Cultural Didáctico. ",
+                "Arco Techo",
+                "08 de Junio",
+                "13:00 Hrs"
             ),Evento(
                 "Null",
-                "Evento 2",
-                "lorem ipsum",
-                "F5",
-                "14 de Marzo",
-                "10:00 - 11:00"
-            ),Evento(
-                "Null",
-                "Evento 3",
-                "lorem ipsum",
-                "F5",
-                "14 de Marzo",
-                "10:00 - 11:00"
+                "Coloquio Virtual",
+                "Procesamiento de Lenguaje natural aplicado a la inteligencia Artificial ¿Pueden escribirse frases literarias aunque sean artificiales?",
+                "Zoom | Facebook | YouTube",
+                "03 de Junio",
+                "12:00 Hrs"
             )
         )
     }

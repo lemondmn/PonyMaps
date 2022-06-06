@@ -34,6 +34,8 @@ class HorariosFragment : Fragment() {
         _binding = FragmentHorariosBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        binding.motionBaseHor.transitionToEnd()
+
         /** Spinners setup */
 
         setSpinners()
@@ -45,6 +47,11 @@ class HorariosFragment : Fragment() {
             val dia = binding.spinnerDia.selectedItem.toString()
 
             setRecyclerView(salon, dia)
+            binding.motionBaseHor.transitionToStart()
+        }
+
+        binding.btnAbrirSelectorHorario.setOnClickListener {
+            binding.motionBaseHor.transitionToEnd()
         }
 
         /** SETS GPS */
