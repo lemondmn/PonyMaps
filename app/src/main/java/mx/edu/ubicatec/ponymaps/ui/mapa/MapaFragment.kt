@@ -122,8 +122,11 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         setListeners(layer)
 
         val pointPolygonStyle = layer.defaultPolygonStyle
-        pointPolygonStyle.fillColor = Color.argb(128,0,160,227)
-        pointPolygonStyle.strokeColor = Color.argb(128,0,160,227)
+        pointPolygonStyle.fillColor = Color.argb(128,255, 220, 139)
+        pointPolygonStyle.strokeColor = Color.argb(128,255, 179, 0)
+
+        val multiLineStringStyle = layer.defaultLineStringStyle
+        multiLineStringStyle.color = Color.argb(128,255,255,255)
 
         /** SETS GPS */
         googleMap.setOnMyLocationButtonClickListener(this)
@@ -421,7 +424,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         // Set the color of the linestring to red
         val lineStringStyle = GeoJsonLineStringStyle()
-        lineStringStyle.color = R.color.primaryShade1
+        lineStringStyle.color = Color.argb(255,255,255,255)
 
         // Set the style of the feature
         lineStringFeature.lineStringStyle = lineStringStyle
