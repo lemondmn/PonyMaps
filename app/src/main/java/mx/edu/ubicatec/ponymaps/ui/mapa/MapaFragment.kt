@@ -175,9 +175,11 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
             val origen = spinnerOrigen.selectedItem.toString()
             val destino = spinnerDestino.selectedItem.toString()
 
-            addRoute(origen, destino)
-
-            binding.motionBase.transitionToStart()
+            if (!(origen.equals(destino))){
+                addRoute(origen, destino)
+                binding.motionBase.transitionToStart()
+            }
+            
         }
 
         //Clear route
