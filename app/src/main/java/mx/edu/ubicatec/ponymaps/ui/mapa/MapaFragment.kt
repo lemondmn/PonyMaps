@@ -424,9 +424,10 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         val lineString = GeoJsonLineString(lineStringArray)
         val lineStringFeature = GeoJsonFeature(lineString, null, null, null)
 
-        // Set the color of the linestring to red
+        // Set the color of the linestring
         val lineStringStyle = GeoJsonLineStringStyle()
-        lineStringStyle.color = Color.argb(255,255,255,255)
+        lineStringStyle.color = Color.argb(255,255, 0, 255)
+        lineStringStyle.width = 20f
 
         // Set the style of the feature
         lineStringFeature.lineStringStyle = lineStringStyle

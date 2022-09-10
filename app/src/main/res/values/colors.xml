@@ -30,7 +30,7 @@
 
     <!-- Values -->
 
-    <color name="statusBarColor">@color/RaisinBlack</color>
+    <color name="statusBarColor">@color/backgroundShade1</color>
 
     <color name="backgroundShade1">@color/EerieBlack</color>
     <color name="backgroundShade2">@color/RaisinBlack</color>
@@ -50,6 +50,10 @@
     <color name="secondaryShade3">@color/Jasmine</color>
     <color name="secondaryText">@color/white</color>
     <!-- /Values -->
+
+
+    <!-- Highlight -->
+    <color name="RadioactivePink">#F5038B</color>
 
     <!-- Neutral -->
     <color name="RaisinBlack">#202124</color>

@@ -63,7 +63,7 @@ class HorariosFragment : Fragment() {
 
         val edifs = arrayOf("F", "K")
         var salones = arrayListOf<String>("")
-        val dias = arrayOf("Lunes", "Martes", "Miércoles", "Jueves", "Viernes")
+        val dias = arrayOf("Lunes", "Martes", "Miercoles", "Jueves", "Viernes")
 
         val spinnerEdificio: Spinner = binding.spinnerEdificio
         var spinnerSalon: Spinner = binding.spinnerSalon
