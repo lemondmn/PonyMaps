@@ -9,7 +9,11 @@
         android:id="@+id/na_fragment_eventos"
         android:name="mx.edu.ubicatec.ponymaps.ui.eventos.EventosFragment"
         android:label="@string/Menu2"
-        tools:layout="@layout/fragment_eventos" />
+        tools:layout="@layout/fragment_eventos" >
+        <action
+            android:id="@+id/action_na_fragment_eventos_to_na_fragment_map"
+            app:destination="@id/na_fragment_map" />
+    </fragment>
 
     <fragment
         android:id="@+id/na_fragment_map"

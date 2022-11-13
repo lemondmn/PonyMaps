@@ -48,6 +48,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
+    private lateinit var viewModel: MapaViewModel
 
     // Flag indicating whether a requested permission has been denied after returning in * [.onRequestPermissionsResult].
     private var permissionDenied = false
@@ -152,6 +153,12 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        viewModel = ViewModelProvider(requireActivity()).get(MapaViewModel::class.java)
+
+        viewModel.ubicacion.observe(viewLifecycleOwner, { id ->
+            println("Aqui se imprime el ID: $id")
+        })
 
         //Spinner
         val spinnerOrigen: Spinner = binding.spOrigen
