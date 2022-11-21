@@ -32,23 +32,23 @@
 
     <color name="statusBarColor">@color/backgroundShade1</color>
 
-    <color name="backgroundShade1">@color/EerieBlack</color>
-    <color name="backgroundShade2">@color/RaisinBlack</color>
+    <color name="backgroundShade1">#EEEEEE</color>
+    <color name="backgroundShade2">#AAAAAA</color>
     <color name="transparent">#00000000</color>
 
-    <color name="primaryShade0">@color/DarkSienna</color>
-    <color name="primaryShade1">@color/Wine</color>
-    <color name="primaryShade2">@color/AntiqueRuby</color>
-    <color name="primaryShade3">@color/BrightMaroon</color>
-    <color name="primaryShade4">@color/Popstar</color>
+    <color name="primaryShade0">#000030</color>
+    <color name="primaryShade1">#002F6C</color>
+    <color name="primaryShade2">#0048B4</color>
+    <color name="primaryShade3">#0994D5</color>
+    <color name="primaryShade4">#7CB6DE</color>
 
-    <color name="primaryText">@color/LightCyan</color>
-    <color name="generalText">@color/white</color>
+    <color name="primaryText">#202020</color>
+    <color name="generalText">#000000</color>
 
-    <color name="secondaryShade1">@color/HoneyYellow</color>
-    <color name="secondaryShade2">@color/Amber</color>
-    <color name="secondaryShade3">@color/Jasmine</color>
-    <color name="secondaryText">@color/white</color>
+    <color name="secondaryShade1">@color/Wine</color>
+    <color name="secondaryShade2">@color/AntiqueRuby</color>
+    <color name="secondaryShade3">@color/Popstar</color>
+    <color name="secondaryText">#FFFFFF</color>
     <!-- /Values -->
 
 

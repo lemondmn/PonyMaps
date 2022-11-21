@@ -6,7 +6,7 @@
     android:layout_marginHorizontal="5dp"
     android:layout_marginTop="5dp"
     android:background="@drawable/shape_roundedcornersrectangle"
-    android:backgroundTint="@color/primaryShade1"
+    android:backgroundTint="@color/primaryShade4"
     android:backgroundTintMode="src_over">
 
     <TextView
@@ -16,7 +16,7 @@
         android:autoSizeTextType="uniform"
         android:fontFamily="sans-serif-black"
         android:text="Materia"
-        android:textColor="@color/secondaryShade3"
+        android:textColor="@color/secondaryText"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

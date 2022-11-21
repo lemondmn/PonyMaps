@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:color="@color/BrightMaroon" android:state_checked="false"/>
-    <item android:color="@color/Jasmine" android:state_checked="true"/>
+    <item android:color="@color/primaryShade3" android:state_checked="false"/>
+    <item android:color="@color/primaryShade1" android:state_checked="true"/>
 
 </selector>

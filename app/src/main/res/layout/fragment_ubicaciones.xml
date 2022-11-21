@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundShade2"
+    android:background="@color/backgroundShade1"
     tools:context=".ui.ubicaciones.UbicacionesFragment">
 
     <TextView
@@ -18,7 +18,7 @@
         android:layout_margin="0dp"
         android:text="Ubicaciones"
         android:textAlignment="center"
-        android:textColor="@color/primaryShade4"
+        android:textColor="@color/primaryShade1"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
