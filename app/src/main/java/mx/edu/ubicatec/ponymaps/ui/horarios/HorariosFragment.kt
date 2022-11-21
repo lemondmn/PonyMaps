@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentHorariosBinding
@@ -14,6 +16,7 @@ import mx.edu.ubicatec.ponymaps.models.horarios.HorarioAdapter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import mx.edu.ubicatec.ponymaps.models.horarios.Horario
+import mx.edu.ubicatec.ponymaps.ui.mapa.MapaViewModel
 import java.io.IOException
 
 class HorariosFragment : Fragment() {
@@ -23,6 +26,7 @@ class HorariosFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var mapaViewModel : MapaViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +37,8 @@ class HorariosFragment : Fragment() {
 
         _binding = FragmentHorariosBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        mapaViewModel = ViewModelProvider(requireActivity()).get(MapaViewModel::class.java)
 
         binding.motionBaseHor.transitionToEnd()
 
@@ -119,7 +125,12 @@ class HorariosFragment : Fragment() {
 
         val recyclerView = binding.recyclerHorarios
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = HorarioAdapter(y)
+        recyclerView.adapter = object : HorarioAdapter(y) {
+            override fun sendHorario(salon: String) {
+                mapaViewModel.nombreSalon.postValue(salon)
+                findNavController().navigate(R.id.action_na_fragment_horarios_to_na_fragment_map)
+            }
+        }
     }
 
     fun readJSON(): List<Horario> {

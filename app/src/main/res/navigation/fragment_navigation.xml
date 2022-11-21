@@ -9,7 +9,11 @@
         android:id="@+id/na_fragment_eventos"
         android:name="mx.edu.ubicatec.ponymaps.ui.eventos.EventosFragment"
         android:label="@string/Menu2"
-        tools:layout="@layout/fragment_eventos" />
+        tools:layout="@layout/fragment_eventos" >
+        <action
+            android:id="@+id/action_na_fragment_eventos_to_na_fragment_map"
+            app:destination="@id/na_fragment_map" />
+    </fragment>
 
     <fragment
         android:id="@+id/na_fragment_map"
@@ -21,18 +25,20 @@
         android:id="@+id/na_fragment_ubicaciones"
         android:name="mx.edu.ubicatec.ponymaps.ui.ubicaciones.UbicacionesFragment"
         android:label="@string/Menu4"
-        tools:layout="@layout/fragment_ubicaciones" />
+        tools:layout="@layout/fragment_ubicaciones" >
+        <action
+            android:id="@+id/action_na_fragment_ubicaciones_to_na_fragment_map"
+            app:destination="@id/na_fragment_map" />
+    </fragment>
 
     <fragment
         android:id="@+id/na_fragment_horarios"
         android:name="mx.edu.ubicatec.ponymaps.ui.horarios.HorariosFragment"
         android:label="@string/Menu5"
-        tools:layout="@layout/fragment_horarios" />
+        tools:layout="@layout/fragment_horarios" >
+        <action
+            android:id="@+id/action_na_fragment_horarios_to_na_fragment_map"
+            app:destination="@id/na_fragment_map" />
+    </fragment>
 
-    <!-- Deprecated
-    <fragment
-        android:id="@+id/na_fragment_recordatorios"
-        android:name="mx.edu.ubicatec.ponymaps.ui.recordatorios.RecordatoriosFragment"
-        android:label="@string/Menu1"
-        tools:layout="@layout/fragment_recordatorios" /> -->
 </navigation>
