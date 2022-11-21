@@ -16,7 +16,6 @@ abstract class EventoAdapter(private val eventoList: List<Evento>) : RecyclerVie
 
     override fun onBindViewHolder(holder: EventoViewHolder, position: Int) {
         val item = eventoList[position]
-
         holder.setData(item)
     }
 
@@ -39,13 +38,12 @@ abstract class EventoAdapter(private val eventoList: List<Evento>) : RecyclerVie
             horaEvento.text = eventoModel.horarioEvento
 
             itemView.setOnClickListener {
-                comunicar(eventoModel.eventoID)
+                sendEvento(eventoModel.eventoID)
             }
         }
-
     }
 
-    abstract fun comunicar(id : Int)
+    abstract fun sendEvento(id : Int)
 
 }
 

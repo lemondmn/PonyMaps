@@ -8,10 +8,13 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentUbicacionesBinding
 import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionAdapter
 import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionProvider
+import mx.edu.ubicatec.ponymaps.ui.mapa.MapaViewModel
 
 class UbicacionesFragment : Fragment() {
 
@@ -20,6 +23,7 @@ class UbicacionesFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var mapaViewModel : MapaViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +35,8 @@ class UbicacionesFragment : Fragment() {
         _binding = FragmentUbicacionesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        mapaViewModel = ViewModelProvider(requireActivity()).get(MapaViewModel::class.java)
+
         initRecyclerView()
 
         return root
@@ -39,7 +45,12 @@ class UbicacionesFragment : Fragment() {
     fun initRecyclerView(){
         val recyclerView = binding.recyclerUbicaciones
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = UbicacionAdapter(UbicacionProvider.ubicacionesList)
+        recyclerView.adapter = object : UbicacionAdapter(UbicacionProvider.ubicacionesList) {
+            override fun sendUbicacion(nombre: String) {
+                mapaViewModel.nombreUbicacion.postValue(nombre)
+                findNavController().navigate(R.id.action_na_fragment_ubicaciones_to_na_fragment_map)
+            }
+        }
     }
 
     override fun onDestroyView() {

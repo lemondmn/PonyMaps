@@ -15,7 +15,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -27,16 +26,13 @@ import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import com.google.maps.android.data.LineString
 import com.google.maps.android.data.geojson.*
-import kotlinx.android.synthetic.main.fragment_map.*
-import kotlinx.android.synthetic.main.fragment_map.view.*
 
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentMapBinding
-import mx.edu.ubicatec.ponymaps.models.PermissionUtils
-import mx.edu.ubicatec.ponymaps.models.PermissionUtils.PermissionDeniedDialog.Companion.newInstance
-import mx.edu.ubicatec.ponymaps.models.PermissionUtils.isPermissionGranted
+import mx.edu.ubicatec.ponymaps.utils.PermissionUtils
+import mx.edu.ubicatec.ponymaps.utils.PermissionUtils.PermissionDeniedDialog.Companion.newInstance
+import mx.edu.ubicatec.ponymaps.utils.PermissionUtils.isPermissionGranted
 import mx.edu.ubicatec.ponymaps.models.Edges
 import org.json.JSONException
 import org.json.JSONObject
@@ -48,7 +44,7 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: MapaViewModel
+    private lateinit var mapaViewModel: MapaViewModel
 
     // Flag indicating whether a requested permission has been denied after returning in * [.onRequestPermissionsResult].
     private var permissionDenied = false
@@ -154,11 +150,25 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        viewModel = ViewModelProvider(requireActivity()).get(MapaViewModel::class.java)
+        mapaViewModel = ViewModelProvider(requireActivity()).get(MapaViewModel::class.java)
 
-        viewModel.ubicacion.observe(viewLifecycleOwner, { id ->
-            println("Aqui se imprime el ID: $id")
-        })
+        /**
+         *
+         * Datos que envian los otros fragmentos aqui
+         *
+         */
+
+        mapaViewModel.idEvento.observe(viewLifecycleOwner) { id ->
+            Toast.makeText(requireContext(), "ID: $id", Toast.LENGTH_LONG).show()
+        }
+
+        mapaViewModel.nombreSalon.observe(viewLifecycleOwner) { nombre ->
+            Toast.makeText(requireContext(), "NombreSalon: $nombre", Toast.LENGTH_LONG).show()
+        }
+
+        mapaViewModel.nombreUbicacion.observe(viewLifecycleOwner) { nombre ->
+            Toast.makeText(requireContext(), "NombreUbicacion: $nombre", Toast.LENGTH_LONG).show()
+        }
 
         //Spinner
         val spinnerOrigen: Spinner = binding.spOrigen

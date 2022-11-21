@@ -4,5 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MapaViewModel : ViewModel (){
-    val ubicacion = MutableLiveData<Int>()
+    val idEvento = MutableLiveData<Int>()
+    val nombreUbicacion = MutableLiveData<String>()
+    val nombreSalon = MutableLiveData<String>()
 }
