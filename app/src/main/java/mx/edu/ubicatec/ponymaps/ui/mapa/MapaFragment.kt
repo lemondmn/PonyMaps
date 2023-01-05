@@ -1,14 +1,14 @@
 package mx.edu.ubicatec.ponymaps.ui.mapa
 
+import android.app.PendingIntent
 import android.content.Context
-
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-
+import android.location.Location
 import android.os.Bundle
-
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,9 +21,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.mapbox.android.core.location.*
 import com.mapbox.android.gestures.MoveGestureDetector
-import com.mapbox.maps.*
-import com.mapbox.maps.plugin.gestures.gestures
 import com.mapbox.api.directions.v5.DirectionsCriteria
 import com.mapbox.api.directions.v5.MapboxDirections
 import com.mapbox.api.directions.v5.models.DirectionsResponse
@@ -46,7 +47,6 @@ import com.mapbox.maps.plugin.LocationPuck2D
 import com.mapbox.maps.plugin.annotation.annotations
 import com.mapbox.maps.plugin.annotation.generated.OnPointAnnotationClickListener
 import com.mapbox.maps.plugin.annotation.generated.OnPointAnnotationLongClickListener
-import com.mapbox.maps.plugin.annotation.generated.PointAnnotation
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions
 import com.mapbox.maps.plugin.annotation.generated.createPointAnnotationManager
 import com.mapbox.maps.plugin.gestures.OnMoveListener
@@ -54,21 +54,17 @@ import com.mapbox.maps.plugin.gestures.gestures
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorBearingChangedListener
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListener
 import com.mapbox.maps.plugin.locationcomponent.location
+import mx.edu.ubicatec.ponymaps.R
+import mx.edu.ubicatec.ponymaps.databinding.FragmentMapBinding
+import mx.edu.ubicatec.ponymaps.utils.LocationPermissionHelper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.lang.ref.WeakReference
 
-import mx.edu.ubicatec.ponymaps.databinding.FragmentMapBinding
-
-import mx.edu.ubicatec.ponymaps.R
-import mx.edu.ubicatec.ponymaps.utils.LocationPermissionHelper
-import java.io.IOException
-import java.nio.charset.Charset
-
 var mapView: MapView? = null
 
-class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallback {
+class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCallback, LocationEngine {
 
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
@@ -81,6 +77,8 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
 
     private lateinit var mapboxMap: MapboxMap
     private lateinit var locationPermissionHelper: LocationPermissionHelper
+
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     private val onIndicatorBearingChangedListener = OnIndicatorBearingChangedListener {
         //mapView!!.getMapboxMap().setCamera(CameraOptions.Builder().bearing(it).build())
@@ -129,7 +127,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
                 CoordinateBounds(
                     Point.fromLngLat(-101.187720, 19.719593),// SW bounds
                     Point.fromLngLat(-101.182758, 19.724298),// NE bounds
-                    false
+                    true
                 )
             )
             .minZoom(8.0)
@@ -156,6 +154,8 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         val root: View = binding.root
 
         mapaViewModel = ViewModelProvider(requireActivity())[MapaViewModel::class.java]
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(thiscontext)
 
         /**
          *
@@ -240,18 +240,18 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
 
         mapView!!.getMapboxMap().loadStyle(
             (
-                    style("mapbox://styles/angels0107/clc5cffbm003r14ms47qqfzoi") {
-                        +geoJsonSource(ROUTE_LINE_SOURCE_ID) {
+                style("mapbox://styles/angels0107/clc5cffbm003r14ms47qqfzoi") {
+                    +geoJsonSource(ROUTE_LINE_SOURCE_ID) {
 
-                        }
-                        +lineLayer(ROUTE_LAYER_ID, ROUTE_LINE_SOURCE_ID) {
-                            lineColor(ContextCompat.getColor(thiscontext, R.color.purple_500))
-                            lineCap(LineCap.ROUND)
-                            lineJoin(LineJoin.ROUND)
-                            lineWidth(5.0)
-                        }
                     }
-                    )
+                    +lineLayer(ROUTE_LAYER_ID, ROUTE_LINE_SOURCE_ID) {
+                        lineColor(ContextCompat.getColor(thiscontext, R.color.purple_500))
+                        lineCap(LineCap.ROUND)
+                        lineJoin(LineJoin.ROUND)
+                        lineWidth(5.0)
+                    }
+                }
+            )
         )
 
 
@@ -301,11 +301,11 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
                     zoom()
                     stop {
                         literal(0.0)
-                        literal(0.2)
+                        literal(0.025)
                     }
                     stop {
                         literal(20.0)
-                        literal(0.2)
+                        literal(0.025)
                     }
                 }.toJson()
             )
@@ -429,6 +429,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
             //Click Listeners
             pointAnnotationManager?.addClickListener(OnPointAnnotationClickListener {
                 Toast.makeText(thiscontext, "Marker clicked", Toast.LENGTH_SHORT).show()
+                currentLocation()
                 true
             })
             pointAnnotationManager?.addLongClickListener( OnPointAnnotationLongClickListener {
@@ -471,6 +472,17 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         }
     }
 
+    private fun currentLocation() {
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location : Location? ->
+                var lat = location?.latitude
+                var lon = location?.longitude
+                if (lat != null && lon != null){
+                    Toast.makeText(thiscontext, "Current location: $lat , $lon", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
     /**
      *
      * APP STATES
@@ -509,6 +521,32 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         locationPermissionHelper.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
+    override fun getLastLocation(callback: LocationEngineCallback<LocationEngineResult>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun requestLocationUpdates(
+        request: LocationEngineRequest,
+        callback: LocationEngineCallback<LocationEngineResult>,
+        looper: Looper?
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun requestLocationUpdates(
+        request: LocationEngineRequest,
+        pendingIntent: PendingIntent?
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun removeLocationUpdates(callback: LocationEngineCallback<LocationEngineResult>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun removeLocationUpdates(pendingIntent: PendingIntent?) {
+        TODO("Not yet implemented")
+    }
 
 
 }
