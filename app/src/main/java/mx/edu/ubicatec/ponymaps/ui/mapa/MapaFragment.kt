@@ -20,7 +20,10 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.mapbox.android.core.location.*
@@ -54,6 +57,8 @@ import com.mapbox.maps.plugin.gestures.gestures
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorBearingChangedListener
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListener
 import com.mapbox.maps.plugin.locationcomponent.location
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentMapBinding
 import mx.edu.ubicatec.ponymaps.utils.LocationPermissionHelper
@@ -101,6 +106,9 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
         override fun onMoveEnd(detector: MoveGestureDetector) {}
     }
 
+    private val routeDisplay = false
+    private var currentPoint: Point? = null
+
     /**
      *
      * MAPBOX VALUES
@@ -111,28 +119,16 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
         private const val ROUTE_LAYER_ID = "route-layer-id"
         private const val ROUTE_LINE_SOURCE_ID = "route-source-id"
 
-        private const val ZOOM_DELTA = 2.0f
-        private const val DEFAULT_MIN_ZOOM = 17.0f
-        private const val DEFAULT_MAX_ZOOM = 22.0f
-        /*
-        private val ITM = LatLngBounds(
-            LatLng(19.719593, -101.187720), // SW bounds
-            LatLng(19.724298, -101.182758) // NE bounds
-        )
-        private val ITM_CAMERA = CameraPosition.Builder()
-            .target(LatLng(19.722037, -101.184835)).zoom(15.0f).bearing(0f).tilt(0f).build()*/
-
         private val ITM_BOUND: CameraBoundsOptions = CameraBoundsOptions.Builder()
             .bounds(
                 CoordinateBounds(
-                    Point.fromLngLat(-101.187720, 19.719593),// SW bounds
-                    Point.fromLngLat(-101.182758, 19.724298),// NE bounds
-                    true
+                    Point.fromLngLat( -101.189156, 19.727334),// SW bounds
+                    Point.fromLngLat( -101.181442, 19.716585),// NE bounds
+                    false
                 )
             )
-            .minZoom(8.0)
+            .minZoom(2.0)
             .build()
-
     }
 
     /**
@@ -175,6 +171,7 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
             Toast.makeText(requireContext(), "NombreUbicacion: $nombre", Toast.LENGTH_LONG).show()
         }
 
+
         //Spinner
         val spinnerOrigen: Spinner = binding.spOrigen
         val spinnerDestino: Spinner = binding.spDestino
@@ -215,7 +212,7 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
                 getRoute(ori, dest)
             }
 
-            
+
         }
 
         //Clear route
@@ -223,6 +220,7 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
             //clearRoute()
             binding.motionBase.transitionToStart()
         }
+        getCurrentLocation()
 
         return root
     }
@@ -236,26 +234,24 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
 
         mapboxMap = binding.mapView.getMapboxMap()
 
-        setupBounds(ITM_BOUND)
-
         mapView!!.getMapboxMap().loadStyle(
             (
-                style("mapbox://styles/angels0107/clc5cffbm003r14ms47qqfzoi") {
-                    +geoJsonSource(ROUTE_LINE_SOURCE_ID) {
+                    style("mapbox://styles/angels0107/clc5cffbm003r14ms47qqfzoi") {
+                        +geoJsonSource(ROUTE_LINE_SOURCE_ID) {
 
+                        }
+                        +lineLayer(ROUTE_LAYER_ID, ROUTE_LINE_SOURCE_ID) {
+                            lineColor(ContextCompat.getColor(thiscontext, R.color.purple_500))
+                            lineCap(LineCap.ROUND)
+                            lineJoin(LineJoin.ROUND)
+                            lineWidth(5.0)
+                        }
                     }
-                    +lineLayer(ROUTE_LAYER_ID, ROUTE_LINE_SOURCE_ID) {
-                        lineColor(ContextCompat.getColor(thiscontext, R.color.purple_500))
-                        lineCap(LineCap.ROUND)
-                        lineJoin(LineJoin.ROUND)
-                        lineWidth(5.0)
-                    }
-                }
-            )
+                    )
         )
 
-
-        addAnnotationToMap()
+        startUpdates()
+        addAnnotationToMap(Point.fromLngLat(-101.184121, 19.723182))
 
         locationPermissionHelper = LocationPermissionHelper(WeakReference(activity))
         locationPermissionHelper.checkPermissions {
@@ -270,13 +266,17 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
      */
 
     private fun onMapReady() {
-        mapView!!.getMapboxMap().setCamera(
-            CameraOptions.Builder()
-                .zoom(14.0)
-                .build()
-        )
+
         initLocationComponent()
         setupGesturesListener()
+        setupBounds(ITM_BOUND)
+        mapView!!.getMapboxMap().setCamera(
+            CameraOptions.Builder()
+                .center(Point.fromLngLat( -101.18544, 19.72176),)
+                .zoom(15.0)
+                .build()
+        )
+
     }
     private fun setupGesturesListener() {
         mapView!!.gestures.addOnMoveListener(onMoveListener)
@@ -310,11 +310,11 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
                 }.toJson()
             )
         }
-       locationComponentPlugin.addOnIndicatorPositionChangedListener(onIndicatorPositionChangedListener)
+        locationComponentPlugin.addOnIndicatorPositionChangedListener(onIndicatorPositionChangedListener)
         locationComponentPlugin.addOnIndicatorBearingChangedListener(onIndicatorBearingChangedListener)
     }
     private fun onCameraTrackingDismissed() {
-        Toast.makeText(thiscontext, "onCameraTrackingDismissed", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(thiscontext, "onCameraTrackingDismissed", Toast.LENGTH_SHORT).show()
         mapView!!.location
             .removeOnIndicatorPositionChangedListener(onIndicatorPositionChangedListener)
         mapView!!.location
@@ -367,6 +367,9 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
                     return
                 }
                 val currentRoute = response.body()!!.routes()[0]
+                println(currentRoute)
+                println("Fuuuuuuuuuck")
+
                 drawNavigationPolylineRoute(currentRoute)
             }
 
@@ -418,7 +421,7 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
             ).show()
         }
     }
-    private fun addAnnotationToMap() {
+    private fun addAnnotationToMap(point: Point) {
         // Create an instance of the Annotation API and get the PointAnnotationManager.
         bitmapFromDrawableRes(
             thiscontext,
@@ -429,7 +432,7 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
             //Click Listeners
             pointAnnotationManager?.addClickListener(OnPointAnnotationClickListener {
                 Toast.makeText(thiscontext, "Marker clicked", Toast.LENGTH_SHORT).show()
-                currentLocation()
+
                 true
             })
             pointAnnotationManager?.addLongClickListener( OnPointAnnotationLongClickListener {
@@ -439,13 +442,15 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
             // Set options for the resulting symbol layer.
             val pointAnnotationOptions: PointAnnotationOptions = PointAnnotationOptions()
                 // Define a geographic coordinate.
-                .withPoint(Point.fromLngLat(-101.184121, 19.723182))
+                .withPoint(point)
                 // Specify the bitmap you assigned to the point annotation
                 // The bitmap will be added to map style automatically.
                 .withIconImage(it)
 
             // Add the resulting pointAnnotation to the map.
             pointAnnotationManager?.create(pointAnnotationOptions)
+
+
         }
     }
     private fun bitmapFromDrawableRes(context: Context, @DrawableRes resourceId: Int) =
@@ -472,17 +477,37 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
         }
     }
 
-    private fun currentLocation() {
+    private fun getCurrentLocation() {
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location : Location? ->
                 var lat = location?.latitude
                 var lon = location?.longitude
+                currentPoint = Point.fromLngLat(lon!!, lat!!)
                 if (lat != null && lon != null){
-                    Toast.makeText(thiscontext, "Current location: $lat , $lon", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(thiscontext, "Current location: $lat , $lon", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(thiscontext, "Current location: $currentPoint , $lon", Toast.LENGTH_SHORT).show()
                 }
             }
     }
 
+    private fun startUpdates() {
+
+        val lifecycle = viewLifecycleOwner // in Fragment
+
+        lifecycle.lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                // this block is automatically executed when moving into
+                // the started state, and cancelled when stopping.
+                while (routeDisplay) {
+                    getCurrentLocation()
+                    val dest: Point = Point.fromLngLat(-101.23712022352315,19.695377903734485)
+                    if(currentPoint != null)
+                    //getRoute(currentPoint!!,dest)
+                        delay(3 * 1000)
+                }
+            }
+        }
+    }
     /**
      *
      * APP STATES
