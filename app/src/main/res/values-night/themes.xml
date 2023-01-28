@@ -31,7 +31,7 @@
 
         <!-- Status bar color. -->
 
-        <item name="android:statusBarColor" tools:targetApi="32">@color/primaryShade1</item>
+        <item name="android:statusBarColor">@color/md_theme_dark_background</item>
 
         <!-- Customize your theme here. -->
 

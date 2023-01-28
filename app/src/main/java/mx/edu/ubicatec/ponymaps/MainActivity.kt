@@ -18,10 +18,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //Status Bar Color
-        val win: Window = this@MainActivity.window
-        win.statusBarColor = ContextCompat.getColor(this@MainActivity, R.color.statusBarColor)
-
         //Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
