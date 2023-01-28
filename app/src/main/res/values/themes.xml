@@ -43,4 +43,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.PonyMaps.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.PonyMaps.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
