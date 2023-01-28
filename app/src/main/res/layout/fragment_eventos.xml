@@ -4,21 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.eventos.EventosFragment"
-    android:background="@color/backgroundShade2">
+    tools:context=".ui.eventos.EventosFragment">
 
     <TextView
         android:id="@+id/textView_titleEventos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_rectangle"
-        android:backgroundTint="@color/backgroundShade1"
-        android:backgroundTintMode="src_over"
         android:fontFamily="sans-serif-condensed-medium"
         android:layout_margin="0dp"
         android:text="Eventos"
         android:textAlignment="center"
-        android:textColor="@color/primaryShade4"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
