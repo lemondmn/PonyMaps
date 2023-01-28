@@ -40,27 +40,45 @@ class HorariosFragment : Fragment() {
 
         mapaViewModel = ViewModelProvider(requireActivity()).get(MapaViewModel::class.java)
 
-        binding.motionBaseHor.transitionToEnd()
-
         /** Spinners setup */
 
         setSpinners()
 
         /** Button on click */
 
-        binding.buttonBuscarHorario.setOnClickListener {
+        binding.btnDiaL.setOnClickListener {
             val salon = binding.spinnerSalon.selectedItem.toString()
-            val dia = binding.spinnerDia.selectedItem.toString()
 
-            setRecyclerView(salon, dia)
-            binding.motionBaseHor.transitionToStart()
+            setRecyclerView(salon, "Lunes")
         }
 
-        binding.btnAbrirSelectorHorario.setOnClickListener {
-            binding.motionBaseHor.transitionToEnd()
+        binding.btnDiaM.setOnClickListener {
+            val salon = binding.spinnerSalon.selectedItem.toString()
+
+            setRecyclerView(salon, "Martes")
         }
 
-        /** SETS GPS */
+        binding.btnDiaX.setOnClickListener {
+            val salon = binding.spinnerSalon.selectedItem.toString()
+
+            setRecyclerView(salon, "Miercoles")
+        }
+
+        binding.btnDiaJ.setOnClickListener {
+            val salon = binding.spinnerSalon.selectedItem.toString()
+
+            setRecyclerView(salon, "Jueves")
+        }
+
+        binding.btnDiaV.setOnClickListener {
+            val salon = binding.spinnerSalon.selectedItem.toString()
+
+            setRecyclerView(salon, "Viernes")
+        }
+
+        binding.btnDiaS.setOnClickListener {
+            Toast.makeText(requireContext(), "No hay materias en sabado", Toast.LENGTH_LONG).show()
+        }
 
         return root
     }
@@ -69,20 +87,15 @@ class HorariosFragment : Fragment() {
 
         val edifs = arrayOf("F", "K")
         var salones = arrayListOf<String>("")
-        val dias = arrayOf("Lunes", "Martes", "Miercoles", "Jueves", "Viernes")
 
         val spinnerEdificio: Spinner = binding.spinnerEdificio
-        var spinnerSalon: Spinner = binding.spinnerSalon
-        val spinnerDia: Spinner = binding.spinnerDia
+        val spinnerSalon: Spinner = binding.spinnerSalon
 
         val ada1 = ArrayAdapter(requireContext(), R.layout.custom_spinner_item, edifs)
-        val ada3 = ArrayAdapter(requireContext(), R.layout.custom_spinner_item, dias)
 
         ada1.setDropDownViewResource(R.layout.custom_spinner_dropdown)
-        ada3.setDropDownViewResource(R.layout.custom_spinner_dropdown)
 
         spinnerEdificio.adapter = ada1
-        spinnerDia.adapter = ada3
 
         spinnerEdificio.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
@@ -100,7 +113,7 @@ class HorariosFragment : Fragment() {
                             arrayListOf<String>("K1", "K2", "K3", "K4", "K5", "K6", "K7", "K8")
                     }
                 }
-                var ada2 = ArrayAdapter(requireContext(), R.layout.custom_spinner_item, salones)
+                val ada2 = ArrayAdapter(requireContext(), R.layout.custom_spinner_item, salones)
                 ada2.setDropDownViewResource(R.layout.custom_spinner_dropdown)
                 spinnerSalon.adapter = ada2
             }
@@ -123,7 +136,7 @@ class HorariosFragment : Fragment() {
             }
         }
 
-        val recyclerView = binding.recyclerHorarios
+        val recyclerView = binding.recyclerViewHorarios
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = object : HorarioAdapter(y) {
             override fun sendHorario(salon: String) {
