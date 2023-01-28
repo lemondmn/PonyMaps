@@ -8,28 +8,14 @@
     app:layoutDescription="@xml/fragment_map_scene"
     tools:context=".ui.mapa.MapaFragment">
 
-    <TextView
-        android:id="@+id/textView_titleMapa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_rectangle"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:layout_margin="0dp"
-        android:text="Mapa"
-        android:textAlignment="center"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <FrameLayout
         android:id="@+id/mapContainer"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_titleMapa">
+        app:layout_constraintTop_toBottomOf="parent">
 
         <fragment
             android:id="@+id/map"
