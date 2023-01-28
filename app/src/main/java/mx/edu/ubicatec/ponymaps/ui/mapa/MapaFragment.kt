@@ -263,7 +263,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
 
                         }
                         +lineLayer(ROUTE_LAYER_ID, ROUTE_LINE_SOURCE_ID) {
-                            lineColor(ContextCompat.getColor(thiscontext, R.color.purple_500))
+                            lineColor(ContextCompat.getColor(thiscontext, R.color.md_theme_light_primary))
                             lineCap(LineCap.ROUND)
                             lineJoin(LineJoin.ROUND)
                             lineWidth(5.0)
