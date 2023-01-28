@@ -1,7 +1,7 @@
 package mx.edu.ubicatec.ponymaps.utils
 
 import android.content.res.Resources
-import mx.edu.ubicatec.ponymaps.R
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
@@ -11,7 +11,7 @@ class JsonParser(var resources: Resources) {
 
     private fun getJSONFromAssets(file: Int): String? {
         //var file = R.raw.distances
-        var json: String? = null
+        var json: String?
         val charset: Charset = Charsets.UTF_8
         try {
 
@@ -25,16 +25,17 @@ class JsonParser(var resources: Resources) {
             ex.printStackTrace()
             return null
         }
+        println("joooooooooo")
+        println(json)
         return json
     }
 
-    private fun getJSONObject(file: Int) {
+    fun getJSONObject(file: Int): JSONObject? {
 
         try {
             // As we have JSON object, so we are getting the object
             //Here we are calling a Method which is returning the JSON object
 
-           var obj = JSONObject(getJSONFromAssets(file))
             /*
             // fetch JSONArray named edges by using getJSONArray
             val usersArray = obj.getJSONArray("edges")
@@ -54,10 +55,40 @@ class JsonParser(var resources: Resources) {
                 edges.add(edg)
             }
             */
+            val obj = JSONObject(getJSONFromAssets(file)!!)
+            return obj
 
         } catch (e: JSONException) {
             //exception
             e.printStackTrace()
+            return null
+        }
+
+    }
+
+    fun getJSONArray(obj: JSONObject, str : String): JSONArray? {
+
+        try {
+            val array = obj.getJSONArray(str)
+            return array
+
+        } catch (e: JSONException) {
+            //exception
+            e.printStackTrace()
+            return null
+        }
+
+    }
+
+    fun getJSONArray(file: Int): JSONArray? {
+        try {
+            val array = JSONArray(getJSONFromAssets(file)!!)
+            return array
+
+        } catch (e: JSONException) {
+            //exception
+            e.printStackTrace()
+            return null
         }
 
     }

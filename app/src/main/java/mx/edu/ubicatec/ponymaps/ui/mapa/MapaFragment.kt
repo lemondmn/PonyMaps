@@ -26,7 +26,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.mapbox.android.core.location.*
+import com.mapbox.android.core.location.LocationEngine
+import com.mapbox.android.core.location.LocationEngineCallback
+import com.mapbox.android.core.location.LocationEngineRequest
+import com.mapbox.android.core.location.LocationEngineResult
 import com.mapbox.android.gestures.MoveGestureDetector
 import com.mapbox.api.directions.v5.DirectionsCriteria
 import com.mapbox.api.directions.v5.MapboxDirections
@@ -47,11 +50,9 @@ import com.mapbox.maps.extension.style.sources.generated.geoJsonSource
 import com.mapbox.maps.extension.style.sources.getSourceAs
 import com.mapbox.maps.extension.style.style
 import com.mapbox.maps.plugin.LocationPuck2D
+import com.mapbox.maps.plugin.annotation.AnnotationPlugin
 import com.mapbox.maps.plugin.annotation.annotations
-import com.mapbox.maps.plugin.annotation.generated.OnPointAnnotationClickListener
-import com.mapbox.maps.plugin.annotation.generated.OnPointAnnotationLongClickListener
-import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions
-import com.mapbox.maps.plugin.annotation.generated.createPointAnnotationManager
+import com.mapbox.maps.plugin.annotation.generated.*
 import com.mapbox.maps.plugin.gestures.OnMoveListener
 import com.mapbox.maps.plugin.gestures.gestures
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorBearingChangedListener
@@ -61,6 +62,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentMapBinding
+import mx.edu.ubicatec.ponymaps.models.ubicacion.Nodo
+import mx.edu.ubicatec.ponymaps.utils.JsonParser
 import mx.edu.ubicatec.ponymaps.utils.LocationPermissionHelper
 import retrofit2.Call
 import retrofit2.Callback
@@ -69,7 +72,8 @@ import java.lang.ref.WeakReference
 
 var mapView: MapView? = null
 
-class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCallback, LocationEngine {
+@Suppress("SAFE_CALL_WILL_CHANGE_NULLABILITY")
+class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallback, LocationEngine {
 
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
@@ -108,6 +112,12 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
 
     private val routeDisplay = false
     private var currentPoint: Point? = null
+
+    private var places : HashMap<String, Nodo> = HashMap()
+    val items: List<String> = ArrayList()
+
+    private lateinit var  annotationApi : AnnotationPlugin
+    private lateinit var pointAnnotationManager : PointAnnotationManager
 
     /**
      *
@@ -176,6 +186,7 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
         val spinnerOrigen: Spinner = binding.spOrigen
         val spinnerDestino: Spinner = binding.spDestino
 
+
         ArrayAdapter.createFromResource(
             requireContext(),
             R.array.ubicaciones,
@@ -185,6 +196,13 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
             spinnerOrigen.adapter = adapter
             spinnerDestino.adapter = adapter
         }
+        /*
+        var languages = arrayOf("English", "French", "Spanish", "Hindi", "Russian", "Telugu", "Chinese", "German", "Portuguese", "Arabic", "Dutch", "Urdu", "Italian", "Tamil", "Persian", "Turkish", "Other")
+        ArrayAdapter(requireContext(), R.layout.custom_spinner_item, languages).also { adapter ->
+            adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown)
+            spinnerOrigen.adapter = adapter
+            spinnerDestino.adapter = adapter
+        }*/
 
         //On click Actions
 
@@ -196,11 +214,16 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
             val destino = spinnerDestino.selectedItem.toString()
 
 
-            if (!(origen.equals(destino))){
+            if (origen != destino){
                 //addRoute(origen, destino)
                 binding.motionBase.transitionToStart()
             }
 
+            val ori = places[origen]
+            val dest = places[destino]
+
+            getRoute(Point.fromLngLat(ori!!.lng,ori.lat),Point.fromLngLat(dest!!.lng, dest.lat))
+            /*
             if (origen == "AG" && destino == "S"){
                 val ori: Point = Point.fromLngLat(-101.184121, 19.723182)
                 val dest: Point = Point.fromLngLat(-101.186971,19.721577)
@@ -210,8 +233,7 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
                 val ori: Point = Point.fromLngLat(-101.185809,19.722984)
                 val dest: Point = Point.fromLngLat(-101.185283,19.722697)
                 getRoute(ori, dest)
-            }
-
+            }*/
 
         }
 
@@ -251,12 +273,16 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
         )
 
         startUpdates()
-        addAnnotationToMap(Point.fromLngLat(-101.184121, 19.723182))
+        /*/var a = places[""]
+        a?.isDraggable = true*/
 
         locationPermissionHelper = LocationPermissionHelper(WeakReference(activity))
         locationPermissionHelper.checkPermissions {
             onMapReady()
         }
+
+
+
     }
 
     /**
@@ -267,15 +293,43 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
 
     private fun onMapReady() {
 
+        annotationApi = mapView?.annotations!!
+        pointAnnotationManager = annotationApi.createPointAnnotationManager()
+
         initLocationComponent()
         setupGesturesListener()
         setupBounds(ITM_BOUND)
+
         mapView!!.getMapboxMap().setCamera(
             CameraOptions.Builder()
-                .center(Point.fromLngLat( -101.18544, 19.72176),)
+                .center(Point.fromLngLat( -101.18544, 19.72176))
                 .zoom(15.0)
                 .build()
         )
+        setLocations()
+
+        //Click Listeners
+
+        /*
+        pointAnnotationManager.apply {
+            this!!.addClickListener(
+                OnPointAnnotationClickListener { it1 ->
+                    Toast.makeText(thiscontext, "id: ${it1.id}", Toast.LENGTH_LONG).show()
+                    false
+                }
+            )
+        }*/
+
+        pointAnnotationManager.addClickListener(OnPointAnnotationClickListener {
+            Toast.makeText(thiscontext, "Marker clicked, ID: ${it.id}, ID:${it.textField}", Toast.LENGTH_SHORT).show()
+
+            false
+        })
+
+        pointAnnotationManager.addLongClickListener( OnPointAnnotationLongClickListener {
+            Toast.makeText(thiscontext, "Marker Long clicked", Toast.LENGTH_SHORT).show()
+            false
+        })
 
     }
     private fun setupGesturesListener() {
@@ -421,24 +475,18 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
             ).show()
         }
     }
-    private fun addAnnotationToMap(point: Point) {
+    private fun addAnnotationToMap(point: Point, nodo: String) {
         // Create an instance of the Annotation API and get the PointAnnotationManager.
         bitmapFromDrawableRes(
             thiscontext,
             R.drawable.red_marker
-        )?.let {
-            val annotationApi = mapView?.annotations
-            val pointAnnotationManager = annotationApi?.createPointAnnotationManager(mapView!!)
-            //Click Listeners
-            pointAnnotationManager?.addClickListener(OnPointAnnotationClickListener {
-                Toast.makeText(thiscontext, "Marker clicked", Toast.LENGTH_SHORT).show()
 
-                true
-            })
-            pointAnnotationManager?.addLongClickListener( OnPointAnnotationLongClickListener {
-                Toast.makeText(thiscontext, "Marker Long clicked", Toast.LENGTH_SHORT).show()
-                true
-            })
+        )?.let {
+            /*
+            val annotationApi = mapView?.annotations
+            val pointAnnotationManager = annotationApi?.createPointAnnotationManager()
+            */
+
             // Set options for the resulting symbol layer.
             val pointAnnotationOptions: PointAnnotationOptions = PointAnnotationOptions()
                 // Define a geographic coordinate.
@@ -446,11 +494,16 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
                 // Specify the bitmap you assigned to the point annotation
                 // The bitmap will be added to map style automatically.
                 .withIconImage(it)
+                .withIconSize(0.5)
+                .withTextField(nodo)
+                .withTextSize(0.0)
 
             // Add the resulting pointAnnotation to the map.
-            pointAnnotationManager?.create(pointAnnotationOptions)
+            var pointAnnotation = pointAnnotationManager.create(pointAnnotationOptions)
+            places[nodo]!!.id = pointAnnotation.id
 
-
+            /*var last = pointAnnotationManager?.annotations!!.last()
+            places.put("",last)*/
         }
     }
     private fun bitmapFromDrawableRes(context: Context, @DrawableRes resourceId: Int) =
@@ -480,8 +533,8 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
     private fun getCurrentLocation() {
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location : Location? ->
-                var lat = location?.latitude
-                var lon = location?.longitude
+                val lat = location?.latitude
+                val lon = location?.longitude
                 currentPoint = Point.fromLngLat(lon!!, lat!!)
                 if (lat != null && lon != null){
                     //Toast.makeText(thiscontext, "Current location: $lat , $lon", Toast.LENGTH_SHORT).show()
@@ -507,6 +560,44 @@ class MapaFragment() : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
                 }
             }
         }
+    }
+
+    private fun setLocations(){
+        /**
+        NEEDS TO GET THE JSON FROM DB
+        */
+
+        val jsonParser = JsonParser(resources)
+        val jsonArr = jsonParser.getJSONArray(R.raw.places)
+
+        println("JSONNNNNNN")
+        println(jsonArr)
+
+        for (i in 0 until jsonArr!!.length()) {
+
+            // Create a JSONObject for fetching single User's Data
+            val place = jsonArr.getJSONObject(i)
+            // Fetch id store it in variable
+            val name = place.getString("Nombre")
+            val desc = place.getString("Descripcion")
+            val lat = place.getString("Lat").toDouble()
+            val lng = place.getString("Lng").toDouble()
+            val id = i.toLong()
+
+            val obj = Nodo(name,desc,lat,lng,null)
+            places[name] = obj
+
+            // Now add all the variables to the data model class and the data model class to the array list.
+            addAnnotationToMap(Point.fromLngLat(lng, lat), name)
+
+        }
+        /*
+        println("IDSSSSSSSSSSSSSSSSSSS")
+        for (place in places){
+            val a = place.value
+            println(a.id)
+        }*/
+
     }
     /**
      *

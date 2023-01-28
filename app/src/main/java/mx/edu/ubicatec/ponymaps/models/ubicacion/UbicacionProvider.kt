@@ -1,6 +1,9 @@
 package mx.edu.ubicatec.ponymaps.models.ubicacion
 
+
 class UbicacionProvider {
+
+
     companion object {
         val ubicacionesList = listOf<Ubicacion>(
             Ubicacion("A", "Edificio Administrativo"),
