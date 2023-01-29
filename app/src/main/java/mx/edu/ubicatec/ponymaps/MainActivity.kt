@@ -13,12 +13,15 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import mx.edu.ubicatec.ponymaps.databinding.ActivityMainBinding
+import mx.edu.ubicatec.ponymaps.models.Classes.DataCard
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+
+    var searchData = ArrayList<DataCard>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         //ActionBar Declaration
         setSupportActionBar(binding.toolbar)
+        this.supportActionBar?.hide()
 
         //NavView
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
