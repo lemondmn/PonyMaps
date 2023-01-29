@@ -4,7 +4,11 @@ plugins {
     id 'kotlin-android-extensions'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id 'androidx.navigation.safeargs'
+    //Uzi Implement
+    id 'org.jetbrains.kotlin.kapt'
 }
+
+apply plugin: "realm-android"
 
 android {
     compileSdk 33
@@ -39,6 +43,11 @@ android {
     buildFeatures {
         dataBinding = true
     }
+
+    //Uzi Implement
+    realm {
+        syncEnabled = true
+    }
 }
 
 dependencies {
@@ -67,4 +76,9 @@ dependencies {
     implementation("com.google.android.gms:play-services-location:21.0.1")
 
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+
+    //Uzi Implement
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
 }
