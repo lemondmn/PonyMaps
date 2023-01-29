@@ -5,7 +5,11 @@ import android.util.Log
 import android.view.Window
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
+import androidx.core.view.get
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.findFragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -21,6 +25,7 @@ import io.realm.mongodb.User
 import io.realm.mongodb.mongo.MongoCollection
 import mx.edu.ubicatec.ponymaps.databinding.ActivityMainBinding
 import mx.edu.ubicatec.ponymaps.models.Classes.DataCard
+import mx.edu.ubicatec.ponymaps.ui.ubicaciones.UbicacionesFragment
 import org.bson.Document
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
+    private lateinit var actualFragment: Fragment
     var dataCard = ArrayList<DataCard>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +66,44 @@ class MainActivity : AppCompatActivity() {
         //connectionAtlasBD("appdata", "edificios")
         //connectionAtlasBD("appdata", "areas")
 
+        //Fragment Change Controller
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if(destination.id == R.id.na_fragment_map) {
+                Log.d("Nav Change", "Fragmento Mapa")
+                //....
+            }
+            if(destination.id == R.id.na_fragment_ubicaciones) {
+                Log.d("Nav Change", "Fragmento Ubicaciones")
+                //actualFragment = UbicacionesFragment()
+                UbicacionesFragment().updateRecyclerView("")
+            }
+            if(destination.id == R.id.na_fragment_eventos) {
+                Log.d("Nav Change", "Fragmento Eventos")
+                //....
+            }
+            if(destination.id == R.id.na_fragment_horarios) {
+                Log.d("Nav Change", "Fragmento Horarios")
+                //....
+            }
+        }
+
+        //Search Bar Controller
+        binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                //val searchList = SearchList()
+                if (query != null) {
+                    UbicacionesFragment().updateRecyclerView(query)
+
+                    Log.d("SearchList", "")
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                //replaceFragment(SearchList())
+                return false
+            }
+        })
     }
 
     fun connectionAtlasBD(db: String, collection: String){
