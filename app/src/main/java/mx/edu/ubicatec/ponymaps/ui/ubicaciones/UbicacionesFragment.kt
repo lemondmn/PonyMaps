@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_ubicaciones.*
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentUbicacionesBinding
 import mx.edu.ubicatec.ponymaps.models.Classes.DataCard
+import mx.edu.ubicatec.ponymaps.models.ubicacion.Ubicacion
 import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionAdapter
 import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionProvider
 import mx.edu.ubicatec.ponymaps.ui.mapa.MapaViewModel
@@ -64,21 +65,25 @@ class UbicacionesFragment : Fragment() {
         _binding = null
     }
 
+    fun resetList(){
+        saveAdapter?.updateUbications(UbicacionProvider.ubicacionesList)
+    }
+
     fun updateRecyclerView(textSubmited: String){
-        var filterList = ArrayList<DataCard>()
+        var filterList = ArrayList<Ubicacion>()
 
         if (saveAdapter != null) {
             Log.d("SearchList", "Checking Cards")
-            /*adapter?.cards?.forEach {card ->
+            saveAdapter?.getUbications()?.forEach {
                 if (
-                    card.getTitle().uppercase().contains(textSubmited.uppercase()) ||
-                    card.getDetail().uppercase().contains(textSubmited.uppercase())
+                    it.nombre.uppercase().contains(textSubmited.uppercase()) ||
+                    it.informacion.uppercase().contains(textSubmited.uppercase())
                 ) {
-                    filterList.add(card)
-                    Log.d("SearchList", card.getTitle())
+                    filterList.add(it)
+                    Log.d("SearchList", it.nombre)
                 }
             }
-            adapter?.updateCards(filterList)*/
+            saveAdapter?.updateUbications(filterList)
         }else{ Log.d("SearchList", "No init") }
     }
 }

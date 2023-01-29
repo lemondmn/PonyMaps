@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mx.edu.ubicatec.ponymaps.R
 
-abstract class UbicacionAdapter (private val ubicacionList : List<Ubicacion>) : RecyclerView.Adapter<UbicacionAdapter.UbicacionViewHolder>(){
+abstract class UbicacionAdapter (private var ubicacionList : List<Ubicacion>) : RecyclerView.Adapter<UbicacionAdapter.UbicacionViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UbicacionViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -37,5 +37,13 @@ abstract class UbicacionAdapter (private val ubicacionList : List<Ubicacion>) : 
     }
 
     abstract fun sendUbicacion(nombre : String)
+
+    fun getUbications(): List<Ubicacion> {
+        return ubicacionList
+    }
+    fun updateUbications(newUbications: List<Ubicacion>){
+        ubicacionList = newUbications
+        notifyDataSetChanged()
+    }
 
 }

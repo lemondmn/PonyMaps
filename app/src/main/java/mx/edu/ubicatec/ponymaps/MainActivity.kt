@@ -11,6 +11,7 @@ import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
-    private lateinit var actualFragment: Fragment
+    private lateinit var actualFragment: NavDestination
     var dataCard = ArrayList<DataCard>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,23 +69,7 @@ class MainActivity : AppCompatActivity() {
 
         //Fragment Change Controller
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if(destination.id == R.id.na_fragment_map) {
-                Log.d("Nav Change", "Fragmento Mapa")
-                //....
-            }
-            if(destination.id == R.id.na_fragment_ubicaciones) {
-                Log.d("Nav Change", "Fragmento Ubicaciones")
-                //actualFragment = UbicacionesFragment()
-                UbicacionesFragment().updateRecyclerView("")
-            }
-            if(destination.id == R.id.na_fragment_eventos) {
-                Log.d("Nav Change", "Fragmento Eventos")
-                //....
-            }
-            if(destination.id == R.id.na_fragment_horarios) {
-                Log.d("Nav Change", "Fragmento Horarios")
-                //....
-            }
+            actualFragment = destination
         }
 
         //Search Bar Controller
@@ -92,7 +77,25 @@ class MainActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 //val searchList = SearchList()
                 if (query != null) {
-                    UbicacionesFragment().updateRecyclerView(query)
+                    if(actualFragment.id == R.id.na_fragment_map) {
+                        Log.d("Nav Change", "Fragmento Mapa")
+                        //....
+                    }
+                    if(actualFragment.id == R.id.na_fragment_ubicaciones) {
+                        Log.d("Nav Change", "Fragmento Ubicaciones")
+                        //actualFragment = UbicacionesFragment()
+                        UbicacionesFragment().resetList()
+                        UbicacionesFragment().updateRecyclerView(query)
+                    }
+                    if(actualFragment.id == R.id.na_fragment_eventos) {
+                        Log.d("Nav Change", "Fragmento Eventos")
+                        //....
+                    }
+                    if(actualFragment.id == R.id.na_fragment_horarios) {
+                        Log.d("Nav Change", "Fragmento Horarios")
+                        //....
+                    }
+                    //UbicacionesFragment().updateRecyclerView(query)
 
                     Log.d("SearchList", "")
                 }
