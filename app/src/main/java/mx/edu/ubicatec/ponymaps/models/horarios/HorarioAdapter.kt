@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mx.edu.ubicatec.ponymaps.R
+import mx.edu.ubicatec.ponymaps.models.ubicacion.Ubicacion
 
-abstract class HorarioAdapter(private val horarioList: List<Horario>): RecyclerView.Adapter<HorarioAdapter.HorarioViewHolder>() {
+abstract class HorarioAdapter(private var horarioList: List<Horario>): RecyclerView.Adapter<HorarioAdapter.HorarioViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorarioViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -40,5 +41,13 @@ abstract class HorarioAdapter(private val horarioList: List<Horario>): RecyclerV
     }
 
     abstract fun sendHorario(salon: String)
+
+    fun getHorarios(): List<Horario> {
+        return horarioList
+    }
+    fun updateHorarios(newHorarios: List<Horario>){
+        horarioList = newHorarios
+        notifyDataSetChanged()
+    }
 
 }

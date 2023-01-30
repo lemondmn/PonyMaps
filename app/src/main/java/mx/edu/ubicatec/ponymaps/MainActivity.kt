@@ -3,6 +3,7 @@ package mx.edu.ubicatec.ponymaps
 import android.os.Bundle
 import android.util.Log
 import android.view.Window
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -26,6 +27,7 @@ import io.realm.mongodb.User
 import io.realm.mongodb.mongo.MongoCollection
 import mx.edu.ubicatec.ponymaps.databinding.ActivityMainBinding
 import mx.edu.ubicatec.ponymaps.models.Classes.DataCard
+import mx.edu.ubicatec.ponymaps.ui.horarios.HorariosFragment
 import mx.edu.ubicatec.ponymaps.ui.ubicaciones.UbicacionesFragment
 import org.bson.Document
 
@@ -83,7 +85,6 @@ class MainActivity : AppCompatActivity() {
                     }
                     if(actualFragment.id == R.id.na_fragment_ubicaciones) {
                         Log.d("Nav Change", "Fragmento Ubicaciones")
-                        //actualFragment = UbicacionesFragment()
                         UbicacionesFragment().resetList()
                         UbicacionesFragment().updateRecyclerView(query)
                     }
@@ -93,7 +94,8 @@ class MainActivity : AppCompatActivity() {
                     }
                     if(actualFragment.id == R.id.na_fragment_horarios) {
                         Log.d("Nav Change", "Fragmento Horarios")
-                        //....
+                        //HorariosFragment().resetList()
+                        HorariosFragment().updateRecyclerView(query)
                     }
                     //UbicacionesFragment().updateRecyclerView(query)
 
@@ -143,14 +145,13 @@ class MainActivity : AppCompatActivity() {
                         }
                     } else {
                         Log.e("Atlas Connection", "Error Busqueda")
+                        Toast.makeText(this@MainActivity, "Error de Conexion", Toast.LENGTH_SHORT).show()
                     }
                 }
             } else {
                 Log.e("Atlas Connection", "Failed to log in. Error: ${it.error}")
             }
         }
-
-        //Toast.makeText(this@MainActivity, "Real OK", Toast.LENGTH_SHORT).show()
     }
 
     private fun docToCard(doc: Document?, collection: String): DataCard {

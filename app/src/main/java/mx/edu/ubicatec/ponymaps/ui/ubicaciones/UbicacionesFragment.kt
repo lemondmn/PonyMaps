@@ -5,22 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_ubicaciones.*
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentUbicacionesBinding
-import mx.edu.ubicatec.ponymaps.models.Classes.DataCard
 import mx.edu.ubicatec.ponymaps.models.ubicacion.Ubicacion
 import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionAdapter
 import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionProvider
 import mx.edu.ubicatec.ponymaps.ui.mapa.MapaViewModel
 
-private var saveAdapter: UbicacionAdapter? = null
+private var ubicacionAdapter: UbicacionAdapter? = null
 
 class UbicacionesFragment : Fragment() {
 
@@ -51,13 +47,13 @@ class UbicacionesFragment : Fragment() {
     fun initRecyclerView(){
         val recyclerView = binding.recyclerUbicaciones
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        saveAdapter = object : UbicacionAdapter(UbicacionProvider.ubicacionesList) {
+        ubicacionAdapter = object : UbicacionAdapter(UbicacionProvider.ubicacionesList) {
             override fun sendUbicacion(nombre: String) {
                 mapaViewModel.nombreUbicacion.postValue(nombre)
                 findNavController().navigate(R.id.action_na_fragment_ubicaciones_to_na_fragment_map)
             }
         }
-        recyclerView.adapter = saveAdapter
+        recyclerView.adapter = ubicacionAdapter
     }
 
     override fun onDestroyView() {
@@ -66,15 +62,15 @@ class UbicacionesFragment : Fragment() {
     }
 
     fun resetList(){
-        saveAdapter?.updateUbications(UbicacionProvider.ubicacionesList)
+        ubicacionAdapter?.updateUbications(UbicacionProvider.ubicacionesList)
     }
 
     fun updateRecyclerView(textSubmited: String){
         var filterList = ArrayList<Ubicacion>()
 
-        if (saveAdapter != null) {
+        if (ubicacionAdapter != null) {
             Log.d("SearchList", "Checking Cards")
-            saveAdapter?.getUbications()?.forEach {
+            ubicacionAdapter?.getUbications()?.forEach {
                 if (
                     it.nombre.uppercase().contains(textSubmited.uppercase()) ||
                     it.informacion.uppercase().contains(textSubmited.uppercase())
@@ -83,7 +79,7 @@ class UbicacionesFragment : Fragment() {
                     Log.d("SearchList", it.nombre)
                 }
             }
-            saveAdapter?.updateUbications(filterList)
+            ubicacionAdapter?.updateUbications(filterList)
         }else{ Log.d("SearchList", "No init") }
     }
 }

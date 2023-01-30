@@ -2,6 +2,7 @@ package mx.edu.ubicatec.ponymaps.ui.horarios
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,8 +17,12 @@ import mx.edu.ubicatec.ponymaps.models.horarios.HorarioAdapter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import mx.edu.ubicatec.ponymaps.models.horarios.Horario
+import mx.edu.ubicatec.ponymaps.models.ubicacion.Ubicacion
+import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionProvider
 import mx.edu.ubicatec.ponymaps.ui.mapa.MapaViewModel
 import java.io.IOException
+
+private var horarioAdapter: HorarioAdapter? = null
 
 class HorariosFragment : Fragment() {
 
@@ -138,12 +143,13 @@ class HorariosFragment : Fragment() {
 
         val recyclerView = binding.recyclerViewHorarios
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = object : HorarioAdapter(y) {
+        horarioAdapter = object : HorarioAdapter(y) {
             override fun sendHorario(salon: String) {
                 mapaViewModel.nombreSalon.postValue(salon)
                 findNavController().navigate(R.id.action_na_fragment_horarios_to_na_fragment_map)
             }
         }
+        recyclerView.adapter = horarioAdapter
     }
 
     fun readJSON(): List<Horario> {
@@ -170,5 +176,37 @@ class HorariosFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    //...
+    fun resetList(salon: String, dia: String){
+        val x = readJSON()
+        val y = arrayListOf<Horario>()
+
+        for (horario in x){
+            if(horario.nombreSalon == salon && horario.dia == dia){
+                y.add(horario)
+            }
+        }
+        horarioAdapter?.updateHorarios(y)
+    }
+
+    fun updateRecyclerView(textSubmited: String){
+        var filterList = ArrayList<Horario>()
+
+        if (horarioAdapter != null) {
+            Log.d("SearchList", "Checking Cards")
+            horarioAdapter?.getHorarios()?.forEach {
+                if (
+                    it.nombreMateria.uppercase().contains(textSubmited.uppercase()) ||
+                    it.horaEntrada.contains(textSubmited) ||
+                    it.horaSalida.contains(textSubmited)
+                ) {
+                    filterList.add(it)
+                    Log.d("SearchList", it.nombreSalon)
+                }
+            }
+            horarioAdapter?.updateHorarios(filterList)
+        }else{ Log.d("SearchList", "No init") }
     }
 }
