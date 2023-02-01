@@ -2,6 +2,7 @@ package mx.edu.ubicatec.ponymaps
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.Window
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.navigation.NavController
@@ -108,6 +110,23 @@ class MainActivity : AppCompatActivity() {
                 //replaceFragment(SearchList())
                 return false
             }
+        })
+        binding.searchBar.setOnQueryTextFocusChangeListener(object: View.OnFocusChangeListener{
+            override fun onFocusChange(p0: View?, p1: Boolean) {
+                //Log.d("Search Focus", "Focus Change$p1")
+                if (!p1) {
+                    if(actualFragment.id == R.id.na_fragment_map){}
+                    if(actualFragment.id == R.id.na_fragment_ubicaciones) UbicacionesFragment().resetList()
+                    if(actualFragment.id == R.id.na_fragment_eventos){}
+                    if(actualFragment.id == R.id.na_fragment_horarios){}
+                } else {
+                    if(actualFragment.id == R.id.na_fragment_map) {
+                        //Log.d("Search Focus", navView.selectedItemId.toString())
+                        binding.navView.selectedItemId = R.id.na_fragment_ubicaciones
+                    }
+                }
+            }
+
         })
     }
 
