@@ -1,5 +1,6 @@
 package mx.edu.ubicatec.ponymaps
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         //connectionAtlasBD("appdata", "horarios")
         //connectionAtlasBD("appdata", "eventos")
         //connectionAtlasBD("appdata", "espacios")
-        //connectionAtlasBD("appdata", "edificios")
+        connection.connectionAtlasBD("appdata", "edificios", AtlasConnection.ConnectionAccion.UbicacionCard)
         //connectionAtlasBD("appdata", "areas")
 
         //Fragment Change Controller
@@ -85,7 +86,6 @@ class MainActivity : AppCompatActivity() {
         binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 //val searchList = SearchList()
-                connection.connectionAtlasBD("appdata", "edificios")
 
                 if (query != null) {
                     if(actualFragment.id == R.id.na_fragment_map) {

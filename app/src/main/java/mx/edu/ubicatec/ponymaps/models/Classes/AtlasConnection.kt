@@ -3,6 +3,7 @@ package mx.edu.ubicatec.ponymaps.models.Classes
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import com.mapbox.maps.extension.style.expressions.dsl.generated.switchCase
 import io.realm.Realm
 import io.realm.mongodb.App
 import io.realm.mongodb.AppConfiguration
@@ -11,13 +12,18 @@ import io.realm.mongodb.User
 import io.realm.mongodb.mongo.MongoCollection
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.models.ubicacion.Ubicacion
+import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionProvider
 import org.bson.Document
 
-class AtlasConnection (context: Context) {
-    private val context: Context? = context
-    private var dataCard = ArrayList<DataCard>()
+class AtlasConnection (private val context: Context) {
+    var dataCard = ArrayList<DataCard>()
+    var ubicacionCards = ArrayList<Ubicacion>()
 
-    fun connectionAtlasBD(db: String, collection: String){
+    enum class ConnectionAccion {
+        TestConnection, GenericCard, UbicacionCard, HorarioCard
+    }
+
+    fun connectionAtlasBD(db: String, collection: String, action: ConnectionAccion){
         Realm.init(context)
         val appID : String = "ponyapp01-yfpqd"
         val app = App(AppConfiguration.Builder(appID).build())
@@ -38,16 +44,35 @@ class AtlasConnection (context: Context) {
                     if(result.isSuccess){
                         val realmRes = result.get()
                         Log.d("Atlas Connection", "Busqueda Exitosa")
-                        try {
-                            //var cont = 0
-                            realmRes.forEach {doc ->
-                                dataCard.add(docToCard(doc, collection))
-                            }
-                            dataCard.forEach { card ->
-                                Log.d("Card", card.getTitle())
-                            }
-                        } catch (e: Exception) {
-                            e.printStackTrace()
+
+
+                        when (action) {
+                            ConnectionAccion.TestConnection -> {}
+                            ConnectionAccion.GenericCard ->
+                                try {
+                                    realmRes.forEach { doc ->
+                                        dataCard.add(docToCard(doc, collection))
+                                    }
+                                    dataCard.forEach { card ->
+                                        Log.d("Generic Card", card.getTitle())
+                                    }
+                                } catch (e: Exception) {
+                                    e.printStackTrace()
+                                }
+                            ConnectionAccion.UbicacionCard ->
+                                try {
+                                    realmRes.forEach { doc ->
+                                        ubicacionCards.add(docToUbicacion(doc))
+                                    }
+                                    ubicacionCards.forEach { card ->
+                                        Log.d("Ubicacion Card", card.nombre)
+                                    }
+                                    UbicacionProvider.ubicacionesList = ubicacionCards
+                                } catch (e: Exception) {
+                                    e.printStackTrace()
+                                }
+                            ConnectionAccion.HorarioCard ->
+                                Log.d("Atlas Connection", "Action HorarioCard")
                         }
                     } else {
                         Log.e("Atlas Connection", "Error Busqueda")
@@ -85,8 +110,7 @@ class AtlasConnection (context: Context) {
         }
         if (collection.equals("edificios")){
             title = doc?.getString("nombre").toString()
-            getAreas(doc?.get("areas").toString())
-            //title = doc?.get("areas").toString()
+            //disjoinArray(doc?.get("areas").toString())
             detail = doc?.getString("descripcion").toString()
             cat = "Evento"
         }
@@ -98,18 +122,17 @@ class AtlasConnection (context: Context) {
     //Convert Document type to Ubicacion for their fragment
     private fun docToUbicacion(doc: Document?): Ubicacion {
         val areas = ArrayList<String>()
-        getAreas(doc?.get("areas").toString())
-        var ubicacion = Ubicacion(
-            doc?.getString("areas").toString(),
+        //disjoinArray(doc?.get("areas").toString())
+        return Ubicacion(
+            doc?.getString("nombre").toString(),
             doc?.getString("descripcion").toString(),
-            getAreas(doc?.get("areas").toString()),
+            disjoinArray(doc?.get("areas").toString()),
             false
         )
-        return ubicacion
     }
 
     //Convert the json to string array to separated string elements
-    private fun getAreas(stringAreas: String): ArrayList<String> {
+    private fun disjoinArray(stringAreas: String): ArrayList<String> {
         val filterAreas = ArrayList<String>()
         var cadena = ""
         var filtro = stringAreas.replace("[", " ")
@@ -127,9 +150,9 @@ class AtlasConnection (context: Context) {
             filterAreas.add(cadena)
         }
 
-        filterAreas.forEach{
+        /*filterAreas.forEach{
             Log.d("Lista Filtrada", it)
-        }
+        }*/
         return filterAreas
     }
 }

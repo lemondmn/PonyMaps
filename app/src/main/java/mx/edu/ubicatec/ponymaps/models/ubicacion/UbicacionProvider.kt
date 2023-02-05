@@ -5,7 +5,7 @@ class UbicacionProvider {
 
 
     companion object {
-        val ubicacionesList = listOf<Ubicacion>(
+        var ubicacionesList = listOf<Ubicacion>(
             /*Ubicacion("A", "Edificio Administrativo", false),
             Ubicacion("AG", "Aulas de computo, Posgrado Mecanica", false),
             Ubicacion("B", "Laboratorio De Quimica Analitica", false),

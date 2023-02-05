@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import mx.edu.ubicatec.ponymaps.MainActivity
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentUbicacionesBinding
+import mx.edu.ubicatec.ponymaps.models.Classes.AtlasConnection
 import mx.edu.ubicatec.ponymaps.models.ubicacion.Ubicacion
 import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionAdapter
 import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionProvider
