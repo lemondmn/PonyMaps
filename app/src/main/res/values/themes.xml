@@ -43,7 +43,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.PonyMaps.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.PonyMaps.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar" >
+        <!-- Customize appbar theme here. -->
+        <item name="titleTextColor">?attr/colorOnPrimaryContainer</item>
+        <!-- Color de fondo de la barra (Cambiar tambien el color del status bar)
+        <item name="android:background">?attr/colorPrimaryContainer</item> -->
+    </style>
 
     <style name="Theme.PonyMaps.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 

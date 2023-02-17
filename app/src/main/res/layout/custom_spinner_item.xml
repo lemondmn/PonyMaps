@@ -2,8 +2,8 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/primaryShade4"
-    android:textColor="@color/generalText"
+    android:background="?attr/colorPrimary"
+    android:textColor="?attr/colorOnPrimary"
     android:textSize="24sp"
     android:gravity="start"
     android:padding="5dip" />
