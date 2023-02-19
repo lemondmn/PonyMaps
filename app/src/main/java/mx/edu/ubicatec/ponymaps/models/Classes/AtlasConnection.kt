@@ -115,8 +115,8 @@ class AtlasConnection (private val context: Context) {
             cat = "Evento"
         }
 
-        val card = DataCard(title, detail, cat, image)
-        return card
+        return DataCard(title, detail, cat, image)
+        //return card
     }
 
     //Convert Document type to Ubicacion for their fragment
@@ -133,26 +133,29 @@ class AtlasConnection (private val context: Context) {
 
     //Convert the json to string array to separated string elements
     private fun disjoinArray(stringAreas: String): ArrayList<String> {
-        val filterAreas = ArrayList<String>()
-        var cadena = ""
-        var filtro = stringAreas.replace("[", " ")
-        filtro = filtro.replace("]", "")
+        if(stringAreas == "null") return ArrayList<String>()
+        else {
+            val filterAreas = ArrayList<String>()
+            var cadena = ""
+            var filtro = stringAreas.replace("[", " ")
+            filtro = filtro.replace("]", "")
 
-        filtro.forEach {
-            if (it.equals(',')) {
+            filtro.forEach {
+                if (it.equals(',')) {
+                    cadena = cadena.removeRange(0, 1)
+                    filterAreas.add(cadena)
+                    cadena = ""
+                } else cadena += it
+            }
+            if (cadena != "") {
                 cadena = cadena.removeRange(0, 1)
                 filterAreas.add(cadena)
-                cadena = ""
-            } else cadena += it
-        }
-        if (cadena != "") {
-            cadena = cadena.removeRange(0, 1)
-            filterAreas.add(cadena)
-        }
+            }
 
-        /*filterAreas.forEach{
-            Log.d("Lista Filtrada", it)
-        }*/
-        return filterAreas
+            /*filterAreas.forEach{
+                Log.d("Lista Filtrada", it)
+            }*/
+            return filterAreas
+        }
     }
 }
