@@ -1,8 +1,11 @@
 package mx.edu.ubicatec.ponymaps.models.ubicacion
 
 data class Ubicacion(
+    val id: String,
     val nombre: String,
     val informacion: String,
+    val latitud: String,
+    val longitud: String,
     val areas: ArrayList<String>,
     var visibility: Boolean
 )

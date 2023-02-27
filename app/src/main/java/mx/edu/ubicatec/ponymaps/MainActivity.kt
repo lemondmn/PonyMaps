@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         //connectionAtlasBD("appdata", "horarios")
         //connectionAtlasBD("appdata", "eventos")
         //connectionAtlasBD("appdata", "espacios")
-        connection.connectionAtlasBD("appdata", "edificios", AtlasConnection.ConnectionAccion.UbicacionCard)
+        connection.connectionAtlasBD("appdata", "edificios", AtlasConnection.ConnectionAccion.SaveUbicaciones)
         //connectionAtlasBD("appdata", "areas")
 
         //Fragment Change Controller

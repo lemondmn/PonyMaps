@@ -38,11 +38,14 @@ abstract class UbicacionAdapter (private var ubicacionList : List<Ubicacion>) : 
             nombre.text = ubicacionModel.nombre
             info.text = ubicacionModel.informacion
 
-            if (ubicacionModel.areas.isEmpty()) titleAreas.text = ""
-
-            ubicacionModel.areas.forEach{
-                areasText += "- $it\n"
-            }
+            if (
+                ubicacionModel.areas.isEmpty() ||
+                ubicacionModel.areas[0] == ""
+            ) titleAreas.text = ""
+            else
+                ubicacionModel.areas.forEach{
+                    areasText += "- $it\n"
+                }
             areas.text = areasText
 
             itemView.setOnClickListener {

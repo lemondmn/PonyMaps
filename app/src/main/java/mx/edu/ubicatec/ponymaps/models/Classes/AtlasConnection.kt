@@ -3,6 +3,7 @@ package mx.edu.ubicatec.ponymaps.models.Classes
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import com.mapbox.maps.extension.style.expressions.dsl.generated.ln
 import com.mapbox.maps.extension.style.expressions.dsl.generated.switchCase
 import io.realm.Realm
 import io.realm.mongodb.App
@@ -14,13 +15,16 @@ import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.models.ubicacion.Ubicacion
 import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionProvider
 import org.bson.Document
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStream
 
 class AtlasConnection (private val context: Context) {
     var dataCard = ArrayList<DataCard>()
-    var ubicacionCards = ArrayList<Ubicacion>()
+    var ubicaciones = ArrayList<Ubicacion>()
 
     enum class ConnectionAccion {
-        TestConnection, GenericCard, UbicacionCard, HorarioCard
+        TestConnection, GenericCard, FillProvider, HorarioCard, SaveUbicaciones
     }
 
     fun connectionAtlasBD(db: String, collection: String, action: ConnectionAccion){
@@ -59,26 +63,41 @@ class AtlasConnection (private val context: Context) {
                                 } catch (e: Exception) {
                                     e.printStackTrace()
                                 }
-                            ConnectionAccion.UbicacionCard ->
+                            ConnectionAccion.FillProvider ->
                                 try {
                                     realmRes.forEach { doc ->
-                                        ubicacionCards.add(docToUbicacion(doc))
+                                        ubicaciones.add(docToUbicacion(doc))
                                     }
-                                    ubicacionCards.forEach { card ->
-                                        Log.d("Ubicacion Card", card.nombre)
+                                    ubicaciones.forEach { location ->
+                                        Log.d("Ubicaciones", location.nombre)
                                     }
-                                    UbicacionProvider.ubicacionesList = ubicacionCards
+                                    UbicacionProvider.ubicacionesList = ubicaciones
                                 } catch (e: Exception) {
                                     e.printStackTrace()
                                 }
                             ConnectionAccion.HorarioCard ->
                                 Log.d("Atlas Connection", "Action HorarioCard")
+                            ConnectionAccion.SaveUbicaciones -> {
+                                try {
+                                    realmRes.forEach { doc ->
+                                        saveUbicacionIS(docToUbicacion(doc))
+                                    }
+                                    //UbicacionProvider.ubicacionesList = ubicaciones
+                                    //openUbicacionFiles()
+                                    //UbicacionProvider.ubicacionesList = ubicaciones
+                                    ubicaciones.forEach { location ->
+                                        Log.d("Loaded Ubicaciones", location.nombre)
+                                    }
+                                } catch (e: Exception) { e.printStackTrace() }
+                            }
                         }
                     } else {
                         Log.e("Atlas Connection", "Error Busqueda")
                         Toast.makeText(context, "Error de Conexion", Toast.LENGTH_SHORT).show()
                     }
                 }
+                openUbicacionFiles()
+                UbicacionProvider.ubicacionesList = ubicaciones
             } else {
                 Log.e("Atlas Connection", "Failed to log in. Error: ${it.error}")
             }
@@ -124,8 +143,11 @@ class AtlasConnection (private val context: Context) {
         val areas = ArrayList<String>()
         //disjoinArray(doc?.get("areas").toString())
         return Ubicacion(
+            doc?.getString("sid").toString(),
             doc?.getString("nombre").toString(),
             doc?.getString("descripcion").toString(),
+            doc?.getString("lat").toString(),
+            doc?.getString("lng").toString(),
             disjoinArray(doc?.get("areas").toString()),
             false
         )
@@ -157,5 +179,75 @@ class AtlasConnection (private val context: Context) {
             }*/
             return filterAreas
         }
+    }
+
+    //Save ubicacion class data in internal storage
+    private fun saveUbicacionIS(ubicacion: Ubicacion){
+        try {
+            context.openFileOutput("${ubicacion.nombre}.data", Context.MODE_PRIVATE).use {stream ->
+                val data = ("U" + ubicacion.id + "|" + ubicacion.nombre + "!" + ubicacion.informacion
+                        + "?" + ubicacion.latitud + "$" + ubicacion.longitud + "#" + ubicacion.areas)
+                stream.write(data.toByteArray())
+                Log.d("Save Ubicacion", "${ubicacion.nombre}.data")
+                //Log.d("Save Ubicacion", data.toByteArray().toString())
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun openUbicacionFiles(){
+        try {
+            val files = context.filesDir.listFiles()
+            var line = ""
+
+            files?.filter { it.canRead() && it.isFile && it.name.endsWith(".data") }?.map { file ->
+                line = file.bufferedReader().readLine()
+                if (line.startsWith("U")) ubicaciones.add(loadUbicaciones(line.removePrefix("U")))
+                //Log.d("Open Ubicacion", file.name)
+                //Log.d("Buffer", file.bufferedReader().readLine())
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    //load ubicaciones files from internal storage
+    private fun loadUbicaciones(line: String): Ubicacion {
+        var id = ""
+        var nombre = ""
+        var info = ""
+        var lat = ""
+        var lng = ""
+        //var edited = line
+        var slice = ""
+
+        line.forEach {
+            when (it) {
+                '|' -> {
+                    id = slice
+                    slice = ""
+                }
+                '!' -> {
+                    nombre = slice
+                    slice = ""
+                }
+                '$' -> {
+                    lat = slice
+                    slice = ""
+                }
+                '#' -> {
+                    lng = slice
+                    slice = ""
+                }
+                '?' -> {
+                    info = slice
+                    slice = ""
+                }
+                else -> slice += it
+            }
+        }
+
+        return Ubicacion(id, nombre, info, lat, lng, disjoinArray(slice), false)
     }
 }
