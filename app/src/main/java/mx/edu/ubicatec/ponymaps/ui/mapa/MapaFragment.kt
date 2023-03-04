@@ -50,6 +50,8 @@ import com.mapbox.maps.extension.style.sources.generated.geoJsonSource
 import com.mapbox.maps.extension.style.sources.getSourceAs
 import com.mapbox.maps.extension.style.style
 import com.mapbox.maps.plugin.LocationPuck2D
+import com.mapbox.maps.plugin.animation.MapAnimationOptions.Companion.mapAnimationOptions
+import com.mapbox.maps.plugin.animation.flyTo
 import com.mapbox.maps.plugin.annotation.AnnotationPlugin
 import com.mapbox.maps.plugin.annotation.annotations
 import com.mapbox.maps.plugin.annotation.generated.*
@@ -94,7 +96,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
     }
 
     private val onIndicatorPositionChangedListener = OnIndicatorPositionChangedListener {
-        mapView!!.getMapboxMap().setCamera(CameraOptions.Builder().center(it).build())
+        //mapView!!.getMapboxMap().setCamera(CameraOptions.Builder().center(it).build())
         mapView!!.gestures.focalPoint = mapView!!.getMapboxMap().pixelForCoordinate(it)
     }
 
@@ -114,7 +116,6 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
     private var currentPoint: Point? = null
 
     private var places : HashMap<String, Nodo> = HashMap()
-    val items: List<String> = ArrayList()
 
     private lateinit var  annotationApi : AnnotationPlugin
     private lateinit var pointAnnotationManager : PointAnnotationManager
@@ -179,6 +180,9 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
 
         mapaViewModel.nombreUbicacion.observe(viewLifecycleOwner) { nombre ->
             Toast.makeText(requireContext(), "NombreUbicacion: $nombre", Toast.LENGTH_LONG).show()
+            var place = places[nombre]
+            val dest: Point = Point.fromLngLat(place!!.lng,place.lat)
+            moveCamera(dest)
         }
 
 
@@ -242,7 +246,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
             //clearRoute()
             binding.motionBase.transitionToStart()
         }
-        getCurrentLocation()
+        //getCurrentLocation()
 
         return root
     }
@@ -299,12 +303,21 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         initLocationComponent()
         setupGesturesListener()
         setupBounds(ITM_BOUND)
-
+        /*
         mapView!!.getMapboxMap().setCamera(
             CameraOptions.Builder()
                 .center(Point.fromLngLat( -101.18544, 19.72176))
                 .zoom(15.0)
                 .build()
+        )*/
+        mapboxMap.flyTo(
+            CameraOptions.Builder()
+                .center(Point.fromLngLat( -101.18544, 19.72176))
+                .zoom(15.0)
+                .build(),
+            mapAnimationOptions {
+                duration(2_000)
+            }
         )
         setLocations()
 
@@ -322,7 +335,9 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
 
         pointAnnotationManager.addClickListener(OnPointAnnotationClickListener {
             Toast.makeText(thiscontext, "Marker clicked, ID: ${it.id}, ID:${it.textField}", Toast.LENGTH_SHORT).show()
-
+            var place = places[it.textField]
+            val dest: Point = Point.fromLngLat(place!!.lng,place.lat)
+            moveCamera(dest)
             false
         })
 
@@ -330,6 +345,8 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
             Toast.makeText(thiscontext, "Marker Long clicked", Toast.LENGTH_SHORT).show()
             false
         })
+
+        
 
     }
     private fun setupGesturesListener() {
@@ -421,8 +438,6 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
                     return
                 }
                 val currentRoute = response.body()!!.routes()[0]
-                println(currentRoute)
-                println("Fuuuuuuuuuck")
 
                 drawNavigationPolylineRoute(currentRoute)
             }
@@ -529,7 +544,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
             bitmap
         }
     }
-
+    /*
     private fun getCurrentLocation() {
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location : Location? ->
@@ -541,7 +556,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
                     Toast.makeText(thiscontext, "Current location: $currentPoint , $lon", Toast.LENGTH_SHORT).show()
                 }
             }
-    }
+    }*/
 
     private fun startUpdates() {
 
@@ -552,7 +567,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
                 // this block is automatically executed when moving into
                 // the started state, and cancelled when stopping.
                 while (routeDisplay) {
-                    getCurrentLocation()
+                    //getCurrentLocation()
                     val dest: Point = Point.fromLngLat(-101.23712022352315,19.695377903734485)
                     if(currentPoint != null)
                     //getRoute(currentPoint!!,dest)
@@ -564,14 +579,11 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
 
     private fun setLocations(){
         /**
-        NEEDS TO GET THE JSON FROM DB
+        ¡ NEEDS TO GET THE JSON FROM DB !
         */
 
         val jsonParser = JsonParser(resources)
         val jsonArr = jsonParser.getJSONArray(R.raw.places)
-
-        println("JSONNNNNNN")
-        println(jsonArr)
 
         for (i in 0 until jsonArr!!.length()) {
 
@@ -591,12 +603,24 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
             addAnnotationToMap(Point.fromLngLat(lng, lat), name)
 
         }
-        /*
-        println("IDSSSSSSSSSSSSSSSSSSS")
-        for (place in places){
-            val a = place.value
-            println(a.id)
-        }*/
+
+    }
+
+    private fun moveCamera(destination: Point){
+
+        val cameraPosition = CameraOptions.Builder()
+            .zoom(18.0)
+            .center(destination)
+            .build()
+        // set camera position
+        //mapView!!.getMapboxMap().setCamera(cameraPosition)
+
+        mapboxMap.flyTo(
+            cameraPosition,
+            mapAnimationOptions {
+                duration(2_000)
+            }
+        )
 
     }
     /**
