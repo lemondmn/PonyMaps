@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -178,7 +179,6 @@ class HorariosFragment : Fragment() {
         _binding = null
     }
 
-    //...
     fun resetList(salon: String, dia: String){
         val x = readJSON()
         val y = arrayListOf<Horario>()
@@ -209,4 +209,5 @@ class HorariosFragment : Fragment() {
             horarioAdapter?.updateHorarios(filterList)
         }else{ Log.d("SearchList", "No init") }
     }
+
 }

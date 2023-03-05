@@ -34,6 +34,7 @@ import mx.edu.ubicatec.ponymaps.databinding.ActivityMainBinding
 import mx.edu.ubicatec.ponymaps.models.Classes.AtlasConnection
 import mx.edu.ubicatec.ponymaps.models.Classes.DataCard
 import mx.edu.ubicatec.ponymaps.models.ubicacion.Ubicacion
+import mx.edu.ubicatec.ponymaps.ui.eventos.EventosFragment
 import mx.edu.ubicatec.ponymaps.ui.horarios.HorariosFragment
 import mx.edu.ubicatec.ponymaps.ui.ubicaciones.UbicacionesFragment
 import org.bson.Document
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         //connectionAtlasBD("appdata", "horarios")
         //connectionAtlasBD("appdata", "eventos")
         //connectionAtlasBD("appdata", "espacios")
-        connection.connectionAtlasBD("appdata", "edificios", AtlasConnection.ConnectionAccion.UbicacionCard)
+        connection.connectionAtlasBD("appdata", "edificios", AtlasConnection.ConnectionAccion.SaveUbicaciones)
         //connectionAtlasBD("appdata", "areas")
 
         //Fragment Change Controller
@@ -99,7 +100,8 @@ class MainActivity : AppCompatActivity() {
                     }
                     if(actualFragment.id == R.id.na_fragment_eventos) {
                         Log.d("Nav Change", "Fragmento Eventos")
-                        //....
+                        EventosFragment().resetList()
+                        EventosFragment().updateRecyclerView(query)
                     }
                     if(actualFragment.id == R.id.na_fragment_horarios) {
                         Log.d("Nav Change", "Fragmento Horarios")
@@ -120,15 +122,13 @@ class MainActivity : AppCompatActivity() {
         })
         binding.searchBar.setOnQueryTextFocusChangeListener(object: View.OnFocusChangeListener{
             override fun onFocusChange(p0: View?, p1: Boolean) {
-                //Log.d("Search Focus", "Focus Change$p1")
                 if (!p1) {
                     if(actualFragment.id == R.id.na_fragment_map){}
                     if(actualFragment.id == R.id.na_fragment_ubicaciones) UbicacionesFragment().resetList()
-                    if(actualFragment.id == R.id.na_fragment_eventos){}
+                    if(actualFragment.id == R.id.na_fragment_eventos) EventosFragment().resetList()
                     if(actualFragment.id == R.id.na_fragment_horarios){}
                 } else {
                     if(actualFragment.id == R.id.na_fragment_map) {
-                        //Log.d("Search Focus", navView.selectedItemId.toString())
                         binding.navView.selectedItemId = R.id.na_fragment_ubicaciones
                     }
                 }

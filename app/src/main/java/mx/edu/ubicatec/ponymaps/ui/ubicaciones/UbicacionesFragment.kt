@@ -80,6 +80,17 @@ class UbicacionesFragment : Fragment() {
                     filterList.add(it)
                     Log.d("SearchList", it.nombre)
                 }
+                else {
+                    it.areas.forEach {area ->
+                        if (
+                            area.uppercase().contains(textSubmited.uppercase()) &&
+                            !filterList.contains(it)
+                        ){
+                            filterList.add(it)
+                            Log.d("SearchList", area)
+                        }
+                    }
+                }
             }
             ubicacionAdapter?.updateUbications(filterList)
         }else{ Log.d("SearchList", "No init") }

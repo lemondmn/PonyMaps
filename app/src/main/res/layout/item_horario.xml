@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ubicacion_cardview="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/evento_cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
-    android:background="@drawable/shape_roundedcornersrectangle"
-    android:backgroundTint="?attr/colorOnSurfaceVariant">
 
-    <TextView
-        android:id="@+id/materiaName"
+    android:layout_margin="12dp"
+    ubicacion_cardview:cardBackgroundColor="#227C9D"
+    ubicacion_cardview:cardCornerRadius="20dp"
+    ubicacion_cardview:cardElevation="6dp"
+    ubicacion_cardview:contentPadding="4dp">
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="15dp"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="sans-serif-black"
-        android:text="Materia"
-        android:textColor="?attr/colorOnPrimary"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/docente"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="15dp"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="sans-serif-light"
-        android:text="Docente"
-        android:textColor="?attr/colorSurfaceVariant"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materiaName" />
+        <TextView
+            android:id="@+id/MateriaName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="sans-serif-black"
+            android:text="Materia"
+            android:textSize="34sp"
+            android:textColor="@color/secondaryShade3"/>
 
-    <TextView
-        android:id="@+id/hEntradaSalida"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="20dp"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="sans-serif-light"
-        android:text="Hora Entrada - Hora Salida"
-        android:textColor="?attr/colorSurfaceVariant"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/docente" />
+        <TextView
+            android:id="@+id/Horario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/MateriaName"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="sans-serif-light"
+            android:text="Horario"
+            android:textSize="20sp"
+            android:textColor="@color/generalText"/>
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hEntradaSalida" />
+        <TextView
+            android:id="@+id/Dia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Horario"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="sans-serif-light"
+            android:text="Dia"
+            android:textSize="20sp"
+            android:textColor="@color/generalText"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/Ubicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Dia"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="sans-serif-light"
+            android:text="Ubicacion"
+            android:textSize="20sp"
+            android:textColor="@color/generalText"/>
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

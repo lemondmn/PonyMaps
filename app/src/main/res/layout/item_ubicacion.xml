@@ -37,6 +37,35 @@
             android:text="Informacion"
             android:textSize="20sp"
             android:textColor="@color/generalText"/>
+
+        <RelativeLayout
+            android:id="@+id/InfoExtra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/UbicacionInfo">
+
+            <TextView
+                android:id="@+id/AreasTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fontFamily="sans-serif-light"
+                android:text="Areas:"
+                android:textSize="18sp"
+                android:textColor="@color/generalText"/>
+
+            <TextView
+                android:id="@+id/SubAreas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/AreasTitle"
+                android:fontFamily="sans-serif-light"
+                android:text="Sub Areas"
+                android:textSize="16sp"
+                android:textColor="@color/generalText"/>
+
+        </RelativeLayout>
+
     </RelativeLayout>
 
 
