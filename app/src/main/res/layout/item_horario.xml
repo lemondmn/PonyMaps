@@ -5,6 +5,7 @@
     android:id="@+id/evento_cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:layout_margin="12dp"
     ubicacion_cardview:cardBackgroundColor="#227C9D"
     ubicacion_cardview:cardCornerRadius="20dp"
