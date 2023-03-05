@@ -1,97 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ubicacion_cardview="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/evento_cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="5dp"
-    android:layout_marginTop="5dp"
-    android:background="@drawable/shape_roundedcornersrectangle"
-    android:backgroundTint="@color/primaryShade1"
-    android:backgroundTintMode="src_over">
+    android:layout_margin="12dp"
+    ubicacion_cardview:cardBackgroundColor="#227C9D"
+    ubicacion_cardview:cardCornerRadius="20dp"
+    ubicacion_cardview:cardElevation="6dp"
+    ubicacion_cardview:contentPadding="4dp">
 
-    <ImageView
-        android:id="@+id/imageView_eventos"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/EventoName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="sans-serif-black"
-        android:text="Name"
-        android:textSize="34sp"
-        android:textColor="@color/secondaryShade3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_eventos" />
+        <TextView
+            android:id="@+id/EventoName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="sans-serif-black"
+            android:text="Name"
+            android:textSize="34sp"
+            android:textColor="@color/secondaryShade3"/>
 
-    <TextView
-        android:id="@+id/EventoDescripcion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="sans-serif-light"
-        android:text="Informacion"
-        android:textSize="20sp"
-        android:textColor="@color/generalText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EventoName" />
+        <TextView
+            android:id="@+id/EventoInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/EventoName"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="sans-serif-light"
+            android:text="Informacion"
+            android:textSize="20sp"
+            android:textColor="@color/generalText"/>
 
-    <TextView
-        android:id="@+id/EventoUbicacion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="sans-serif-light"
-        android:text="Ubicacion"
-        android:textSize="20sp"
-        android:textColor="@color/generalText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EventoDescripcion" />
+        <TextView
+            android:id="@+id/EventoFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/EventoInfo"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="sans-serif-light"
+            android:text="Fecha"
+            android:textSize="20sp"
+            android:textColor="@color/generalText"/>
 
-    <TextView
-        android:id="@+id/EventoFecha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="sans-serif-light"
-        android:text="Fecha"
-        android:textSize="20sp"
-        android:textColor="@color/generalText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EventoUbicacion" />
+        <TextView
+            android:id="@+id/EventoHora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/EventoFecha"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="sans-serif-light"
+            android:text="Hora"
+            android:textSize="20sp"
+            android:textColor="@color/generalText"/>
 
-    <TextView
-        android:id="@+id/EventoHora"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="sans-serif-light"
-        android:text="Hora"
-        android:textSize="20sp"
-        android:textColor="@color/generalText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EventoFecha" />
+        <TextView
+            android:id="@+id/EventoUbicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/EventoHora"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="sans-serif-light"
+            android:text="Edificio"
+            android:textSize="20sp"
+            android:textColor="@color/generalText"/>
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EventoHora" />
+        <!--RelativeLayout
+            android:id="@+id/InfoExtra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/EventoInfo">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/AreasTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fontFamily="sans-serif-light"
+                android:text="Areas:"
+                android:textSize="18sp"
+                android:textColor="@color/generalText"/>
+
+            <TextView
+                android:id="@+id/SubAreas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/AreasTitle"
+                android:fontFamily="sans-serif-light"
+                android:text="Sub Areas"
+                android:textSize="16sp"
+                android:textColor="@color/generalText"/>
+
+        </RelativeLayout-->
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

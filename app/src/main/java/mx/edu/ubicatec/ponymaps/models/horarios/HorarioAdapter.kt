@@ -24,14 +24,14 @@ abstract class HorarioAdapter(private var horarioList: List<Horario>): RecyclerV
 
     inner class HorarioViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        val materia = itemView.findViewById<TextView>(R.id.materiaName)
-        val docente = itemView.findViewById<TextView>(R.id.docente)
-        val horaEntradaSalida = itemView.findViewById<TextView>(R.id.hEntradaSalida)
+        val materia = itemView.findViewById<TextView>(R.id.MateriaName)
+        //val docente = itemView.findViewById<TextView>(R.id.docente)
+        val horaEntradaSalida = itemView.findViewById<TextView>(R.id.Horario)
 
         fun setData(horarioModel: Horario){
             val horas = horarioModel.horaEntrada + " - " + horarioModel.horaSalida
             materia.text = horarioModel.nombreMateria
-            docente.text = horarioModel.nombreDocente
+            //docente.text = horarioModel.nombreDocente
             horaEntradaSalida.text = horas
 
             itemView.setOnClickListener {
