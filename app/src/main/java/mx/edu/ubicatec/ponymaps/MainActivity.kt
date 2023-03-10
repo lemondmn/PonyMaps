@@ -41,7 +41,7 @@ import org.bson.Document
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
+    //private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
@@ -57,8 +57,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //ActionBar Declaration
-        setSupportActionBar(binding.toolbar)
-        this.supportActionBar?.hide()
+        //setSupportActionBar(binding.toolbar)
+        //this.supportActionBar?.hide()
 
         //NavView
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
@@ -67,8 +67,8 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         //ActionBar Setup
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        //appBarConfiguration = AppBarConfiguration(navController.graph)
+        //setupActionBarWithNavController(navController, appBarConfiguration)
 
         //DataBase Consume
         //connectionAtlasBD("appdata", "materias")
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Search Bar Controller
-        binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        /*binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 //val searchList = SearchList()
 
@@ -134,6 +134,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-        })
+        })*/
     }
 }
