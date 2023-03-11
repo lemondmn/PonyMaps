@@ -40,6 +40,7 @@
 
         <activity
             android:name=".MainActivity"
+            android:configChanges="uiMode"
             android:exported="true"
             android:theme="@style/Theme.PonyMaps.NoActionBar">
             <intent-filter>

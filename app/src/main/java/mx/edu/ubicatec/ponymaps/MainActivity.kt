@@ -1,6 +1,7 @@
 package mx.edu.ubicatec.ponymaps
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
         //ActionBar Declaration
         setSupportActionBar(binding.toolbar)
-        this.supportActionBar?.hide()
+        this.supportActionBar?.show()
 
         //NavView
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
@@ -83,6 +84,7 @@ class MainActivity : AppCompatActivity() {
             actualFragment = destination
         }
 
+        /*
         //Search Bar Controller
         binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -134,6 +136,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-        })
+        }) */
+    }
+
+    fun isDarkModeOn(): Boolean {
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return currentNightMode == Configuration.UI_MODE_NIGHT_YES
     }
 }

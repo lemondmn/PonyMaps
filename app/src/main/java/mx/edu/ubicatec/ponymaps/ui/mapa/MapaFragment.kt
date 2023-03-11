@@ -62,6 +62,7 @@ import com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListen
 import com.mapbox.maps.plugin.locationcomponent.location
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import mx.edu.ubicatec.ponymaps.MainActivity
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentMapBinding
 import mx.edu.ubicatec.ponymaps.models.ubicacion.Nodo
@@ -260,21 +261,42 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
 
         mapboxMap = binding.mapView.getMapboxMap()
 
-        mapView!!.getMapboxMap().loadStyle(
-            (
-                    style("mapbox://styles/angels0107/clc5cffbm003r14ms47qqfzoi") {
-                        +geoJsonSource(ROUTE_LINE_SOURCE_ID) {
+        when((activity as MainActivity).isDarkModeOn()){
+            true -> {
+                mapView!!.getMapboxMap().loadStyle(
+                    (
+                            style("mapbox://styles/angels0107/clf4c2dz5001i01nz2nnzzvuf") {
+                                +geoJsonSource(ROUTE_LINE_SOURCE_ID) {
 
-                        }
-                        +lineLayer(ROUTE_LAYER_ID, ROUTE_LINE_SOURCE_ID) {
-                            lineColor(ContextCompat.getColor(thiscontext, R.color.md_theme_light_primary))
-                            lineCap(LineCap.ROUND)
-                            lineJoin(LineJoin.ROUND)
-                            lineWidth(5.0)
-                        }
-                    }
+                                }
+                                +lineLayer(ROUTE_LAYER_ID, ROUTE_LINE_SOURCE_ID) {
+                                    lineColor(ContextCompat.getColor(thiscontext, R.color.md_theme_light_primary))
+                                    lineCap(LineCap.ROUND)
+                                    lineJoin(LineJoin.ROUND)
+                                    lineWidth(5.0)
+                                }
+                            }
                     )
-        )
+                )
+            }
+            false -> {
+                mapView!!.getMapboxMap().loadStyle(
+                    (
+                            style("mapbox://styles/angels0107/clc5cffbm003r14ms47qqfzoi") {
+                                +geoJsonSource(ROUTE_LINE_SOURCE_ID) {
+
+                                }
+                                +lineLayer(ROUTE_LAYER_ID, ROUTE_LINE_SOURCE_ID) {
+                                    lineColor(ContextCompat.getColor(thiscontext, R.color.md_theme_light_primary))
+                                    lineCap(LineCap.ROUND)
+                                    lineJoin(LineJoin.ROUND)
+                                    lineWidth(5.0)
+                                }
+                            }
+                    )
+                )
+            }
+        }
 
         startUpdates()
         /*/var a = places[""]
