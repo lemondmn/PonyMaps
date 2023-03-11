@@ -45,6 +45,8 @@ class EventosFragment : Fragment() {
 
         initRecyclerView()
 
+        requireActivity().invalidateOptionsMenu()
+
         return root
     }
 

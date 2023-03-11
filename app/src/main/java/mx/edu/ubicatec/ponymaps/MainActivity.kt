@@ -1,53 +1,34 @@
 package mx.edu.ubicatec.ponymaps
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.Window
+import android.view.*
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
-import androidx.core.view.get
-import androidx.core.view.size
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.findFragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import io.realm.Realm
-import io.realm.mongodb.App
-import io.realm.mongodb.AppConfiguration
-import io.realm.mongodb.Credentials
-import io.realm.mongodb.User
-import io.realm.mongodb.mongo.MongoCollection
+import kotlinx.android.synthetic.main.activity_main.*
 import mx.edu.ubicatec.ponymaps.databinding.ActivityMainBinding
 import mx.edu.ubicatec.ponymaps.models.Classes.AtlasConnection
 import mx.edu.ubicatec.ponymaps.models.Classes.DataCard
-import mx.edu.ubicatec.ponymaps.models.ubicacion.Ubicacion
 import mx.edu.ubicatec.ponymaps.ui.eventos.EventosFragment
 import mx.edu.ubicatec.ponymaps.ui.horarios.HorariosFragment
 import mx.edu.ubicatec.ponymaps.ui.ubicaciones.UbicacionesFragment
-import org.bson.Document
 
 class MainActivity : AppCompatActivity() {
 
-    //private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
     private lateinit var actualFragment: NavDestination
     var connection = AtlasConnection(this)
-    var dataCard = ArrayList<DataCard>()
+    //var dataCard = ArrayList<DataCard>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,8 +38,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //ActionBar Declaration
-        //setSupportActionBar(binding.toolbar)
-        //this.supportActionBar?.hide()
+        //toolbar.inflateMenu(R.menu.appbar_menu)
+        //toolbar.inflateMenu(R.menu.search_menu.xml)
+        setSupportActionBar(binding.toolbar)
 
         //NavView
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
@@ -67,16 +49,13 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         //ActionBar Setup
+        //appBarConfiguration = AppBarConfiguration(R.menu.appbar_menu, true)
         //appBarConfiguration = AppBarConfiguration(navController.graph)
         //setupActionBarWithNavController(navController, appBarConfiguration)
 
         //DataBase Consume
-        //connectionAtlasBD("appdata", "materias")
         //connectionAtlasBD("appdata", "horarios")
-        //connectionAtlasBD("appdata", "eventos")
-        //connectionAtlasBD("appdata", "espacios")
         connection.connectionAtlasBD("appdata", "edificios", AtlasConnection.ConnectionAccion.SaveUbicaciones)
-        //connectionAtlasBD("appdata", "areas")
 
         //Fragment Change Controller
         navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -84,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Search Bar Controller
-        /*binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 //val searchList = SearchList()
 
@@ -134,6 +113,40 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-        })*/
+        })
+    }
+
+    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.appbar_search -> {
+                Toast.makeText(this@MainActivity, "Buscar", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.appbar_filter -> {
+                Toast.makeText(this@MainActivity, "Filtrar", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.appbar_extra -> {
+                Toast.makeText(this@MainActivity, "Mas", Toast.LENGTH_SHORT).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }*/
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+
+        if(actualFragment.id == R.id.na_fragment_map) {
+            binding.searchBar.visibility = View.GONE
+            this.supportActionBar?.show()
+            inflater.inflate(R.menu.appbar_menu, menu)
+        }
+        else {
+            this.supportActionBar?.hide()
+            binding.searchBar.visibility = View.VISIBLE
+            inflater.inflate(R.menu.appbar_menu, menu)
+        }
+        return true
     }
 }

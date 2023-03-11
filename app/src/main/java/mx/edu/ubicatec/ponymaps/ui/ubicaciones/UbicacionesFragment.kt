@@ -2,13 +2,14 @@ package mx.edu.ubicatec.ponymaps.ui.ubicaciones
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_main.*
 import mx.edu.ubicatec.ponymaps.MainActivity
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentUbicacionesBinding
@@ -42,6 +43,8 @@ class UbicacionesFragment : Fragment() {
         mapaViewModel = ViewModelProvider(requireActivity()).get(MapaViewModel::class.java)
 
         initRecyclerView()
+
+        requireActivity().invalidateOptionsMenu()
 
         return root
     }
@@ -95,4 +98,5 @@ class UbicacionesFragment : Fragment() {
             ubicacionAdapter?.updateUbications(filterList)
         }else{ Log.d("SearchList", "No init") }
     }
+
 }

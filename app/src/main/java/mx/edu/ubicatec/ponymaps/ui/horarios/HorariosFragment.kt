@@ -86,6 +86,8 @@ class HorariosFragment : Fragment() {
             Toast.makeText(requireContext(), "No hay materias en sabado", Toast.LENGTH_LONG).show()
         }
 
+        requireActivity().invalidateOptionsMenu()
+
         return root
     }
 
