@@ -1,0 +1,314 @@
+[
+ {
+  "Nombre": "A",
+  "Descripcion": "Edificio Administrativo",
+  "Lat": 19.72299,
+  "Lng": -101.18582
+ },
+ {
+  "Nombre": "B",
+  "Descripcion": "Laboratorio De Química Analítica",
+  "Lat": 19.72325,
+  "Lng": -101.18541
+ },
+ {
+  "Nombre": "CH",
+  "Descripcion": "Departamento De Ingeniera Industrial Y Bioquímica",
+  "Lat": 19.72344,
+  "Lng": -101.18505
+ },
+ {
+  "Nombre": "C",
+  "Descripcion": "Coordinación De Ingles",
+  "Lat": 19.72318,
+  "Lng": -101.18493
+ },
+ {
+  "Nombre": "D",
+  "Descripcion": "Laboratorio De Ingeniera Bioquímica",
+  "Lat": 19.72298,
+  "Lng": -101.18509
+ },
+ {
+  "Nombre": "E",
+  "Descripcion": "Aulas Y Taller De Dibujo",
+  "Lat": 19.72273,
+  "Lng": -101.18529
+ },
+ {
+  "Nombre": "F",
+  "Descripcion": "Sala Audiovisual No. 1 Y Aulas",
+  "Lat": 19.72252,
+  "Lng": -101.18549
+ },
+ {
+  "Nombre": "G",
+  "Descripcion": "Laboratorio Ing. Mecánica Y Eléctrica",
+  "Lat": 19.72245,
+  "Lng": -101.18487
+ },
+ {
+  "Nombre": "H",
+  "Descripcion": "Unidad Deportiva Y Tribunas",
+  "Lat": 19.7224,
+  "Lng": -101.18417
+ },
+ {
+  "Nombre": "I",
+  "Descripcion": "Departamento De Sistemas Y Computación",
+  "Lat": 19.72224,
+  "Lng": -101.18545
+ },
+ {
+  "Nombre": "J",
+  "Descripcion": "Aulas De Titulación Y PADHIE",
+  "Lat": 19.72236,
+  "Lng": -101.18601
+ },
+ {
+  "Nombre": "K",
+  "Descripcion": "Aulas Y Delegación Sindical",
+  "Lat": 19.72199,
+  "Lng": -101.18554
+ },
+ {
+  "Nombre": "L",
+  "Descripcion": "Aulas Licenciatura Administración",
+  "Lat": 19.72216,
+  "Lng": -101.18677
+ },
+ {
+  "Nombre": "LL",
+  "Descripcion": "Centro de Negocios",
+  "Lat": 19.72158,
+  "Lng": -101.18596
+ },
+ {
+  "Nombre": "M",
+  "Descripcion": "Departamento Económico Administrativo",
+  "Lat": 19.72178,
+  "Lng": -101.18716
+ },
+ {
+  "Nombre": "N",
+  "Descripcion": "Laboratorios De Ingeniería Bioquímica",
+  "Lat": 19.72172,
+  "Lng": -101.18674
+ },
+ {
+  "Nombre": "Ñ",
+  "Descripcion": "Laboratorio Instrumentación Analítica",
+  "Lat": 19.72183,
+  "Lng": -101.18637
+ },
+ {
+  "Nombre": "O",
+  "Descripcion": "Laboratorio Químico Biológico",
+  "Lat": 19.72179,
+  "Lng": -101.18594
+ },
+ {
+  "Nombre": "P",
+  "Descripcion": "Laboratorio De Física",
+  "Lat": 19.72168,
+  "Lng": -101.18621
+ },
+ {
+  "Nombre": "Q",
+  "Descripcion": "Aulas Electrónica",
+  "Lat": 19.72157,
+  "Lng": -101.18459
+ },
+ {
+  "Nombre": "R",
+  "Descripcion": "Cafetería",
+  "Lat": 19.72149,
+  "Lng": -101.18562
+ },
+ {
+  "Nombre": "S",
+  "Descripcion": "Departamento De Recursos Materiales Y Servicios",
+  "Lat": 19.72155,
+  "Lng": -101.18697
+ },
+ {
+  "Nombre": "S1",
+  "Descripcion": "Consejo Estudiantil",
+  "Lat": 19.72141,
+  "Lng": -101.1871
+ },
+ {
+  "Nombre": "S2",
+  "Descripcion": "Comedor para trabajadores",
+  "Lat": 19.72148,
+  "Lng": -101.18757
+ },
+ {
+  "Nombre": "S3",
+  "Descripcion": "Caldera Demostrativa (laboratorio)",
+  "Lat": 19.72259,
+  "Lng": -101.18462
+ },
+ {
+  "Nombre": "T",
+  "Descripcion": "Laboratorio De Ingeniería Mecánica II",
+  "Lat": 19.7212,
+  "Lng": -101.18676
+ },
+ {
+  "Nombre": "U",
+  "Descripcion": "Gimnasio Auditorio",
+  "Lat": 19.72111,
+  "Lng": -101.18602
+ },
+ {
+  "Nombre": "V",
+  "Descripcion": "Departamento De Actividades Extraescolares",
+  "Lat": 19.72138,
+  "Lng": -101.18531
+ },
+ {
+  "Nombre": "W",
+  "Descripcion": "Editorial",
+  "Lat": 19.7214,
+  "Lng": -101.1852
+ },
+ {
+  "Nombre": "X",
+  "Descripcion": "Comedor Estudiantil",
+  "Lat": 19.7211,
+  "Lng": -101.18527
+ },
+ {
+  "Nombre": "Y",
+  "Descripcion": "Departamento De Ing. Electrónica",
+  "Lat": 19.72109,
+  "Lng": -101.18451
+ },
+ {
+  "Nombre": "Z",
+  "Descripcion": "Aulas de Ing. Eléctrica",
+  "Lat": 19.72135,
+  "Lng": -101.18509
+ },
+ {
+  "Nombre": "AA",
+  "Descripcion": "Departamento de Ingeniería Eléctrica",
+  "Lat": 19.72135,
+  "Lng": -101.18487
+ },
+ {
+  "Nombre": "AB",
+  "Descripcion": "Cubículos de Ing. Electrónica",
+  "Lat": 19.72104,
+  "Lng": -101.18495
+ },
+ {
+  "Nombre": "AC",
+  "Descripcion": "Depto. de Ciencias Básicas",
+  "Lat": 19.72089,
+  "Lng": -101.18536
+ },
+ {
+  "Nombre": "AD",
+  "Descripcion": "Cubículos para Prof. de Ciencias Básicas",
+  "Lat": 19.72069,
+  "Lng": -101.18536
+ },
+ {
+  "Nombre": "AE",
+  "Descripcion": "Laboratorios de Maestría en Electrónica",
+  "Lat": 19.72107,
+  "Lng": -101.18423
+ },
+ {
+  "Nombre": "AF",
+  "Descripcion": "Centro de Información",
+  "Lat": 19.72100,
+  "Lng": -101.18385
+ },
+ {
+  "Nombre": "AG",
+  "Descripcion": "Educ. a Dist, Aulas de Computo, Posgrado Mecánica",
+  "Lat": 19.72318,
+  "Lng": -101.18414
+ },
+ {
+  "Nombre": "AH",
+  "Descripcion": "Depto. de Bioquímica y Laboratorios",
+  "Lat": 19.72062,
+  "Lng": -101.18493
+ },
+ {
+  "Nombre": "2A",
+  "Descripcion": "Depto. Ing. Mecánica y Posg. en Materiales",
+  "Lat": 19.72293,
+  "Lng": -101.18751
+ },
+ {
+  "Nombre": "2B",
+  "Descripcion": "Laboratorio de Fusión al Vacío",
+  "Lat": "19.72308",
+  "Lng": -101.18713
+ },
+ {
+  "Nombre": "2C",
+  "Descripcion": "Almacén de Materias Primas",
+  "Lat": 19.72318,
+  "Lng": -101.18725
+ },
+ {
+  "Nombre": "2D",
+  "Descripcion": "Laboratorio de Fundición y trat. Térmicos",
+  "Lat": 19.72327,
+  "Lng": -101.18712
+ },
+ {
+  "Nombre": "2E",
+  "Descripcion": "Aula",
+  "Lat": 19.72331,
+  "Lng": -101.18677
+ },
+ {
+  "Nombre": "2F",
+  "Descripcion": "Depto. de Ing. en Materiales",
+  "Lat": 19.72357,
+  "Lng": -101.18656
+ },
+ {
+  "Nombre": "2G",
+  "Descripcion": "Lab. de análisis Químicos y Fisicoquímica",
+  "Lat": 19.7236,
+  "Lng": -101.1869
+ },
+ {
+  "Nombre": "2H",
+  "Descripcion": "Laboratorio de Materiales",
+  "Lat": 19.72358,
+  "Lng": -101.18724
+ },
+ {
+  "Nombre": "2J",
+  "Descripcion": "Laboratorio de Rayos X",
+  "Lat": 19.72378,
+  "Lng": -101.18718
+ },
+ {
+  "Nombre": "2K",
+  "Descripcion": "Aulas",
+  "Lat": 19.72408,
+  "Lng": -101.1875
+ },
+ {
+  "Nombre": "3A",
+  "Descripcion": "Laboratorio de Posgrado en Eléctrica",
+  "Lat": 19.71984,
+  "Lng": -101.18358
+ },
+ {
+  "Nombre": "3B",
+  "Descripcion": "Cubículos Doctorado en Eléctrica",
+  "Lat": 19.72005,
+  "Lng": -101.18325
+ }
+ ]

@@ -1,46 +1,81 @@
 package mx.edu.ubicatec.ponymaps.ui.mapa
 
-import android.Manifest
-import android.annotation.SuppressLint
+import android.app.PendingIntent
 import android.content.Context
-import android.content.pm.PackageManager
-import android.content.res.Resources.NotFoundException
-import android.graphics.Color
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.location.Location
 import android.os.Bundle
-import android.util.Log
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.annotation.DrawableRes
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener
-import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.*
-import com.google.maps.android.data.geojson.*
-
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.mapbox.android.core.location.LocationEngine
+import com.mapbox.android.core.location.LocationEngineCallback
+import com.mapbox.android.core.location.LocationEngineRequest
+import com.mapbox.android.core.location.LocationEngineResult
+import com.mapbox.android.gestures.MoveGestureDetector
+import com.mapbox.api.directions.v5.DirectionsCriteria
+import com.mapbox.api.directions.v5.MapboxDirections
+import com.mapbox.api.directions.v5.models.DirectionsResponse
+import com.mapbox.api.directions.v5.models.DirectionsRoute
+import com.mapbox.api.directions.v5.models.RouteOptions
+import com.mapbox.core.constants.Constants.PRECISION_6
+import com.mapbox.geojson.Feature
+import com.mapbox.geojson.LineString
+import com.mapbox.geojson.Point
+import com.mapbox.maps.*
+import com.mapbox.maps.extension.style.expressions.dsl.generated.interpolate
+import com.mapbox.maps.extension.style.layers.generated.lineLayer
+import com.mapbox.maps.extension.style.layers.properties.generated.LineCap
+import com.mapbox.maps.extension.style.layers.properties.generated.LineJoin
+import com.mapbox.maps.extension.style.sources.generated.GeoJsonSource
+import com.mapbox.maps.extension.style.sources.generated.geoJsonSource
+import com.mapbox.maps.extension.style.sources.getSourceAs
+import com.mapbox.maps.extension.style.style
+import com.mapbox.maps.plugin.LocationPuck2D
+import com.mapbox.maps.plugin.animation.MapAnimationOptions.Companion.mapAnimationOptions
+import com.mapbox.maps.plugin.animation.flyTo
+import com.mapbox.maps.plugin.annotation.AnnotationPlugin
+import com.mapbox.maps.plugin.annotation.annotations
+import com.mapbox.maps.plugin.annotation.generated.*
+import com.mapbox.maps.plugin.gestures.OnMoveListener
+import com.mapbox.maps.plugin.gestures.gestures
+import com.mapbox.maps.plugin.locationcomponent.OnIndicatorBearingChangedListener
+import com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListener
+import com.mapbox.maps.plugin.locationcomponent.location
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import mx.edu.ubicatec.ponymaps.R
 import mx.edu.ubicatec.ponymaps.databinding.FragmentMapBinding
-import mx.edu.ubicatec.ponymaps.utils.PermissionUtils
-import mx.edu.ubicatec.ponymaps.utils.PermissionUtils.PermissionDeniedDialog.Companion.newInstance
-import mx.edu.ubicatec.ponymaps.utils.PermissionUtils.isPermissionGranted
-import mx.edu.ubicatec.ponymaps.models.Edges
-import org.json.JSONException
-import org.json.JSONObject
-import java.io.IOException
-import java.nio.charset.Charset
+import mx.edu.ubicatec.ponymaps.models.ubicacion.Nodo
+import mx.edu.ubicatec.ponymaps.utils.JsonParser
+import mx.edu.ubicatec.ponymaps.utils.LocationPermissionHelper
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.lang.ref.WeakReference
 
-class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
-    OnMyLocationClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
+var mapView: MapView? = null
+
+@Suppress("SAFE_CALL_WILL_CHANGE_NULLABILITY")
+class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallback, LocationEngine {
 
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
@@ -49,87 +84,62 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
     // Flag indicating whether a requested permission has been denied after returning in * [.onRequestPermissionsResult].
     private var permissionDenied = false
 
-    private lateinit var map: GoogleMap
-    private lateinit var layermap: GeoJsonLayer
-    private var ruta: GeoJsonFeature? = null
     private lateinit var thiscontext: Context
 
-    private var edges = mutableListOf<Edges>()
-    private var nodes = mutableListOf<GeoJsonFeature>()
+    private lateinit var mapboxMap: MapboxMap
+    private lateinit var locationPermissionHelper: LocationPermissionHelper
 
-    companion object {
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
-        private val TAG = MapaFragment::class.java.name
-        private const val ZOOM_DELTA = 2.0f
-        private const val DEFAULT_MIN_ZOOM = 17.0f
-        private const val DEFAULT_MAX_ZOOM = 22.0f
-        private val ITM = LatLngBounds(
-            LatLng(19.719593, -101.187720), // SW bounds
-            LatLng(19.724298, -101.182758) // NE bounds
-        )
-        private val ITM_CAMERA = CameraPosition.Builder()
-            .target(LatLng(19.722037, -101.184835)).zoom(15.0f).bearing(0f).tilt(0f).build()
-
-        // Request code for location permission request.
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+    private val onIndicatorBearingChangedListener = OnIndicatorBearingChangedListener {
+        //mapView!!.getMapboxMap().setCamera(CameraOptions.Builder().bearing(it).build())
     }
+
+    private val onIndicatorPositionChangedListener = OnIndicatorPositionChangedListener {
+        //mapView!!.getMapboxMap().setCamera(CameraOptions.Builder().center(it).build())
+        mapView!!.gestures.focalPoint = mapView!!.getMapboxMap().pixelForCoordinate(it)
+    }
+
+    private val onMoveListener = object : OnMoveListener {
+        override fun onMoveBegin(detector: MoveGestureDetector) {
+            onCameraTrackingDismissed()
+        }
+
+        override fun onMove(detector: MoveGestureDetector): Boolean {
+            return false
+        }
+
+        override fun onMoveEnd(detector: MoveGestureDetector) {}
+    }
+
+    private val routeDisplay = false
+    private var currentPoint: Point? = null
+
+    private var places : HashMap<String, Nodo> = HashMap()
+
+    private lateinit var  annotationApi : AnnotationPlugin
+    private lateinit var pointAnnotationManager : PointAnnotationManager
 
     /**
      *
-     * GOOGLE MAPS
+     * MAPBOX VALUES
      *
      */
+    companion object {
 
-    private val callback = OnMapReadyCallback { googleMap ->
+        private const val ROUTE_LAYER_ID = "route-layer-id"
+        private const val ROUTE_LINE_SOURCE_ID = "route-source-id"
 
-        /* Manipulates the map once available.
-        * This callback is triggered when the map is ready to be used.
-        * This is where we can add markers or lines, add listeners or move the camera.
-        * If Google Play services is not installed on the device, the user will be prompted to
-        * install it inside the SupportMapFragment. This method will only be triggered once the
-        user has installed Google Play services and returned to the app.
-        */
-
-        map = googleMap
-
-        googleMap.uiSettings.isTiltGesturesEnabled = false
-
-        /** Custom map style */
-        try {
-            googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(thiscontext, R.raw.mapstyle))
-        } catch (e: NotFoundException) {
-            Log.e(TAG, "Can't find style. Error: ", e)
-        }
-
-        /** Remove Default Buttons */
-
-        googleMap.uiSettings.isMapToolbarEnabled = false
-
-        /** SETS BOUNDS */
-        googleMap.setMinZoomPreference(DEFAULT_MIN_ZOOM)
-        googleMap.setMaxZoomPreference(DEFAULT_MAX_ZOOM)
-        googleMap.setLatLngBoundsForCameraTarget(ITM)
-        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(ITM_CAMERA))
-
-        val layer = GeoJsonLayer(googleMap, R.raw.jsonmaps, context)
-        layer.addLayerToMap()
-        layermap = layer
-
-        setMarkerNodes(layer)
-        setListeners(layer)
-
-        val pointPolygonStyle = layer.defaultPolygonStyle
-        pointPolygonStyle.fillColor = Color.argb(128,255, 220, 139)
-        pointPolygonStyle.strokeColor = Color.argb(128,255, 179, 0)
-
-        val multiLineStringStyle = layer.defaultLineStringStyle
-        multiLineStringStyle.color = Color.argb(128,255,255,255)
-
-        /** SETS GPS */
-        googleMap.setOnMyLocationButtonClickListener(this)
-        googleMap.setOnMyLocationClickListener(this)
-        enableMyLocation()
-
+        private val ITM_BOUND: CameraBoundsOptions = CameraBoundsOptions.Builder()
+            .bounds(
+                CoordinateBounds(
+                    Point.fromLngLat( -101.189156, 19.727334),// SW bounds
+                    Point.fromLngLat( -101.181442, 19.716585),// NE bounds
+                    false
+                )
+            )
+            .minZoom(2.0)
+            .build()
     }
 
     /**
@@ -150,7 +160,9 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        mapaViewModel = ViewModelProvider(requireActivity()).get(MapaViewModel::class.java)
+        mapaViewModel = ViewModelProvider(requireActivity())[MapaViewModel::class.java]
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(thiscontext)
 
         /**
          *
@@ -168,11 +180,16 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
 
         mapaViewModel.nombreUbicacion.observe(viewLifecycleOwner) { nombre ->
             Toast.makeText(requireContext(), "NombreUbicacion: $nombre", Toast.LENGTH_LONG).show()
+            var place = places[nombre]
+            val dest: Point = Point.fromLngLat(place!!.lng,place.lat)
+            moveCamera(dest)
         }
+
 
         //Spinner
         val spinnerOrigen: Spinner = binding.spOrigen
         val spinnerDestino: Spinner = binding.spDestino
+
 
         ArrayAdapter.createFromResource(
             requireContext(),
@@ -183,27 +200,53 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
             spinnerOrigen.adapter = adapter
             spinnerDestino.adapter = adapter
         }
+        /*
+        var languages = arrayOf("English", "French", "Spanish", "Hindi", "Russian", "Telugu", "Chinese", "German", "Portuguese", "Arabic", "Dutch", "Urdu", "Italian", "Tamil", "Persian", "Turkish", "Other")
+        ArrayAdapter(requireContext(), R.layout.custom_spinner_item, languages).also { adapter ->
+            adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown)
+            spinnerOrigen.adapter = adapter
+            spinnerDestino.adapter = adapter
+        }*/
 
         //On click Actions
 
         //Set Route
         binding.buttonRuta.setOnClickListener {
 
+
             val origen = spinnerOrigen.selectedItem.toString()
             val destino = spinnerDestino.selectedItem.toString()
 
-            if (!(origen.equals(destino))){
-                addRoute(origen, destino)
+
+            if (origen != destino){
+                //addRoute(origen, destino)
                 binding.motionBase.transitionToStart()
             }
-            
+
+            val ori = places[origen]
+            val dest = places[destino]
+
+            getRoute(Point.fromLngLat(ori!!.lng,ori.lat),Point.fromLngLat(dest!!.lng, dest.lat))
+            /*
+            if (origen == "AG" && destino == "S"){
+                val ori: Point = Point.fromLngLat(-101.184121, 19.723182)
+                val dest: Point = Point.fromLngLat(-101.186971,19.721577)
+                getRoute(ori, dest)
+            }
+            if (origen == "A" && destino == "E"){
+                val ori: Point = Point.fromLngLat(-101.185809,19.722984)
+                val dest: Point = Point.fromLngLat(-101.185283,19.722697)
+                getRoute(ori, dest)
+            }*/
+
         }
 
         //Clear route
         binding.btnLimpiar.setOnClickListener {
-            clearRoute()
+            //clearRoute()
             binding.motionBase.transitionToStart()
         }
+        //getCurrentLocation()
 
         return root
     }
@@ -212,379 +255,438 @@ class MapaFragment : Fragment(), OnMyLocationButtonClickListener,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+        mapView = view.findViewById(R.id.mapView)
+        mapView?.getMapboxMap()?.loadStyleUri(Style.MAPBOX_STREETS)
 
-        mapFragment?.getMapAsync(callback)
+        mapboxMap = binding.mapView.getMapboxMap()
 
-        try {
-            // As we have JSON object, so we are getting the object
-            //Here we are calling a Method which is returning the JSON object
+        mapView!!.getMapboxMap().loadStyle(
+            (
+                    style("mapbox://styles/angels0107/clc5cffbm003r14ms47qqfzoi") {
+                        +geoJsonSource(ROUTE_LINE_SOURCE_ID) {
 
-            val obj = JSONObject(getJSONFromAssets()!!)
+                        }
+                        +lineLayer(ROUTE_LAYER_ID, ROUTE_LINE_SOURCE_ID) {
+                            lineColor(ContextCompat.getColor(thiscontext, R.color.md_theme_light_primary))
+                            lineCap(LineCap.ROUND)
+                            lineJoin(LineJoin.ROUND)
+                            lineWidth(5.0)
+                        }
+                    }
+                    )
+        )
 
-            // fetch JSONArray named edges by using getJSONArray
-            val usersArray = obj.getJSONArray("edges")
+        startUpdates()
+        /*/var a = places[""]
+        a?.isDraggable = true*/
 
-            for (i in 0 until usersArray.length()) {
-                // Create a JSONObject for fetching single User's Data
-                val edge = usersArray.getJSONObject(i)
-                // Fetch id store it in variable
-                val origen = edge.getString("origen")
-                val destino = edge.getString("destino")
-                val dist = edge.getInt("dist")
-
-                // Now add all the variables to the data model class and the data model class to the array list.
-                val edg = Edges(origen, destino, dist)
-
-                // add the details in the list
-                edges.add(edg)
-            }
-
-        } catch (e: JSONException) {
-            //exception
-            e.printStackTrace()
+        locationPermissionHelper = LocationPermissionHelper(WeakReference(activity))
+        locationPermissionHelper.checkPermissions {
+            onMapReady()
         }
 
-    }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        layermap.removeLayerFromMap()
+
     }
 
     /**
      *
-     * LAYER & NODES
+     * APP-MAP FUNCTIONS
      *
      */
 
-    private fun setMarkerNodes(layer: GeoJsonLayer) {
+    private fun onMapReady() {
 
-        // Iterate over all the features stored in the layer
-        for (feature in layer.features) {
+        annotationApi = mapView?.annotations!!
+        pointAnnotationManager = annotationApi.createPointAnnotationManager()
 
-            // Check if the node property exists
-            if (feature.getProperty("node") != null ) {
+        initLocationComponent()
+        setupGesturesListener()
+        setupBounds(ITM_BOUND)
+        /*
+        mapView!!.getMapboxMap().setCamera(
+            CameraOptions.Builder()
+                .center(Point.fromLngLat( -101.18544, 19.72176))
+                .zoom(15.0)
+                .build()
+        )*/
+        mapboxMap.flyTo(
+            CameraOptions.Builder()
+                .center(Point.fromLngLat( -101.18544, 19.72176))
+                .zoom(15.0)
+                .build(),
+            mapAnimationOptions {
+                duration(2_000)
+            }
+        )
+        setLocations()
 
-                nodes.add(feature)
+        //Click Listeners
 
-                if(feature.getProperty("node") == "place" ){
-
-                    val name = feature.getProperty("name")
-
-                    // Create a new point style
-                    val pointStyle = GeoJsonPointStyle()
-
-                    // Set options for the point style
-                    pointStyle.title = name
-                    pointStyle.alpha = 0.3f
-
-                    // Assign the point style to the feature
-                    feature.pointStyle = pointStyle
-
+        /*
+        pointAnnotationManager.apply {
+            this!!.addClickListener(
+                OnPointAnnotationClickListener { it1 ->
+                    Toast.makeText(thiscontext, "id: ${it1.id}", Toast.LENGTH_LONG).show()
+                    false
                 }
-                else if (feature.getProperty("node") == "path"){
+            )
+        }*/
 
-                    // Create a new point style
-                    val pointStyle = GeoJsonPointStyle()
+        pointAnnotationManager.addClickListener(OnPointAnnotationClickListener {
+            Toast.makeText(thiscontext, "Marker clicked, ID: ${it.id}, ID:${it.textField}", Toast.LENGTH_SHORT).show()
+            var place = places[it.textField]
+            val dest: Point = Point.fromLngLat(place!!.lng,place.lat)
+            moveCamera(dest)
+            false
+        })
 
-                    // Set options for the point style
-                    pointStyle.isVisible = false
+        pointAnnotationManager.addLongClickListener( OnPointAnnotationLongClickListener {
+            Toast.makeText(thiscontext, "Marker Long clicked", Toast.LENGTH_SHORT).show()
+            false
+        })
 
-                    // Assign the point style to the feature
-                    feature.pointStyle = pointStyle
+        
 
+    }
+    private fun setupGesturesListener() {
+        mapView!!.gestures.addOnMoveListener(onMoveListener)
+    }
+
+    private fun initLocationComponent() {
+        val locationComponentPlugin = mapView!!.location
+        locationComponentPlugin.updateSettings {
+            this.enabled = true
+            this.locationPuck = LocationPuck2D(
+                bearingImage = AppCompatResources.getDrawable(
+                    thiscontext,
+                    com.mapbox.maps.R.drawable.mapbox_user_puck_icon,
+                ),
+                shadowImage = AppCompatResources.getDrawable(
+                    thiscontext,
+                    com.mapbox.maps.R.drawable.mapbox_user_icon_shadow,
+                ),
+
+                scaleExpression = interpolate {
+                    linear()
+                    zoom()
+                    stop {
+                        literal(0.0)
+                        literal(0.025)
+                    }
+                    stop {
+                        literal(20.0)
+                        literal(0.025)
+                    }
+                }.toJson()
+            )
+        }
+        locationComponentPlugin.addOnIndicatorPositionChangedListener(onIndicatorPositionChangedListener)
+        locationComponentPlugin.addOnIndicatorBearingChangedListener(onIndicatorBearingChangedListener)
+    }
+    private fun onCameraTrackingDismissed() {
+        //Toast.makeText(thiscontext, "onCameraTrackingDismissed", Toast.LENGTH_SHORT).show()
+        mapView!!.location
+            .removeOnIndicatorPositionChangedListener(onIndicatorPositionChangedListener)
+        mapView!!.location
+            .removeOnIndicatorBearingChangedListener(onIndicatorBearingChangedListener)
+        mapView!!.gestures.removeOnMoveListener(onMoveListener)
+    }
+
+    private fun setupBounds(bounds: CameraBoundsOptions) {
+        mapboxMap.setBounds(bounds)
+    }
+
+    private fun getRoute(origin: Point ,destination: Point) {
+
+        val token: String = getString(R.string.mapbox_access_token)
+        val route = listOf(
+            origin, // origin
+            destination // destination
+        )
+        /*
+            listOf(
+                        Point.fromLngLat(-101.184121, 19.723182), // origin
+                        Point.fromLngLat(-101.186971,19.721577) // destination
+                    )
+         */
+
+        val client = MapboxDirections.builder()
+            .accessToken(token)
+            .routeOptions(
+                RouteOptions.builder()
+                    .coordinatesList(
+                        route
+                    )
+                    .profile(DirectionsCriteria.PROFILE_WALKING)
+                    .overview(DirectionsCriteria.OVERVIEW_FULL)
+                    .build()
+            )
+            .build()
+
+        client.enqueueCall(object : Callback<DirectionsResponse?> {
+            override fun onResponse(
+                call: Call<DirectionsResponse?>,
+                response: Response<DirectionsResponse?>
+            ) {
+                if (response.body() == null) {
+                    // Log.e("No routes found, make sure you set the right user and access token.")
+                    //Timber.d("No routes found, make sure you set the right user and access token.")
+                    return
+                } else if (response.body()!!.routes().size < 1) {
+                    // Log.e("No routes found)
+                    return
+                }
+                val currentRoute = response.body()!!.routes()[0]
+
+                drawNavigationPolylineRoute(currentRoute)
+            }
+
+            override fun onFailure(call: Call<DirectionsResponse?>, throwable: Throwable) {
+                //Timber.d("Error: %s", throwable.message)
+                if (throwable.message != "Coordinate is invalid: 0,0") {
+                    Toast.makeText(
+                        thiscontext,
+                        "Error: " + throwable.message, Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
-        }
-    }
-    private fun setListeners(layer: GeoJsonLayer) {
-
-        layer.setOnFeatureClickListener { feature ->
-
-            Log.i("GeoJsonClick", "Feature clicked: ${feature.getProperty("name")}")
-
-        }
+        })
 
     }
+    private fun drawNavigationPolylineRoute(route: DirectionsRoute ) {
 
-    private fun getJSONFromAssets(): String? {
+        if (route != null) {
+            if (mapboxMap != null) {
 
-        var json: String? = null
-        val charset: Charset = Charsets.UTF_8
-        try {
-            val myUsersJSONFile = resources.openRawResource(R.raw.distances)
-            val size = myUsersJSONFile.available()
-            val buffer = ByteArray(size)
-            myUsersJSONFile.read(buffer)
-            myUsersJSONFile.close()
-            json = String(buffer, charset)
-        } catch (ex: IOException) {
-            ex.printStackTrace()
-            return null
-        }
-        return json
-    }
+                mapboxMap.getStyle { style ->
+                    // Retrieve and update the source designated for showing the directions route
+                    val lineLayerRouteGeoJsonSource: GeoJsonSource =
+                        style.getSourceAs(ROUTE_LINE_SOURCE_ID)!!
 
-    /**
-     *
-     * Routing
-     *
-     */
+                    val directionsRouteFeature = Feature.fromGeometry(
+                        LineString.fromPolyline(
+                            route.geometry()!!,
+                            PRECISION_6
+                        )
+                    )
 
-    private fun dijkstra(source: String, destiny: String): MutableList<String> {
-
-        // Initialize single source
-
-        var d : HashMap<String, Int> = HashMap<String, Int> ()
-        var pi : HashMap<String, String> = HashMap<String, String> ()
-
-        for (feature in nodes) {
-
-            d.put(feature.getProperty("name") , 9999)
-            pi.put(feature.getProperty("name"), "-")
-
-        }
-
-        d.put(source , 0)
-        pi.put(source, "-")
-
-        val S: MutableList<GeoJsonFeature> = ArrayList()
-        val Q: MutableList<GeoJsonFeature> = nodes.toMutableList()
-
-        while (Q.isNotEmpty()) {
-
-            val u: GeoJsonFeature = extractMin( Q, d)
-            S.add(u)
-
-            val name = u.getProperty("name")
-
-            for (edge in edges) {
-                if(edge.origen  == name){
-
-                    if( d[edge.destino]!! > ( d[name]!! + edge.dist)) {
-
-                        d[edge.destino] = ( d[name]!! + edge.dist )
-                        pi[edge.destino] = name
-
+                    // Create a LineString with the directions route's geometry and
+                    // reset the GeoJSON source for the route LineLayer source
+                    if (lineLayerRouteGeoJsonSource != null) {
+                        // Create the LineString from the list of coordinates and then make a GeoJSON
+                        // FeatureCollection so we can add the line to our map as a layer.
+                        lineLayerRouteGeoJsonSource.feature(directionsRouteFeature)
                     }
                 }
+
+
             }
+        } else {
+            //Timber.d("Directions route is null")
+            Toast.makeText(
+                thiscontext,
+                "Error, cant show route", Toast.LENGTH_SHORT
+            ).show()
         }
-
-        var dest = destiny
-        var tmp = dest
-
-        val route: MutableList<String> = ArrayList()
-
-        while (tmp != source) {
-
-            route.add(tmp)
-            tmp = pi[tmp]!!
-
-        }
-
-        return route
-
     }
-    private fun extractMin( Q: MutableList<GeoJsonFeature>, d : HashMap<String, Int>): GeoJsonFeature {
+    private fun addAnnotationToMap(point: Point, nodo: String) {
+        // Create an instance of the Annotation API and get the PointAnnotationManager.
+        bitmapFromDrawableRes(
+            thiscontext,
+            R.drawable.red_marker
 
-        var minNode = Q[0]
-        var minDistance: Int? = d[ Q[0].getProperty("name") ]
+        )?.let {
+            /*
+            val annotationApi = mapView?.annotations
+            val pointAnnotationManager = annotationApi?.createPointAnnotationManager()
+            */
 
-        for (feature in Q) {
+            // Set options for the resulting symbol layer.
+            val pointAnnotationOptions: PointAnnotationOptions = PointAnnotationOptions()
+                // Define a geographic coordinate.
+                .withPoint(point)
+                // Specify the bitmap you assigned to the point annotation
+                // The bitmap will be added to map style automatically.
+                .withIconImage(it)
+                .withIconSize(0.5)
+                .withTextField(nodo)
+                .withTextSize(0.0)
 
-            if ( d[ feature.getProperty("name") ]!! < minDistance!!) {
-                minNode = feature
-                minDistance = d[ feature.getProperty("name") ]
+            // Add the resulting pointAnnotation to the map.
+            var pointAnnotation = pointAnnotationManager.create(pointAnnotationOptions)
+            places[nodo]!!.id = pointAnnotation.id
+
+            /*var last = pointAnnotationManager?.annotations!!.last()
+            places.put("",last)*/
+        }
+    }
+    private fun bitmapFromDrawableRes(context: Context, @DrawableRes resourceId: Int) =
+        convertDrawableToBitmap(AppCompatResources.getDrawable(context, resourceId))
+
+    private fun convertDrawableToBitmap(sourceDrawable: Drawable?): Bitmap? {
+        if (sourceDrawable == null) {
+            return null
+        }
+        return if (sourceDrawable is BitmapDrawable) {
+            sourceDrawable.bitmap
+        } else {
+            // copying drawable object to not manipulate on the same reference
+            val constantState = sourceDrawable.constantState ?: return null
+            val drawable = constantState.newDrawable().mutate()
+            val bitmap: Bitmap = Bitmap.createBitmap(
+                drawable.intrinsicWidth, drawable.intrinsicHeight,
+                Bitmap.Config.ARGB_8888
+            )
+            val canvas = Canvas(bitmap)
+            drawable.setBounds(0, 0, canvas.width, canvas.height)
+            drawable.draw(canvas)
+            bitmap
+        }
+    }
+    /*
+    private fun getCurrentLocation() {
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location : Location? ->
+                val lat = location?.latitude
+                val lon = location?.longitude
+                currentPoint = Point.fromLngLat(lon!!, lat!!)
+                if (lat != null && lon != null){
+                    //Toast.makeText(thiscontext, "Current location: $lat , $lon", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(thiscontext, "Current location: $currentPoint , $lon", Toast.LENGTH_SHORT).show()
+                }
             }
+    }*/
 
-        }
+    private fun startUpdates() {
 
-        Q.remove(minNode)
-        return minNode
+        val lifecycle = viewLifecycleOwner // in Fragment
 
-    }
-
-    private fun setRoute(source: String, destiny: String): GeoJsonFeature {
-
-        val route = dijkstra(source, destiny)
-
-        val lineStringArray: MutableList<LatLng> = ArrayList()
-
-        for (i in route){
-
-            for (feature in nodes){
-
-                if(i == feature.getProperty("name") ){
-
-                    var co = feature.geometry.geometryObject
-                    val coo: LatLng = co as LatLng
-
-                    lineStringArray.add(coo)
-
+        lifecycle.lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                // this block is automatically executed when moving into
+                // the started state, and cancelled when stopping.
+                while (routeDisplay) {
+                    //getCurrentLocation()
+                    val dest: Point = Point.fromLngLat(-101.23712022352315,19.695377903734485)
+                    if(currentPoint != null)
+                    //getRoute(currentPoint!!,dest)
+                        delay(3 * 1000)
                 }
             }
         }
-        for (feature in nodes){
+    }
 
-            if(source == feature.getProperty("name") ){
+    private fun setLocations(){
+        /**
+        ¡ NEEDS TO GET THE JSON FROM DB !
+        */
 
-                var co = feature.geometry.geometryObject
-                val coo: LatLng = co as LatLng
+        val jsonParser = JsonParser(resources)
+        val jsonArr = jsonParser.getJSONArray(R.raw.places)
 
-                lineStringArray.add(coo)
+        for (i in 0 until jsonArr!!.length()) {
 
-            }
+            // Create a JSONObject for fetching single User's Data
+            val place = jsonArr.getJSONObject(i)
+            // Fetch id store it in variable
+            val name = place.getString("Nombre")
+            val desc = place.getString("Descripcion")
+            val lat = place.getString("Lat").toDouble()
+            val lng = place.getString("Lng").toDouble()
+            val id = i.toLong()
+
+            val obj = Nodo(name,desc,lat,lng,null)
+            places[name] = obj
+
+            // Now add all the variables to the data model class and the data model class to the array list.
+            addAnnotationToMap(Point.fromLngLat(lng, lat), name)
+
         }
 
-        val lineString = GeoJsonLineString(lineStringArray)
-        val lineStringFeature = GeoJsonFeature(lineString, null, null, null)
-
-        // Set the color of the linestring
-        val lineStringStyle = GeoJsonLineStringStyle()
-        lineStringStyle.color = Color.argb(255,255, 0, 255)
-        lineStringStyle.width = 20f
-
-        // Set the style of the feature
-        lineStringFeature.lineStringStyle = lineStringStyle
-
-        return lineStringFeature
     }
 
-    private fun addRoute(source: String, destiny: String){
+    private fun moveCamera(destination: Point){
 
-        if (ruta != null) layermap.removeFeature(ruta)
+        val cameraPosition = CameraOptions.Builder()
+            .zoom(18.0)
+            .center(destination)
+            .build()
+        // set camera position
+        //mapView!!.getMapboxMap().setCamera(cameraPosition)
 
-        val a = setRoute(source, destiny)
-        ruta = a
-        layermap.addFeature(a)
+        mapboxMap.flyTo(
+            cameraPosition,
+            mapAnimationOptions {
+                duration(2_000)
+            }
+        )
 
     }
-
-    private fun clearRoute(){
-
-        if (ruta != null) layermap.removeFeature(ruta)
-
-    }
-
     /**
      *
-     * LOCATION
+     * APP STATES
      *
      */
-
-     // Enables the My Location layer if the fine location permission has been granted.
-
-    @SuppressLint("MissingPermission")
-    private fun enableMyLocation() {
-
-        // [START maps_check_location_permission]
-        // 1. Check if permissions are granted, if so, enable the my location layer
-        if (ContextCompat.checkSelfPermission(
-                thiscontext,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
-                thiscontext,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            map.isMyLocationEnabled = true
-            return
-        }
-
-        // 2. If if a permission rationale dialog should be shown
-        if (ActivityCompat.shouldShowRequestPermissionRationale(
-                //activity?.parent!!,
-                requireActivity(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) || ActivityCompat.shouldShowRequestPermissionRationale(
-                requireActivity(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            )
-        ) {
-            PermissionUtils.RationaleDialog.newInstance(
-                LOCATION_PERMISSION_REQUEST_CODE, true
-            ).show(childFragmentManager, "dialog")
-            return
-        }
-
-        // 3. Otherwise, request permission
-        ActivityCompat.requestPermissions(
-            requireActivity(),
-            arrayOf(
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ),
-            LOCATION_PERMISSION_REQUEST_CODE
-        )
-        // [END maps_check_location_permission]
+    override fun onStart() {
+        super.onStart()
+        mapView?.onStart()
     }
 
-
-    override fun onMyLocationButtonClick(): Boolean {
-        //Toast.makeText(thiscontext, "MyLocation button clicked", Toast.LENGTH_SHORT) .show()
-        // Return false so that we don't consume the event and the default behavior still occurs
-        // (the camera animates to the user's current position).
-        return false
+    override fun onStop() {
+        super.onStop()
+        mapView?.onStop()
     }
 
-    override fun onMyLocationClick(location: Location) {
-        Toast.makeText(thiscontext, "Current location:\n$location", Toast.LENGTH_LONG).show()
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView?.onLowMemory()
     }
 
-    // [START maps_check_location_permission_result]
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView!!.location
+            .removeOnIndicatorBearingChangedListener(onIndicatorBearingChangedListener)
+        mapView!!.location
+            .removeOnIndicatorPositionChangedListener(onIndicatorPositionChangedListener)
+        mapView!!.gestures.removeOnMoveListener(onMoveListener)
+        mapView?.onDestroy()
+    }
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
         grantResults: IntArray
     ) {
-        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
-            super.onRequestPermissionsResult(
-                requestCode,
-                permissions,
-                grantResults
-            )
-            return
-        }
-
-        if (isPermissionGranted(
-                permissions,
-                grantResults,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) || isPermissionGranted(
-                permissions,
-                grantResults,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            )
-        ) {
-            // Enable the my location layer if the permission has been granted.
-            enableMyLocation()
-        } else {
-            // Permission was denied. Display an error message
-            // [START_EXCLUDE]
-            // Display the missing permission error dialog when the fragments resume.
-            permissionDenied = true
-            // [END_EXCLUDE]
-        }
-    }
-    // [END maps_check_location_permission_result]
-
-    override fun onResume() {
-        super.onResume()
-        if (permissionDenied) {
-            // Permission was not granted, display error dialog.
-            showMissingPermissionError()
-            permissionDenied = false
-        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        locationPermissionHelper.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-    /**
-     * Displays a dialog with error message explaining that the location permission is missing.
-     */
-    private fun showMissingPermissionError() {
-
-        newInstance(true).show(childFragmentManager, "dialog")
-
+    override fun getLastLocation(callback: LocationEngineCallback<LocationEngineResult>) {
+        TODO("Not yet implemented")
     }
+
+    override fun requestLocationUpdates(
+        request: LocationEngineRequest,
+        callback: LocationEngineCallback<LocationEngineResult>,
+        looper: Looper?
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun requestLocationUpdates(
+        request: LocationEngineRequest,
+        pendingIntent: PendingIntent?
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun removeLocationUpdates(callback: LocationEngineCallback<LocationEngineResult>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun removeLocationUpdates(pendingIntent: PendingIntent?) {
+        TODO("Not yet implemented")
+    }
+
+
 }

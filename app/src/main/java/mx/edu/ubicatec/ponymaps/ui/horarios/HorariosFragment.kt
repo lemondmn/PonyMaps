@@ -2,10 +2,12 @@ package mx.edu.ubicatec.ponymaps.ui.horarios
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -16,8 +18,12 @@ import mx.edu.ubicatec.ponymaps.models.horarios.HorarioAdapter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import mx.edu.ubicatec.ponymaps.models.horarios.Horario
+import mx.edu.ubicatec.ponymaps.models.ubicacion.Ubicacion
+import mx.edu.ubicatec.ponymaps.models.ubicacion.UbicacionProvider
 import mx.edu.ubicatec.ponymaps.ui.mapa.MapaViewModel
 import java.io.IOException
+
+private var horarioAdapter: HorarioAdapter? = null
 
 class HorariosFragment : Fragment() {
 
@@ -40,27 +46,45 @@ class HorariosFragment : Fragment() {
 
         mapaViewModel = ViewModelProvider(requireActivity()).get(MapaViewModel::class.java)
 
-        binding.motionBaseHor.transitionToEnd()
-
         /** Spinners setup */
 
         setSpinners()
 
         /** Button on click */
 
-        binding.buttonBuscarHorario.setOnClickListener {
+        binding.btnDiaL.setOnClickListener {
             val salon = binding.spinnerSalon.selectedItem.toString()
-            val dia = binding.spinnerDia.selectedItem.toString()
 
-            setRecyclerView(salon, dia)
-            binding.motionBaseHor.transitionToStart()
+            setRecyclerView(salon, "Lunes")
         }
 
-        binding.btnAbrirSelectorHorario.setOnClickListener {
-            binding.motionBaseHor.transitionToEnd()
+        binding.btnDiaM.setOnClickListener {
+            val salon = binding.spinnerSalon.selectedItem.toString()
+
+            setRecyclerView(salon, "Martes")
         }
 
-        /** SETS GPS */
+        binding.btnDiaX.setOnClickListener {
+            val salon = binding.spinnerSalon.selectedItem.toString()
+
+            setRecyclerView(salon, "Miercoles")
+        }
+
+        binding.btnDiaJ.setOnClickListener {
+            val salon = binding.spinnerSalon.selectedItem.toString()
+
+            setRecyclerView(salon, "Jueves")
+        }
+
+        binding.btnDiaV.setOnClickListener {
+            val salon = binding.spinnerSalon.selectedItem.toString()
+
+            setRecyclerView(salon, "Viernes")
+        }
+
+        binding.btnDiaS.setOnClickListener {
+            Toast.makeText(requireContext(), "No hay materias en sabado", Toast.LENGTH_LONG).show()
+        }
 
         return root
     }
@@ -69,20 +93,15 @@ class HorariosFragment : Fragment() {
 
         val edifs = arrayOf("F", "K")
         var salones = arrayListOf<String>("")
-        val dias = arrayOf("Lunes", "Martes", "Miercoles", "Jueves", "Viernes")
 
         val spinnerEdificio: Spinner = binding.spinnerEdificio
-        var spinnerSalon: Spinner = binding.spinnerSalon
-        val spinnerDia: Spinner = binding.spinnerDia
+        val spinnerSalon: Spinner = binding.spinnerSalon
 
         val ada1 = ArrayAdapter(requireContext(), R.layout.custom_spinner_item, edifs)
-        val ada3 = ArrayAdapter(requireContext(), R.layout.custom_spinner_item, dias)
 
         ada1.setDropDownViewResource(R.layout.custom_spinner_dropdown)
-        ada3.setDropDownViewResource(R.layout.custom_spinner_dropdown)
 
         spinnerEdificio.adapter = ada1
-        spinnerDia.adapter = ada3
 
         spinnerEdificio.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
@@ -100,7 +119,7 @@ class HorariosFragment : Fragment() {
                             arrayListOf<String>("K1", "K2", "K3", "K4", "K5", "K6", "K7", "K8")
                     }
                 }
-                var ada2 = ArrayAdapter(requireContext(), R.layout.custom_spinner_item, salones)
+                val ada2 = ArrayAdapter(requireContext(), R.layout.custom_spinner_item, salones)
                 ada2.setDropDownViewResource(R.layout.custom_spinner_dropdown)
                 spinnerSalon.adapter = ada2
             }
@@ -123,14 +142,15 @@ class HorariosFragment : Fragment() {
             }
         }
 
-        val recyclerView = binding.recyclerHorarios
+        val recyclerView = binding.recyclerViewHorarios
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = object : HorarioAdapter(y) {
+        horarioAdapter = object : HorarioAdapter(y) {
             override fun sendHorario(salon: String) {
                 mapaViewModel.nombreSalon.postValue(salon)
                 findNavController().navigate(R.id.action_na_fragment_horarios_to_na_fragment_map)
             }
         }
+        recyclerView.adapter = horarioAdapter
     }
 
     fun readJSON(): List<Horario> {
@@ -158,4 +178,36 @@ class HorariosFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    fun resetList(salon: String, dia: String){
+        val x = readJSON()
+        val y = arrayListOf<Horario>()
+
+        for (horario in x){
+            if(horario.nombreSalon == salon && horario.dia == dia){
+                y.add(horario)
+            }
+        }
+        horarioAdapter?.updateHorarios(y)
+    }
+
+    fun updateRecyclerView(textSubmited: String){
+        var filterList = ArrayList<Horario>()
+
+        if (horarioAdapter != null) {
+            Log.d("SearchList", "Checking Cards")
+            horarioAdapter?.getHorarios()?.forEach {
+                if (
+                    it.nombreMateria.uppercase().contains(textSubmited.uppercase()) ||
+                    it.horaEntrada.contains(textSubmited) ||
+                    it.horaSalida.contains(textSubmited)
+                ) {
+                    filterList.add(it)
+                    Log.d("SearchList", it.nombreSalon)
+                }
+            }
+            horarioAdapter?.updateHorarios(filterList)
+        }else{ Log.d("SearchList", "No init") }
+    }
+
 }

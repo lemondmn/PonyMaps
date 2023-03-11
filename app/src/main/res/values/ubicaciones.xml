@@ -3,15 +3,8 @@
     <string-array name="ubicaciones">
 
         <item>A</item>
-        <item>AA</item>
-        <item>AB</item>
-        <item>AC</item>
-        <item>AD</item>
-        <item>AE</item>
-        <item>AF</item>
-        <item>AG</item>
-        <item>AH</item>
         <item>B</item>
+        <item>CH</item>
         <item>C</item>
         <item>D</item>
         <item>E</item>
@@ -41,6 +34,26 @@
         <item>X</item>
         <item>Y</item>
         <item>Z</item>
+        <item>AA</item>
+        <item>AB</item>
+        <item>AC</item>
+        <item>AD</item>
+        <item>AE</item>
+        <item>AF</item>
+        <item>AG</item>
+        <item>AH</item>
+        <item>2A</item>
+        <item>2B</item>
+        <item>2C</item>
+        <item>2D</item>
+        <item>2E</item>
+        <item>2F</item>
+        <item>2G</item>
+        <item>2H</item>
+        <item>2J</item>
+        <item>2K</item>
+        <item>3A</item>
+        <item>3B</item>
 
     </string-array>
 </resources>

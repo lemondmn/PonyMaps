@@ -5,47 +5,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundShade2"
     app:layoutDescription="@xml/fragment_map_scene"
     tools:context=".ui.mapa.MapaFragment">
-
-    <TextView
-        android:id="@+id/textView_titleMapa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_rectangle"
-        android:backgroundTint="@color/backgroundShade1"
-        android:backgroundTintMode="src_over"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:layout_margin="0dp"
-        android:text="Mapa"
-        android:textAlignment="center"
-        android:textColor="@color/primaryShade4"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/mapContainer"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_titleMapa">
+        app:layout_constraintTop_toBottomOf="parent">
 
-        <fragment
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
+        <com.mapbox.maps.MapView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/mapView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cameraTargetLat="19.722037"
-            app:cameraTargetLng="-101.184835"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:context=".ui.mapa.MapaFragment" />
+            mapbox:mapbox_cameraTargetLat="40.7128"
+            mapbox:mapbox_cameraTargetLng="-74.0060"
+            mapbox:mapbox_cameraZoom="9.0"
+            mapbox:mapbox_styleUri="mapbox://styles/angels0107/clc5cffbm003r14ms47qqfzoi"
+            />
 
     </FrameLayout>
 
@@ -56,8 +38,6 @@
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/shape_roundedcornersrectangle"
-        android:backgroundTint="@color/primaryShade1"
-        android:backgroundTintMode="src_over"
         android:src="@drawable/se_ic_directions"
         app:layout_constraintBottom_toTopOf="@+id/definirRuta"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,8 +48,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_roundedtoprectangle"
-        android:backgroundTint="@color/primaryShade1"
-        android:backgroundTintMode="src_over"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -82,7 +60,6 @@
             android:layout_marginVertical="15dp"
             android:fontFamily="sans-serif-black"
             android:text="Definir Ruta"
-            android:textColor="@color/secondaryShade3"
             android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +73,6 @@
             android:layout_marginVertical="15dp"
             android:layout_marginTop="15dp"
             android:text="Origen"
-            android:textColor="@color/generalText"
             android:textSize="24sp"
             app:layout_constraintTop_toBottomOf="@+id/textView_titleRuta"
             tools:layout_editor_absoluteX="35dp" />
@@ -107,8 +83,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:layout_marginVertical="15dp"
-            android:backgroundTint="@color/primaryShade4"
-            android:backgroundTintMode="add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -120,8 +94,6 @@
             android:layout_marginHorizontal="15dp"
             android:layout_marginVertical="15dp"
             android:text="Destino"
-            android:textColor="@color/generalText"
-            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sp_origen" />
@@ -132,8 +104,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:layout_marginVertical="15dp"
-            android:backgroundTint="@color/primaryShade4"
-            android:backgroundTintMode="add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_dest" />
@@ -145,7 +115,6 @@
             android:layout_marginVertical="15dp"
             android:backgroundTint="@color/primaryShade3"
             android:text="Ok"
-            android:textColor="@color/generalText"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -156,11 +125,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/primaryShade3"
             android:drawableLeft="@drawable/se_ic_delete"
-            android:drawableTint="@color/button_color_selected"
             android:text="Limpiar"
-            android:textColor="@color/button_color_selected"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mx.edu.ubicatec.ponymaps.R
+import mx.edu.ubicatec.ponymaps.models.ubicacion.Ubicacion
 
-abstract class EventoAdapter(private val eventoList: List<Evento>) : RecyclerView.Adapter<EventoAdapter.EventoViewHolder>() {
+abstract class EventoAdapter(private var eventoList: List<Evento>) : RecyclerView.Adapter<EventoAdapter.EventoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventoAdapter.EventoViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -25,7 +26,7 @@ abstract class EventoAdapter(private val eventoList: List<Evento>) : RecyclerVie
 
         //val img = view.findViewById<ImageView>(R.id.imageView_eventos)
         val nombreEvento = itemView.findViewById<TextView>(R.id.EventoName)
-        val descripcionEvento = itemView.findViewById<TextView>(R.id.EventoDescripcion)
+        val descripcionEvento = itemView.findViewById<TextView>(R.id.EventoInfo)
         val ubicacionEvento = itemView.findViewById<TextView>(R.id.EventoUbicacion)
         val fechaEvento = itemView.findViewById<TextView>(R.id.EventoFecha)
         val horaEvento = itemView.findViewById<TextView>(R.id.EventoHora)
@@ -44,6 +45,14 @@ abstract class EventoAdapter(private val eventoList: List<Evento>) : RecyclerVie
     }
 
     abstract fun sendEvento(id : Int)
+
+    fun getEventos(): List<Evento> {
+        return eventoList
+    }
+    fun updateEventos(newEventos: List<Evento>){
+        eventoList = newEventos
+        notifyDataSetChanged()
+    }
 
 }
 
