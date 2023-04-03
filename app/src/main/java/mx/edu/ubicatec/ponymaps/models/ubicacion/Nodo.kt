@@ -7,6 +7,7 @@ data class Nodo(
     val informacion: String,
     val lat: Double,
     val lng: Double,
-    var id: Long?
+    var id_view: Int?,
+    var id: String?
 
 ) : Serializable

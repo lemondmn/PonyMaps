@@ -6,7 +6,6 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.location.Location
 import android.os.Bundle
 import android.os.Looper
 import android.view.LayoutInflater
@@ -14,11 +13,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -53,6 +54,7 @@ import com.mapbox.maps.plugin.LocationPuck2D
 import com.mapbox.maps.plugin.animation.MapAnimationOptions.Companion.mapAnimationOptions
 import com.mapbox.maps.plugin.animation.flyTo
 import com.mapbox.maps.plugin.annotation.AnnotationPlugin
+import com.mapbox.maps.plugin.annotation.OnAnnotationInteractionListener
 import com.mapbox.maps.plugin.annotation.annotations
 import com.mapbox.maps.plugin.annotation.generated.*
 import com.mapbox.maps.plugin.gestures.OnMoveListener
@@ -60,6 +62,9 @@ import com.mapbox.maps.plugin.gestures.gestures
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorBearingChangedListener
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListener
 import com.mapbox.maps.plugin.locationcomponent.location
+import com.mapbox.maps.viewannotation.ViewAnnotationManager
+import com.mapbox.maps.viewannotation.viewAnnotationOptions
+import kotlinx.android.synthetic.main.annotation_view.view.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import mx.edu.ubicatec.ponymaps.R
@@ -74,7 +79,6 @@ import java.lang.ref.WeakReference
 
 var mapView: MapView? = null
 
-@Suppress("SAFE_CALL_WILL_CHANGE_NULLABILITY")
 class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallback, LocationEngine {
 
     private var _binding: FragmentMapBinding? = null
@@ -97,7 +101,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
 
     private val onIndicatorPositionChangedListener = OnIndicatorPositionChangedListener {
         //mapView!!.getMapboxMap().setCamera(CameraOptions.Builder().center(it).build())
-        mapView!!.gestures.focalPoint = mapView!!.getMapboxMap().pixelForCoordinate(it)
+        //mapView!!.gestures.focalPoint = mapView!!.getMapboxMap().pixelForCoordinate(it)
     }
 
     private val onMoveListener = object : OnMoveListener {
@@ -115,10 +119,14 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
     private val routeDisplay = false
     private var currentPoint: Point? = null
 
-    private var places : HashMap<String, Nodo> = HashMap()
+    private var places: HashMap<String, Nodo> = HashMap()
 
-    private lateinit var  annotationApi : AnnotationPlugin
-    private lateinit var pointAnnotationManager : PointAnnotationManager
+    private lateinit var annotationApi: AnnotationPlugin
+    private lateinit var pointAnnotationManager: PointAnnotationManager
+
+    private lateinit var viewAnnotationManager: ViewAnnotationManager
+    private var isAnnoView = false
+    private lateinit var currentAnnoView : String
 
     /**
      *
@@ -133,8 +141,8 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         private val ITM_BOUND: CameraBoundsOptions = CameraBoundsOptions.Builder()
             .bounds(
                 CoordinateBounds(
-                    Point.fromLngLat( -101.189156, 19.727334),// SW bounds
-                    Point.fromLngLat( -101.181442, 19.716585),// NE bounds
+                    Point.fromLngLat(-101.189156, 19.727334),// SW bounds
+                    Point.fromLngLat(-101.181442, 19.716585),// NE bounds
                     false
                 )
             )
@@ -155,7 +163,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         savedInstanceState: Bundle?
 
     ): View {
-        thiscontext  = container!!.context
+        thiscontext = container!!.context
 
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -180,16 +188,14 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
 
         mapaViewModel.nombreUbicacion.observe(viewLifecycleOwner) { nombre ->
             Toast.makeText(requireContext(), "NombreUbicacion: $nombre", Toast.LENGTH_LONG).show()
-            var place = places[nombre]
-            val dest: Point = Point.fromLngLat(place!!.lng,place.lat)
+            val place = places[nombre]
+            val dest: Point = Point.fromLngLat(place!!.lng, place.lat)
             moveCamera(dest)
         }
-
 
         //Spinner
         val spinnerOrigen: Spinner = binding.spOrigen
         val spinnerDestino: Spinner = binding.spDestino
-
 
         ArrayAdapter.createFromResource(
             requireContext(),
@@ -218,7 +224,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
             val destino = spinnerDestino.selectedItem.toString()
 
 
-            if (origen != destino){
+            if (origen != destino) {
                 //addRoute(origen, destino)
                 binding.motionBase.transitionToStart()
             }
@@ -226,18 +232,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
             val ori = places[origen]
             val dest = places[destino]
 
-            getRoute(Point.fromLngLat(ori!!.lng,ori.lat),Point.fromLngLat(dest!!.lng, dest.lat))
-            /*
-            if (origen == "AG" && destino == "S"){
-                val ori: Point = Point.fromLngLat(-101.184121, 19.723182)
-                val dest: Point = Point.fromLngLat(-101.186971,19.721577)
-                getRoute(ori, dest)
-            }
-            if (origen == "A" && destino == "E"){
-                val ori: Point = Point.fromLngLat(-101.185809,19.722984)
-                val dest: Point = Point.fromLngLat(-101.185283,19.722697)
-                getRoute(ori, dest)
-            }*/
+            getRoute(Point.fromLngLat(ori!!.lng, ori.lat), Point.fromLngLat(dest!!.lng, dest.lat))
 
         }
 
@@ -259,15 +254,21 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         mapView?.getMapboxMap()?.loadStyleUri(Style.MAPBOX_STREETS)
 
         mapboxMap = binding.mapView.getMapboxMap()
+        setupBounds(ITM_BOUND)
 
-        mapView!!.getMapboxMap().loadStyle(
+        mapboxMap.loadStyle(
             (
                     style("mapbox://styles/angels0107/clc5cffbm003r14ms47qqfzoi") {
                         +geoJsonSource(ROUTE_LINE_SOURCE_ID) {
 
                         }
                         +lineLayer(ROUTE_LAYER_ID, ROUTE_LINE_SOURCE_ID) {
-                            lineColor(ContextCompat.getColor(thiscontext, R.color.md_theme_light_primary))
+                            lineColor(
+                                ContextCompat.getColor(
+                                    thiscontext,
+                                    R.color.md_theme_light_primary
+                                )
+                            )
                             lineCap(LineCap.ROUND)
                             lineJoin(LineJoin.ROUND)
                             lineWidth(5.0)
@@ -286,8 +287,8 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         }
 
 
-
     }
+
 
     /**
      *
@@ -299,10 +300,10 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
 
         annotationApi = mapView?.annotations!!
         pointAnnotationManager = annotationApi.createPointAnnotationManager()
+        viewAnnotationManager = binding.mapView.viewAnnotationManager
 
         initLocationComponent()
         setupGesturesListener()
-        setupBounds(ITM_BOUND)
         /*
         mapView!!.getMapboxMap().setCamera(
             CameraOptions.Builder()
@@ -312,7 +313,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         )*/
         mapboxMap.flyTo(
             CameraOptions.Builder()
-                .center(Point.fromLngLat( -101.18544, 19.72176))
+                .center(Point.fromLngLat(-101.18544, 19.72176))
                 .zoom(15.0)
                 .build(),
             mapAnimationOptions {
@@ -334,21 +335,65 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         }*/
 
         pointAnnotationManager.addClickListener(OnPointAnnotationClickListener {
-            Toast.makeText(thiscontext, "Marker clicked, ID: ${it.id}, ID:${it.textField}", Toast.LENGTH_SHORT).show()
-            var place = places[it.textField]
-            val dest: Point = Point.fromLngLat(place!!.lng,place.lat)
+            Toast.makeText(
+                thiscontext,
+                "Marker clicked, ID: ${it.id}, ID:${it.textField}",
+                Toast.LENGTH_SHORT
+            ).show()
+            val place = places[it.textField]
+            val dest: Point = Point.fromLngLat(place!!.lng, place.lat)
             moveCamera(dest)
             false
         })
 
-        pointAnnotationManager.addLongClickListener( OnPointAnnotationLongClickListener {
+        pointAnnotationManager.addLongClickListener(OnPointAnnotationLongClickListener {
             Toast.makeText(thiscontext, "Marker Long clicked", Toast.LENGTH_SHORT).show()
+            val place = places[it.textField]
+
+            if(!isAnnoView){
+
+                val viewAnnotation = viewAnnotationManager.getViewAnnotationByFeatureId(place!!.id.toString())
+
+                viewAnnotationManager.updateViewAnnotation(
+                    viewAnnotation!!,
+                    options = viewAnnotationOptions {
+                        visible(true)
+                    }
+                )
+                currentAnnoView = place!!.id.toString()
+                isAnnoView = true
+
+            }else {
+
+                var viewAnnotation = viewAnnotationManager.getViewAnnotationByFeatureId(currentAnnoView)
+
+                viewAnnotationManager.updateViewAnnotation(
+                    viewAnnotation!!,
+                    options = viewAnnotationOptions {
+                        visible(false)
+                    }
+                )
+
+                viewAnnotation = viewAnnotationManager.getViewAnnotationByFeatureId(place!!.id.toString())
+
+                viewAnnotationManager.updateViewAnnotation(
+                    viewAnnotation!!,
+                    options = viewAnnotationOptions {
+                        visible(true)
+                    }
+                )
+                currentAnnoView = place!!.id.toString()
+
+            }
+
+
+
             false
         })
 
-        
 
     }
+
     private fun setupGesturesListener() {
         mapView!!.gestures.addOnMoveListener(onMoveListener)
     }
@@ -381,9 +426,16 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
                 }.toJson()
             )
         }
-        locationComponentPlugin.addOnIndicatorPositionChangedListener(onIndicatorPositionChangedListener)
-        locationComponentPlugin.addOnIndicatorBearingChangedListener(onIndicatorBearingChangedListener)
+        locationComponentPlugin.addOnIndicatorPositionChangedListener(
+            onIndicatorPositionChangedListener
+        )
+        locationComponentPlugin.addOnIndicatorBearingChangedListener(
+            onIndicatorBearingChangedListener
+        )
+
+
     }
+
     private fun onCameraTrackingDismissed() {
         //Toast.makeText(thiscontext, "onCameraTrackingDismissed", Toast.LENGTH_SHORT).show()
         mapView!!.location
@@ -397,7 +449,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         mapboxMap.setBounds(bounds)
     }
 
-    private fun getRoute(origin: Point ,destination: Point) {
+    private fun getRoute(origin: Point, destination: Point) {
 
         val token: String = getString(R.string.mapbox_access_token)
         val route = listOf(
@@ -454,33 +506,45 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         })
 
     }
-    private fun drawNavigationPolylineRoute(route: DirectionsRoute ) {
 
-        if (route != null) {
-            if (mapboxMap != null) {
+    private fun drawNavigationPolylineRoute(route: DirectionsRoute) {
 
-                mapboxMap.getStyle { style ->
-                    // Retrieve and update the source designated for showing the directions route
-                    val lineLayerRouteGeoJsonSource: GeoJsonSource =
-                        style.getSourceAs(ROUTE_LINE_SOURCE_ID)!!
+        if (route != null && mapboxMap != null) {
 
-                    val directionsRouteFeature = Feature.fromGeometry(
-                        LineString.fromPolyline(
-                            route.geometry()!!,
-                            PRECISION_6
-                        )
+            mapboxMap.getStyle { style ->
+                // Retrieve and update the source designated for showing the directions route
+                val lineLayerRouteGeoJsonSource: GeoJsonSource =
+                    style.getSourceAs(ROUTE_LINE_SOURCE_ID)!!
+
+                val directionsRouteFeature = Feature.fromGeometry(
+                    LineString.fromPolyline(
+                        route.geometry()!!,
+                        PRECISION_6
                     )
+                )
+                val a = LineString.fromPolyline(
+                    route.geometry()!!,
+                    PRECISION_6
+                )
+                a.coordinates()
+                Toast.makeText(
+                    thiscontext,
+                    "Geometry: " + a.coordinates()  , Toast.LENGTH_SHORT
 
-                    // Create a LineString with the directions route's geometry and
-                    // reset the GeoJSON source for the route LineLayer source
-                    if (lineLayerRouteGeoJsonSource != null) {
-                        // Create the LineString from the list of coordinates and then make a GeoJSON
-                        // FeatureCollection so we can add the line to our map as a layer.
-                        lineLayerRouteGeoJsonSource.feature(directionsRouteFeature)
-                    }
+                ).show()
+                Toast.makeText(
+                    thiscontext,
+                    "Geometry: " + route.geometry()!!, Toast.LENGTH_SHORT
+                ).show()
+
+
+                // Create a LineString with the directions route's geometry and
+                // reset the GeoJSON source for the route LineLayer source
+                if (lineLayerRouteGeoJsonSource != null) {
+                    // Create the LineString from the list of coordinates and then make a GeoJSON
+                    // FeatureCollection so we can add the line to our map as a layer.
+                    lineLayerRouteGeoJsonSource.feature(directionsRouteFeature)
                 }
-
-
             }
         } else {
             //Timber.d("Directions route is null")
@@ -490,11 +554,12 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
             ).show()
         }
     }
+
     private fun addAnnotationToMap(point: Point, nodo: String) {
         // Create an instance of the Annotation API and get the PointAnnotationManager.
         bitmapFromDrawableRes(
             thiscontext,
-            R.drawable.red_marker
+            R.drawable.se_ic_map
 
         )?.let {
             /*
@@ -514,13 +579,30 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
                 .withTextSize(0.0)
 
             // Add the resulting pointAnnotation to the map.
-            var pointAnnotation = pointAnnotationManager.create(pointAnnotationOptions)
-            places[nodo]!!.id = pointAnnotation.id
+            val pointAnnotation = pointAnnotationManager.create(pointAnnotationOptions)
+
+            val viewAnnotation = viewAnnotationManager.addViewAnnotation(
+                resId = R.layout.annotation_view,
+                options = viewAnnotationOptions {
+                    geometry(point)
+                    associatedFeatureId(pointAnnotation.featureIdentifier)
+                    anchor(ViewAnnotationAnchor.BOTTOM)
+                    offsetY((pointAnnotation.iconImageBitmap?.height!!).toInt() / 2)
+                    visible(false)
+                }
+
+            )
+            viewAnnotation.findViewById<TextView>(R.id.annotation).text = nodo
+            //viewAnnotation.findViewById<TextView>(R.id.annotation).textAlignment = View.TEXT_ALIGNMENT_CENTER
+
+            places[nodo]!!.id = pointAnnotation.featureIdentifier
+            places[nodo]!!.id_view = viewAnnotation.id
 
             /*var last = pointAnnotationManager?.annotations!!.last()
             places.put("",last)*/
         }
     }
+
     private fun bitmapFromDrawableRes(context: Context, @DrawableRes resourceId: Int) =
         convertDrawableToBitmap(AppCompatResources.getDrawable(context, resourceId))
 
@@ -568,8 +650,8 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
                 // the started state, and cancelled when stopping.
                 while (routeDisplay) {
                     //getCurrentLocation()
-                    val dest: Point = Point.fromLngLat(-101.23712022352315,19.695377903734485)
-                    if(currentPoint != null)
+                    val dest: Point = Point.fromLngLat(-101.23712022352315, 19.695377903734485)
+                    if (currentPoint != null)
                     //getRoute(currentPoint!!,dest)
                         delay(3 * 1000)
                 }
@@ -577,10 +659,10 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         }
     }
 
-    private fun setLocations(){
+    private fun setLocations() {
         /**
         ¡ NEEDS TO GET THE JSON FROM DB !
-        */
+         */
 
         val jsonParser = JsonParser(resources)
         val jsonArr = jsonParser.getJSONArray(R.raw.places)
@@ -596,7 +678,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
             val lng = place.getString("Lng").toDouble()
             val id = i.toLong()
 
-            val obj = Nodo(name,desc,lat,lng,null)
+            val obj = Nodo(name, desc, lat, lng, null, null)
             places[name] = obj
 
             // Now add all the variables to the data model class and the data model class to the array list.
@@ -606,7 +688,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
 
     }
 
-    private fun moveCamera(destination: Point){
+    private fun moveCamera(destination: Point) {
 
         val cameraPosition = CameraOptions.Builder()
             .zoom(18.0)
@@ -623,6 +705,7 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         )
 
     }
+
     /**
      *
      * APP STATES
@@ -630,17 +713,14 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
      */
     override fun onStart() {
         super.onStart()
-        mapView?.onStart()
     }
 
     override fun onStop() {
         super.onStop()
-        mapView?.onStop()
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
-        mapView?.onLowMemory()
     }
 
     override fun onDestroy() {
@@ -650,8 +730,8 @@ class MapaFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCallba
         mapView!!.location
             .removeOnIndicatorPositionChangedListener(onIndicatorPositionChangedListener)
         mapView!!.gestures.removeOnMoveListener(onMoveListener)
-        mapView?.onDestroy()
     }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
