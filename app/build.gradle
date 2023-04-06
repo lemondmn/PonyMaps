@@ -74,6 +74,7 @@ dependencies {
     implementation 'com.mapbox.maps:android:10.10.0'
     implementation 'com.mapbox.mapboxsdk:mapbox-sdk-services:6.9.0'
     implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation 'com.mapbox.mapboxsdk:mapbox-sdk-turf:6.11.0'
 
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
 
